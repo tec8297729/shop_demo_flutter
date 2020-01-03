@@ -1,0 +1,21 @@
+{
+  // 使用 IntelliSense 了解相关属性。 
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [{
+    "name": "debug",
+    "request": "launch",
+    "type": "dart",
+    // "console": "terminal", // cmd终端输出打印
+  }, {
+    "name": "Flutter 签名模式release",
+    "request": "launch",
+    "type": "dart",
+    // 附加参数，不可有空格，要多个参数,间隔开
+    "args": [
+      "--release", // 调试签名
+    ],
+    // "console": "terminal", // cmd终端输出打印
+  }]
+}
