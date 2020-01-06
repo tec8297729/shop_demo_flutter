@@ -1,5 +1,5 @@
 import 'package:baixing/components/FadeInImageNetwork/FadeInImageNetwork.dart';
-import 'package:baixing/pages/GoodsDetailsInfo/model/goodsDetailsInfo_stroe.dart';
+import '../store/goodsDetailsInfo_stroe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

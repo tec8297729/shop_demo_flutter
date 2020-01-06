@@ -4,10 +4,11 @@ import 'package:baixing/pages/Member/Member.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
 import '../../components/TipsExitAnimated/TipsExitAnimated.dart';
 import '../Home/Home.dart';
-import './model/barTabsStore.dart';
+import './store/barTabsStore.dart';
 
 class BarTabs extends StatefulWidget {
   final params;
@@ -58,6 +59,12 @@ class _BarTabsState extends State<BarTabs> {
     pageController = PageController(
       initialPage: currentIndex, // 默认显示哪个widget组件
       keepPage: true, // 是否开启缓存，即回退也会在当时的滚动位置
+    );
+    jhDebug.init(
+      btnTap1: () {
+        print('btn1>>>');
+      },
+      btnTitle1: '止是中',
     );
   }
 

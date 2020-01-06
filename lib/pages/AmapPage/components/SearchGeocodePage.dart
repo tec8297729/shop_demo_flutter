@@ -1,6 +1,7 @@
 import 'package:amap_search_fluttify/amap_search_fluttify.dart';
 import 'package:flutter/material.dart';
 
+// 地图坐标查询测试
 class SearchGeocodePage extends StatefulWidget {
   @override
   _AmapSearchState createState() => _AmapSearchState();

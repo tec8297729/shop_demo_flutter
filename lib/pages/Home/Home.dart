@@ -116,7 +116,13 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
           : SearchBarType.home,
       defaultText: '网红热门打卡 美食、景点、酒店',
       leftButtonClick: () {},
-      inputBoxClick: () {},
+      inputBoxClick: () {
+        Navigator.pushNamed(context, '/searchPage');
+        print('object跳转');
+      },
+      rightButtonClick: () {
+        Navigator.pushNamed(context, '/searchPage');
+      },
     );
 
     // 搜索整体组件

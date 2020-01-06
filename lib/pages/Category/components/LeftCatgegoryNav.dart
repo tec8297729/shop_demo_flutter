@@ -1,9 +1,9 @@
-import 'package:baixing/pages/Category/model/category_goodsList_store.dart';
+import 'package:baixing/pages/Category/store/category_goodsList_store.dart';
 import 'package:baixing/service/service_method.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../model/category_store.dart';
+import '../store/category_store.dart';
 
 class LeftCatgegoryNav extends StatefulWidget {
   @override

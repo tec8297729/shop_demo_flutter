@@ -1,4 +1,4 @@
-import 'package:baixing/pages/Cart/model/cartStore.dart';
+import 'package:baixing/pages/Cart/store/cartStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -59,7 +59,7 @@ class CartBottom extends StatelessWidget {
       children: <Widget>[
         Container(
           alignment: Alignment.centerRight,
-          width: ScreenUtil().setWidth(280),
+          width: ScreenUtil().setWidth(260),
           child: Text(
             '合计：',
             style: TextStyle(fontSize: ScreenUtil().setSp(36)),
@@ -67,11 +67,11 @@ class CartBottom extends StatelessWidget {
         ),
         Container(
           alignment: Alignment.centerLeft,
-          width: ScreenUtil().setWidth(150),
+          // width: ScreenUtil().setWidth(150),
           child: Text(
             '￥${cartStore.allPrice.toStringAsFixed(2)}',
             style: TextStyle(
-              fontSize: ScreenUtil().setSp(36),
+              fontSize: ScreenUtil().setSp(32),
               color: Colors.red,
             ),
           ),

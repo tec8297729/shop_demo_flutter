@@ -7,21 +7,21 @@ packages:
       name: amap_core_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.5.1+6777f7f"
+    version: "0.5.2+68b910c"
   amap_map_fluttify:
     dependency: "direct main"
     description:
       name: amap_map_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.17.2+4d92ce0"
+    version: "0.17.6+107df19"
   amap_search_fluttify:
     dependency: "direct main"
     description:
       name: amap_search_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.7.2+4d92ce0"
+    version: "0.7.3+107df19"
   archive:
     dependency: transitive
     description:
@@ -98,14 +98,14 @@ packages:
       name: cupertino_icons
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.1.2"
+    version: "0.1.3"
   dio:
     dependency: "direct main"
     description:
       name: dio
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.3"
+    version: "3.0.8"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -117,14 +117,19 @@ packages:
       name: flutter_easyrefresh
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.4"
+    version: "2.0.8"
   flutter_html:
     dependency: "direct main"
     description:
       name: flutter_html
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.11.0"
+    version: "0.11.1"
+  flutter_localizations:
+    dependency: "direct main"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_page_indicator:
     dependency: transitive
     description:
@@ -162,7 +167,7 @@ packages:
       name: flutter_webview_plugin
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.10"
+    version: "0.3.10+1"
   fluttertoast:
     dependency: "direct main"
     description:
@@ -176,7 +181,7 @@ packages:
       name: foundation_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.4.3+1"
+    version: "0.4.5"
   html:
     dependency: transitive
     description:
@@ -190,7 +195,7 @@ packages:
       name: http
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.12.0+2"
+    version: "0.12.0+3"
   http_parser:
     dependency: transitive
     description:
@@ -205,6 +210,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.4"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.16.0"
+  jh_debug:
+    dependency: "direct main"
+    description:
+      path: "..\\jh_debug"
+      relative: true
+    source: path
+    version: "0.1.1"
   matcher:
     dependency: transitive
     description:
@@ -268,13 +287,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.5"
-  rxdart:
-    dependency: "direct main"
-    description:
-      name: rxdart
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.23.1"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -405,7 +417,7 @@ packages:
       name: webview_flutter
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.18+1"
+    version: "0.3.19+2"
   xml:
     dependency: transitive
     description:
@@ -415,4 +427,4 @@ packages:
     version: "3.5.0"
 sdks:
   dart: ">=2.6.0 <3.0.0"
-  flutter: ">=1.12.13+hotfix.4 <2.0.0"
+  flutter: ">=1.12.13+hotfix.5 <2.0.0"

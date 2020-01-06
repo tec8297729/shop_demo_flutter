@@ -1,11 +1,11 @@
 import 'package:baixing/components/RoutsAnimation/RoutsAnimation.dart';
 import 'package:baixing/pages/BarTabs/BarTabs.dart';
-import 'package:baixing/pages/BarTabs/model/barTabsStore.dart';
+import 'package:baixing/pages/BarTabs/store/barTabsStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../model/goodsDetailsInfo_stroe.dart';
-import 'package:baixing/pages/Cart/model/cartStore.dart';
+import '../store/goodsDetailsInfo_stroe.dart';
+import 'package:baixing/pages/Cart/store/cartStore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class DetailsBottom extends StatelessWidget {

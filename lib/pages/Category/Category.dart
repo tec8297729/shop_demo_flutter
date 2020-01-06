@@ -4,7 +4,7 @@ import 'package:baixing/pages/Category/components/RightCatgegoryNav.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'model/category_goodsList_store.dart';
+import 'store/category_goodsList_store.dart';
 
 class Category extends StatefulWidget {
   Category({Key key, this.params}) : super(key: key);

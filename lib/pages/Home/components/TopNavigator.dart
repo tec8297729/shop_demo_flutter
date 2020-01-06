@@ -1,9 +1,9 @@
-import 'package:baixing/pages/BarTabs/model/barTabsStore.dart';
+import 'package:baixing/pages/BarTabs/store/barTabsStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
-import 'package:baixing/pages/Category/model/category_store.dart';
+import 'package:baixing/pages/Category/store/category_store.dart';
 
 // 轮播图下方nav图标区域
 class TopNavigator extends StatelessWidget {

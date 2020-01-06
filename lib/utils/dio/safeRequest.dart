@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'dioErrorUtil.dart';
 
-Future safeRequest(String url, {Object data, Options options}) async {
+Future<T> safeRequest<T>(String url, {Object data, Options options}) async {
   try {
     BaseOptions baseOpts = new BaseOptions(
       baseUrl: 'http://v.jspang.com:8088/baixing/', // 请求前缀url

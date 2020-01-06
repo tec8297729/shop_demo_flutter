@@ -2,7 +2,7 @@ import 'package:baixing/components/PageLoding/PageLoding.dart';
 import 'package:baixing/pages/Cart/components/CartBottom.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './model/cartStore.dart';
+import './store/cartStore.dart';
 import './components/CartItem.dart';
 
 // 购物车页面

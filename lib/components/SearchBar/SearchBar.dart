@@ -24,7 +24,7 @@ class SearchBar extends StatefulWidget {
   /// 左侧图标点击事件
   final void Function() leftButtonClick;
 
-  /// 右侧图标点击事件
+  /// 右侧搜索点击事件
   final void Function() rightButtonClick;
 
   /// 语音点击按钮
@@ -60,6 +60,7 @@ class _SearchBarState extends State<SearchBar> {
   @override
   void initState() {
     super.initState();
+    // 初始化输入框内容
     if (widget.defaultText != null) {
       setState(() {
         _controller.text = widget.defaultText;
@@ -75,8 +76,10 @@ class _SearchBarState extends State<SearchBar> {
     return _genHomeSearch();
   }
 
+  /// 搜索页面显示的组件
   Widget _genNormalSearch() {
     return Container(
+      margin: EdgeInsets.only(left: 10),
       child: Row(
         children: <Widget>[
           _wrapTap(
@@ -188,8 +191,12 @@ class _SearchBarState extends State<SearchBar> {
     if (normalFlag) {
       inputChild = TextField(
         controller: _controller,
-        onChanged: _onChanged,
         autofocus: true, // 自动获取焦点
+        onChanged: _onChanged,
+        // 键盘回车事件
+        onEditingComplete: () {
+          if (widget.rightButtonClick != null) widget.rightButtonClick();
+        },
         style: TextStyle(
           fontSize: ScreenUtil().setSp(36),
           color: Colors.black,
@@ -197,8 +204,10 @@ class _SearchBarState extends State<SearchBar> {
         ),
         // 输入文本样式
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+          contentPadding: EdgeInsets.fromLTRB(5, -20, 5, 0),
+          focusedBorder: InputBorder.none,
           border: InputBorder.none,
+          enabledBorder: InputBorder.none,
           hintText: widget.hint ?? '',
           hintStyle: TextStyle(fontSize: ScreenUtil().setSp(30)),
         ),
@@ -238,34 +247,56 @@ class _SearchBarState extends State<SearchBar> {
             child: inputChild,
           ),
 
-          !showClear
-              ? _wrapTap(
-                  child: Icon(
-                    Icons.mic,
-                    size: ScreenUtil().setSp(44),
-                    color: Colors.grey,
-                  ),
-                  onTap: () {
-                    // 清空输入框内容
-                    _controller.clear();
-                    _onChanged('');
-                  },
-                )
-              : null,
+          // 右侧区域
+          _rightIconWidget(),
         ],
       ),
     );
   }
 
+  // 输入框右侧图标区域
+  _rightIconWidget() {
+    if (showClear) {
+      // 清空图标
+      return GestureDetector(
+        child: Icon(
+          Icons.clear,
+          size: ScreenUtil().setSp(44),
+          color: Colors.grey,
+        ),
+        onTap: () {
+          // 清空输入框内容
+          _controller.clear();
+          _onChanged(''); // 更新视图
+        },
+      );
+    }
+
+    // 语音图标
+    return _wrapTap(
+      child: Icon(
+        Icons.mic,
+        size: ScreenUtil().setSp(44),
+        color: Colors.grey,
+      ),
+      onTap: () {
+        print('语音点击');
+        if (widget.speakClick != null) {
+          widget.speakClick();
+        }
+      },
+    );
+  }
+
   // 输入框事件
   _onChanged(String text) {
-    // 有文字内容时，才显示清空图标
-    setState(() {
-      showClear = text.length > 0;
-    });
     if (widget.onChanged != null) {
       widget.onChanged(text); // 回调
     }
+    // 有文字内容时，才显示清空图标
+    setState(() {
+      showClear = (text.length > 0);
+    });
   }
 
   // 首页前景色

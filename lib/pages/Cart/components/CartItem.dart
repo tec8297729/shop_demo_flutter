@@ -1,4 +1,4 @@
-import 'package:baixing/pages/Cart/model/cartStore.dart';
+import 'package:baixing/pages/Cart/store/cartStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -116,7 +116,7 @@ class CartItem extends StatelessWidget {
           Text(
             '原价：￥${itemData['oriPrice']}',
             style: TextStyle(
-              fontSize: ScreenUtil().setSp(24),
+              fontSize: ScreenUtil().setSp(22),
               decoration: TextDecoration.lineThrough,
               color: Colors.black26,
             ),

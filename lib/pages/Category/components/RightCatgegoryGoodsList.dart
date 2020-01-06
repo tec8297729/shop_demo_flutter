@@ -1,4 +1,4 @@
-import 'package:baixing/pages/Category/model/category_goodsList_store.dart';
+import 'package:baixing/pages/Category/store/category_goodsList_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

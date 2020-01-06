@@ -1,4 +1,5 @@
 import 'package:baixing/config/servcie_url.dart';
+import 'package:baixing/model/search_model.dart';
 import 'package:baixing/utils/dio/safeRequest.dart';
 import 'package:dio/dio.dart';
 
@@ -52,4 +53,14 @@ Future getGoodDetailById(Map params) async {
     data: {...tokenData, ...params},
     options: Options(method: 'POST'),
   );
+}
+
+// 搜索旅游数据
+Future<SearchModel> getSearchCtrip(String searchKey) async {
+  print('获取搜索数据......');
+  final data = await safeRequest(
+    servicePath['searchUrl'] + searchKey,
+  );
+
+  return SearchModel.fromJson(data);
 }

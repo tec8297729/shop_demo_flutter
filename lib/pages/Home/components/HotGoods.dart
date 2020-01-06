@@ -2,6 +2,7 @@ import 'package:baixing/service/service_method.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// 火爆专区商品布局
 class HotGoods extends StatefulWidget {
   List<Map> hotGoodsList;
   HotGoods({Key key, @required this.hotGoodsList});
@@ -11,25 +12,10 @@ class HotGoods extends StatefulWidget {
 }
 
 class _HotGoodsState extends State<HotGoods> {
-  // int page = 1;
-  // List<Map> hotGoodsList = [];
-
   @override
   void initState() {
     super.initState();
-    // _getHotGoods();
   }
-
-  // void _getHotGoods() async {
-  //   Map formPage = {'page': page};
-  //   var res = await getHomePageBeloContent(formPage);
-  //   print(res);
-  //   List<Map> newGoodsList = (res['data'] as List).cast<Map>();
-  //   setState(() {
-  //     newGoodsList.addAll([...newGoodsList]);
-  //     page++;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +97,7 @@ class _HotGoodsState extends State<HotGoods> {
       }).toList();
 
       return Wrap(
-        spacing: 3,
+        spacing: 2,
         children: listWidget,
       );
     }
