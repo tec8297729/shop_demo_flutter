@@ -1,5 +1,3 @@
-import 'package:baixing/components/PageLoding/PageLoding.dart';
-import 'package:baixing/components/SearchBar/SearchBar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'components/AdBanner.dart';
 import 'components/FloorContent.dart';
@@ -7,11 +5,13 @@ import 'components/FloorTitle.dart';
 import 'components/HotGoods.dart';
 import 'components/LeaderPhone.dart';
 import 'components/Recommend.dart';
-import 'package:baixing/service/service_method.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart'; // 上拉加载插件
 import 'components/SwiperDiy.dart';
 import 'components/TopNavigator.dart';
+import '../../components/PageLoding/PageLoding.dart';
+import '../../components/SearchBar/SearchBar.dart';
+import '../../service/service_method.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart'; // 上拉加载插件
 
 const APPBAR_SCROLL_OFFSET = 100; // 滚动透明度*的基数
 
@@ -72,7 +72,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   // 获取首页数据
   Future getHomeData() async {
     Map newHomeData = await getHomePageContent();
-    print('测试首页数据');
     setState(() {
       homeData = newHomeData;
     });
@@ -118,7 +117,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
       leftButtonClick: () {},
       inputBoxClick: () {
         Navigator.pushNamed(context, '/searchPage');
-        print('object跳转');
       },
       rightButtonClick: () {
         Navigator.pushNamed(context, '/searchPage');
@@ -206,6 +204,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
 
     return _easyRefresh(
       child: ListView(
+        // shrinkWrap: true,
         padding: EdgeInsets.only(top: 24),
         children: <Widget>[
           SwiperDiy(swiperDataList: swiperList), // 轮播

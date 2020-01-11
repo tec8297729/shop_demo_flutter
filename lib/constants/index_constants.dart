@@ -1,0 +1,15 @@
+const Map IMAGES_ICON_TYPES = {
+  'channelgroup': true,
+  'gs': true,
+  'plane': true,
+  'train': true,
+  'cruise': true,
+  'district': true,
+  'food': true,
+  'hotel': true,
+  'huodong': true,
+  'shop': true,
+  'sight': true,
+  'ticket': true,
+  'travelgroup': true,
+};

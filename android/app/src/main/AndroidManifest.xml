@@ -67,8 +67,17 @@
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data android:name="flutterEmbedding" android:value="2" />
+        <!-- 适配全面屏，定义最大支持范围，计算公式19.5/9（长宽比）=2.133 -->
+        <!-- google默认定义的范围是1.333到1.86之间 -->
+        <meta-data android:name="android.max_aspect" android:value="2.3" />
 
         <!-- 高德地图key -->
         <meta-data android:name="com.amap.api.v2.apikey" android:value="	1c2f3c4f7d0bcf35c20da3b0d4e53958"/>
+
+        <!-- 百度语音key -->
+        <meta-data android:name="com.baidu.speech.18226409" android:value="9788136" />
+        <meta-data android:name="com.baidu.speech.o5X4Iyc1ClrUmA26VlyYdD12" android:value="0GjQNO5H4pGPf9HyA3AmZEbz" />
+        <meta-data android:name="com.baidu.speech.WrK2AbDfgW54hOEvM4EnSvfIN2pjen7G " android:value="db981ef3ec647ba8a09b599ad7447a24" />
+
     </application>
 </manifest>

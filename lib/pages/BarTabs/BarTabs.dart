@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../../components/TipsExitAnimated/TipsExitAnimated.dart';
 import '../Home/Home.dart';
 import './store/barTabsStore.dart';
+import '../../plugin/asr_manager.dart';
 
 class BarTabs extends StatefulWidget {
   final params;
@@ -23,7 +24,7 @@ class BarTabs extends StatefulWidget {
 }
 
 class _BarTabsState extends State<BarTabs> {
-  int currentIndex = 0; // 接收bar当前点击索引
+  int currentIndex = 3; // 接收bar当前点击索引
   PageController pageController;
 
   // 导航菜单渲染数据源
@@ -61,8 +62,12 @@ class _BarTabsState extends State<BarTabs> {
       keepPage: true, // 是否开启缓存，即回退也会在当时的滚动位置
     );
     jhDebug.init(
+      context: context,
       btnTap1: () {
         print('btn1>>>');
+        // AsrManager.start().then((v) {
+        //   print('读取识别-------------$v');
+        // });
       },
       btnTitle1: '止是中',
     );

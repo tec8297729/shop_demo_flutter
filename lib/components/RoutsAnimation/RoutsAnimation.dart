@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'anim_type.dart';
 
 /// 带跳转动画效果的路由组件
 /// ```dart
@@ -20,8 +21,14 @@ class RoutsAnimation extends PageRoute {
     this.barrierLabel,
     this.maintainState = true,
     this.settings,
+    this.animType,
   });
-  final Widget child; // 页面跳转显示的组件
+
+  /// 页面跳转显示的组件
+  final Widget child;
+
+  /// 内置动画效果类型
+  final Anim_Type animType;
 
   @override
   final Duration transitionDuration; // 页面跳转持续动画时间
@@ -54,13 +61,21 @@ class RoutsAnimation extends PageRoute {
   @override
   Widget buildTransitions(context, animation, secondaryAnimation, _child) {
     // 缩放的动画效果
-    return ScaleTransition(
-      // 动画效果0缩放从0到1，1为不缩放完整显示
-      scale: Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-        parent: animation,
-        curve: Curves.fastOutSlowIn, // 曲线，快出慢进
-      )),
-      child: _child,
-    );
+    Widget animationChild;
+    switch (animType) {
+      // case Anim_Type.scaleTransition:
+      //   break;
+      default:
+        animationChild = ScaleTransition(
+          // 动画效果0缩放从0到1，1为不缩放完整显示
+          scale: Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: animation,
+            curve: Curves.fastOutSlowIn, // 曲线，快出慢进
+          )),
+          child: _child,
+        );
+    }
+
+    return animationChild;
   }
 }

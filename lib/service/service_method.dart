@@ -57,10 +57,10 @@ Future getGoodDetailById(Map params) async {
 
 // 搜索旅游数据
 Future<SearchModel> getSearchCtrip(String searchKey) async {
-  print('获取搜索数据......');
   final data = await safeRequest(
     servicePath['searchUrl'] + searchKey,
   );
+  print('获取搜索数据......');
 
   return SearchModel.fromJson(data);
 }

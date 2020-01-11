@@ -1,0 +1,60 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.asr_plugin">
+  <!-- 允许程序打开网络套接字 -->
+  <uses-permission android:name="android.permission.INTERNET" />
+  <!--允许程序获取网络状态-->
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <!--允许程序访问WiFi网络信息-->
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+  <!-- Permissions options for the `contacts` group -->
+  <uses-permission android:name="android.permission.READ_CONTACTS"/>
+  <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+  <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+  <!-- Permissions options for the `storage` group -->
+  <!-- 读写外部存储的权限 -->
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+  <!-- Permissions options for the `camera` group -->
+  <!-- 相机权限 -->
+  <uses-permission android:name="android.permission.CAMERA"/>
+
+  <!-- Permissions options for the `sms` group -->
+  <!-- 接收短信相关权限 -->
+  <uses-permission android:name="android.permission.SEND_SMS"/>
+  <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+  <uses-permission android:name="android.permission.READ_SMS"/>
+  <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH"/>
+  <uses-permission android:name="android.permission.RECEIVE_MMS"/>
+
+  <!-- Permissions options for the `phone` group -->
+  <!-- 访问电话权限相关 -->
+  <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+  <uses-permission android:name="android.permission.CALL_PHONE"/>
+  <uses-permission android:name="android.permission.ADD_VOICEMAIL"/>
+  <uses-permission android:name="android.permission.USE_SIP"/>
+  <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+  <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
+  <uses-permission android:name="android.permission.BIND_CALL_REDIRECTION_SERVICE"/>
+
+  <!-- Permissions options for the `calendar` group -->
+  <!-- 允许程序读取用户的日程信息 -->
+  <uses-permission android:name="android.permission.READ_CALENDAR" />
+  <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+  <!-- Permissions options for the `location` group -->
+  <!-- 权限用于访问GPS定位 -->
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <!-- 权限用于进行网络定位 -->
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+  <!-- Permissions options for the `microphone` or `speech` group -->
+  <!-- 录制声音通过手机或耳机的麦克 -->
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+  <!-- Permissions options for the `sensors` group -->
+  <uses-permission android:name="android.permission.BODY_SENSORS" />
+
+</manifest>

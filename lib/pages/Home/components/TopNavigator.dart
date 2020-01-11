@@ -1,4 +1,5 @@
 import 'package:baixing/pages/BarTabs/store/barTabsStore.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -54,19 +55,23 @@ class TopNavigator extends StatelessWidget {
       onTap: () {
         print(item['mallCategoryId']);
         _categoryStore.setLeftSelect(item); // 存选中左侧菜单
-
-        // Navigator.pushNamed(context, '/', arguments: {
-        //   'pageId': 1,
-        // });
         _barTabsStore.getBarTabsCont.jumpToPage(1);
       },
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.network(
-            item['image'],
+          Container(
             width: ScreenUtil().setWidth(95),
+            child: CachedNetworkImage(
+              imageUrl: '${item['image']}',
+              // 图片读取失败显示的weiget组件
+              errorWidget: (context, url, error) => new Icon(Icons.error),
+            ),
           ),
+          // Image.network(
+          //   item['image'],
+          //   width: ScreenUtil().setWidth(95),
+          // ),
           Text(item['mallCategoryName']),
         ],
       ),

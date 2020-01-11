@@ -1,6 +1,8 @@
 import 'package:baixing/service/service_method.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 // 火爆专区商品布局
 class HotGoods extends StatefulWidget {
@@ -19,13 +21,11 @@ class _HotGoodsState extends State<HotGoods> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          hotTitle,
-          _wrapList(),
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        hotTitle,
+        _wrapList(),
+      ],
     );
   }
 
@@ -95,6 +95,21 @@ class _HotGoodsState extends State<HotGoods> {
           ),
         );
       }).toList();
+
+      // return StaggeredGridView.countBuilder(
+      //   physics: NeverScrollableScrollPhysics(), // 禁止滚动
+      //   shrinkWrap: true, // 占位一定高度
+      //   crossAxisCount: 2, // 几列布局
+      //   itemCount: listWidget.length, // 总数量
+      //   // 渲染布局的组件
+      //   itemBuilder: (BuildContext context, int index) {
+      //     return listWidget[index];
+      //   },
+      //   // 合并item方法，自定义合并主轴及次轴几格参数
+      //   staggeredTileBuilder: (int index) => StaggeredTile.fit(1),
+      //   // mainAxisSpacing: 14.0, // 每个元素底部间隔
+      //   // crossAxisSpacing: 4.0, // 每个元素左右间隔大小
+      // );
 
       return Wrap(
         spacing: 2,

@@ -1,11 +1,11 @@
-import 'package:baixing/pages/AmapPage/AmapPage.dart';
-import 'package:baixing/pages/AmapPage/components/SearchGeocodePage.dart';
-import 'package:baixing/pages/ErrorPage/ErrorPage.dart';
 import 'package:flutter/material.dart';
-// 以下各路由页面显示的组件
-import 'package:baixing/pages/BarTabs/BarTabs.dart';
-import 'package:baixing/pages/GoodsDetailsInfo/GoodsDetailsInfo.dart';
-import 'package:baixing/pages/SearchPage/SearchPage.dart';
+import '../pages/BarTabs/BarTabs.dart';
+import '../pages/GoodsDetailsInfo/GoodsDetailsInfo.dart';
+import '../pages/SearchPage/SearchPage.dart';
+import '../pages/AmapPage/AmapPage.dart';
+import '../pages/AmapPage/components/SearchGeocodePage.dart';
+import '../pages/ErrorPage/ErrorPage.dart';
+import '../pages/FlowLayout/FlowLayout.dart';
 
 final String initialRoute = '/'; // 初始默认显示的路由
 final Map<String, WidgetBuilder> routesInit = {
@@ -20,5 +20,6 @@ final Map<String, WidgetBuilder> routesInit = {
   // 地图坐标查询测试
   '/searchGeocodePage': (BuildContext context) => SearchGeocodePage(),
   // 搜索页面
-  '/searchPage': (BuildContext context) => SearchPage(),
+  '/searchPage': (BuildContext context, {params}) => SearchPage(params: params),
+  '/flowLayout': (BuildContext context, {params}) => FlowLayout(),
 };

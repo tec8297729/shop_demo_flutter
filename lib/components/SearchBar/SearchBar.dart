@@ -30,6 +30,9 @@ class SearchBar extends StatefulWidget {
   /// 语音点击按钮
   final void Function() speakClick;
 
+  /// 键盘回车事件
+  final void Function() keyEnterFn;
+
   /// 输入框点击事件
   final void Function() inputBoxClick;
 
@@ -47,7 +50,8 @@ class SearchBar extends StatefulWidget {
       this.rightButtonClick,
       this.speakClick,
       this.onChanged,
-      this.inputBoxClick})
+      this.inputBoxClick,
+      this.keyEnterFn})
       : super(key: key);
 
   @override
@@ -195,7 +199,7 @@ class _SearchBarState extends State<SearchBar> {
         onChanged: _onChanged,
         // 键盘回车事件
         onEditingComplete: () {
-          if (widget.rightButtonClick != null) widget.rightButtonClick();
+          if (widget.keyEnterFn != null) widget.keyEnterFn();
         },
         style: TextStyle(
           fontSize: ScreenUtil().setSp(36),

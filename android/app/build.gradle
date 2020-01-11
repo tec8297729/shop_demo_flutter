@@ -29,7 +29,7 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 28 // app编译版本，如果有老代码会做提示
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -41,12 +41,15 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.baixing"
-        minSdkVersion 16
-        targetSdkVersion 28
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        applicationId "com.example.baixing" // 项目app的包名
+        minSdkVersion 28 // app最低兼容到的版本号，16是兼容到4.2，具体可以在软件中看
+        targetSdkVersion 28 // 指定打包用的版本号，
+        versionCode flutterVersionCode.toInteger() // 发布的版本号，读取flutter中的
+        versionName flutterVersionName // 发布时的版本名
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // ndk {
+        //     abiFilters "arm64-v8a", "x86_64", "x86"  // 只打包flutter所支持的架构
+        // }
     }
 
     signingConfigs {
@@ -60,17 +63,21 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
             // signingConfig signingConfigs.debug
             signingConfig signingConfigs.release
             // 开启混淆/压缩
             minifyEnabled true
-            useProguard true
+            // useProguard true // 关闭此项
 
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+//    packagingOptions {
+//        // 确保app与asr_plugin都依赖的libflutter.so 合并时不冲突
+//        pickFirst 'lib/x86_64/libflutter.so'
+//        pickFirst 'lib/x86/libflutter.so'
+//        pickFirst 'lib/arm64-v8a/libflutter.so'
+//    }
 }
 
 flutter {
@@ -82,4 +89,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    // 百度语音插件引用
+    implementation project(':asr_plugin')
 }

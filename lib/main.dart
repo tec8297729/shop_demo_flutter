@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:baixing/MainGlobalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:jh_debug/jh_debug.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       builder: (_, themeStore, child) {
         return MaterialApp(
           navigatorKey: jhDebug.getNavigatorKey,
+          // locale: Locale('en', 'US'),
           locale: Locale('zh', 'CH'),
           localizationsDelegates: [
             GlobalMaterialLocalizations.delegate,
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: [
             const Locale('zh', 'CH'),
-            // const Locale('en', 'US'), // English
+            const Locale('en', 'US'), // English
           ],
           theme: themeStore.getTheme,
           initialRoute: initialRoute,
