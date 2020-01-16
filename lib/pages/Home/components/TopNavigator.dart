@@ -1,22 +1,24 @@
-import 'package:baixing/pages/BarTabs/store/barTabsStore.dart';
+import 'package:baixing/components/FadeInImageNetwork/FadeInImageNetwork.dart';
+import 'package:flutter_advanced_networkimage/provider.dart';
+import '../../HomeBarTabs/provider/homeBarTabsStore.p.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
-import 'package:baixing/pages/Category/store/category_store.dart';
+import '../../Category/provider/category_store.dart';
 
 // 轮播图下方nav图标区域
 class TopNavigator extends StatelessWidget {
   TopNavigator({Key key, @required this.navigatorList}) : super(key: key);
   final List navigatorList;
   static CategoryStore _categoryStore;
-  static BarTabsStore _barTabsStore;
+  static HomeBarTabsStore _barTabsStore;
 
   @override
   Widget build(BuildContext context) {
     _categoryStore = Provider.of<CategoryStore>(context);
-    _barTabsStore = Provider.of<BarTabsStore>(context);
+    _barTabsStore = Provider.of<HomeBarTabsStore>(context);
     // 超出指定数量，只截取部份数据
     if (this.navigatorList.length > 10) {
       this.navigatorList.removeRange(10, this.navigatorList.length);
@@ -62,16 +64,20 @@ class TopNavigator extends StatelessWidget {
         children: <Widget>[
           Container(
             width: ScreenUtil().setWidth(95),
-            child: CachedNetworkImage(
-              imageUrl: '${item['image']}',
-              // 图片读取失败显示的weiget组件
-              errorWidget: (context, url, error) => new Icon(Icons.error),
+            child: Image(
+              image: AdvancedNetworkImage(
+                '${item['image']}',
+                useDiskCache: true,
+                cacheRule: CacheRule(maxAge: const Duration(days: 30)),
+                fallbackImage: FadeInImageNetwork.kTransparentImage,
+              ),
             ),
+            //  CachedNetworkImage(
+            //   imageUrl: '${item['image']}',
+            //   // 图片读取失败显示的weiget组件
+            //   errorWidget: (context, url, error) => new Icon(Icons.error),
+            // ),
           ),
-          // Image.network(
-          //   item['image'],
-          //   width: ScreenUtil().setWidth(95),
-          // ),
           Text(item['mallCategoryName']),
         ],
       ),

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,13 +8,9 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 class SwiperDiy extends StatelessWidget {
   final List swiperDataList;
   SwiperDiy({Key key, @required this.swiperDataList});
-  HttpClient _client = new HttpClient();
 
   @override
   Widget build(BuildContext context) {
-    _client.badCertificateCallback =
-        (X509Certificate cert, String host, int port) => true;
-
     return Container(
       height: ScreenUtil().setHeight(370),
       child: Swiper(

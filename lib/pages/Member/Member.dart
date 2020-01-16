@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import './components/RightDrawer.dart';
 import './components/WebView.dart';
@@ -79,9 +81,23 @@ class _MemberState extends State<Member> {
           Container(
             width: ScreenUtil().setWidth(180),
             height: ScreenUtil().setHeight(180),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://i.keaitupian.net/up/fe/98/d9/884ada56623a11f6a0f38ab29fd998fe.jpg'),
+            child: ClipOval(
+              // child: CachedNetworkImage(
+              //   imageUrl:
+              //       'https://i.keaitupian.net/up/fe/98/d9/884ada56623a11f6a0f38ab29fd998fe.jpg',
+              //   fit: BoxFit.cover,
+              //   // 动画组件，需要回传一个weiget组件
+              //   placeholder: (context, url) => new CircularProgressIndicator(),
+              //   // 图片读取失败显示的weiget组件
+              //   errorWidget: (context, url, error) => new Icon(Icons.error),
+              // ),
+              child: Image(
+                image: AdvancedNetworkImage(
+                  'https://i.keaitupian.net/up/fe/98/d9/884ada56623a11f6a0f38ab29fd998fe.jpg',
+                  useDiskCache: true,
+                  cacheRule: CacheRule(maxAge: const Duration(days: 30)),
+                ),
+              ),
             ),
           ),
           Container(

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Util {
   Function debounce(Function fn, [int t = 30]) {
@@ -11,5 +12,15 @@ class Util {
         fn(data);
       });
     };
+  }
+
+  /// tosat提示
+  static toastTips(String text) {
+    Fluttertoast.showToast(
+      msg: text,
+      toastLength: Toast.LENGTH_SHORT,
+      // gravity: ToastGravity.CENTER, // 提示位置
+      fontSize: 18, // 提示文字大小
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'components/AdBanner.dart';
 import 'components/FloorContent.dart';
@@ -205,7 +206,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     return _easyRefresh(
       child: ListView(
         // shrinkWrap: true,
-        padding: EdgeInsets.only(top: 24),
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         children: <Widget>[
           SwiperDiy(swiperDataList: swiperList), // 轮播
           TopNavigator(navigatorList: navigatorList), // nav区域

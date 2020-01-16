@@ -1,9 +1,9 @@
-import 'package:baixing/components/PageLoding/PageLoding.dart';
-import 'package:baixing/pages/Cart/components/CartBottom.dart';
+import '../../components/PageLoding/PageLoding.dart';
+import '../../pages/Cart/components/CartBottom.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './store/cartStore.dart';
-import './components/CartItem.dart';
+import 'provider/cartStore.dart';
+import 'components/CartItem.dart';
 
 // 购物车页面
 class Cart extends StatefulWidget {

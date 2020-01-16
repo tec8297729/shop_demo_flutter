@@ -18,7 +18,8 @@ class LeaderPhone extends StatelessWidget {
   }
 
   void _handleUrl() async {
-    String url = 'tel:$phone';
+    // String url = 'tel:$phone';
+    String url = 'taobao://item.taobao.com/item.html?id=41700658839';
     // 判断能否打电话
     if (await canLaunch(url)) {
       await launch(url);

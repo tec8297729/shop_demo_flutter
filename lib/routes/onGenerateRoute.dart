@@ -1,4 +1,4 @@
-import 'package:baixing/pages/ErrorPage/ErrorPage.dart';
+import '../pages/ErrorPage/ErrorPage.dart';
 import 'package:flutter/material.dart';
 import 'routesInit.dart'; // 路由页面定义
 

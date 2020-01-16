@@ -1,11 +1,11 @@
-import 'package:baixing/components/PageLoding/PageLoding.dart';
-import 'package:baixing/pages/Cart/store/cartStore.dart';
-import 'package:baixing/pages/GoodsDetailsInfo/components/DetailsBottom.dart';
-import 'package:baixing/pages/GoodsDetailsInfo/components/DetailsWeb.dart';
+import '../../components/PageLoding/PageLoding.dart';
+import '../Cart/provider/cartStore.dart';
+import '../GoodsDetailsInfo/components/DetailsBottom.dart';
+import '../GoodsDetailsInfo/components/DetailsWeb.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'store/goodsDetailsInfo_stroe.dart';
+import 'provider/goodsDetailsInfo_stroe.dart';
 import 'components/DetailsExplanin.dart';
 import 'components/DetailsTopArea.dart';
 import 'components/DetailsTabBar.dart';

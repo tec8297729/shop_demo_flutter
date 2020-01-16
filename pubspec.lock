@@ -7,21 +7,21 @@ packages:
       name: amap_core_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.5.2+68b910c"
+    version: "0.5.3+356f11c"
   amap_map_fluttify:
     dependency: "direct main"
     description:
       name: amap_map_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.17.6+107df19"
+    version: "0.17.9+356f11c"
   amap_search_fluttify:
     dependency: "direct main"
     description:
       name: amap_search_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.7.3+107df19"
+    version: "0.7.4+356f11c"
   archive:
     dependency: transitive
     description:
@@ -118,6 +118,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_advanced_networkimage:
+    dependency: "direct main"
+    description:
+      name: flutter_advanced_networkimage
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.6.2"
   flutter_cache_manager:
     dependency: transitive
     description:
@@ -158,6 +165,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.1"
+  flutter_spinkit:
+    dependency: "direct main"
+    description:
+      name: flutter_spinkit
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.1.1+1"
   flutter_staggered_grid_view:
     dependency: "direct main"
     description:
@@ -165,6 +179,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.0"
+  flutter_svg:
+    dependency: transitive
+    description:
+      name: flutter_svg
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.15.0"
   flutter_swiper:
     dependency: "direct main"
     description:
@@ -202,7 +223,7 @@ packages:
       name: foundation_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.4.5"
+    version: "0.4.6"
   html:
     dependency: transitive
     description:
@@ -216,7 +237,7 @@ packages:
       name: http
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.12.0+3"
+    version: "0.12.0+4"
   http_parser:
     dependency: transitive
     description:
@@ -237,14 +258,21 @@ packages:
       name: intl
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.16.0"
+    version: "0.16.1"
   jh_debug:
     dependency: "direct main"
     description:
       path: "..\\jh_debug"
       relative: true
     source: path
-    version: "0.2.2"
+    version: "0.2.8"
+  majascan:
+    dependency: "direct main"
+    description:
+      name: majascan
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.3.5"
   matcher:
     dependency: transitive
     description:
@@ -266,6 +294,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.6.4"
+  path_drawing:
+    dependency: transitive
+    description:
+      name: path_drawing
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.4.1"
+  path_parsing:
+    dependency: transitive
+    description:
+      name: path_parsing
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.4"
   path_provider:
     dependency: transitive
     description:
@@ -286,7 +328,7 @@ packages:
       name: permission_handler
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.0.0"
+    version: "4.1.0"
   petitparser:
     dependency: transitive
     description:
@@ -322,6 +364,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.5"
+  share:
+    dependency: "direct main"
+    description:
+      name: share
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.6.3+5"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -473,7 +522,7 @@ packages:
       name: webview_flutter
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.19+2"
+    version: "0.3.19+5"
   xml:
     dependency: transitive
     description:

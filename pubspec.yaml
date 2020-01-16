@@ -39,12 +39,17 @@ dependencies:
   webview_flutter: ^0.3.18+1
   flutter_webview_plugin: ^0.3.10
   permission_handler: ^4.0.0
-  amap_map_fluttify: ^0.17.6+107df19
-  amap_search_fluttify: ^0.7.3+107df19
+  amap_map_fluttify: ^0.17.9+356f11c # 高德地图插件
+  amap_search_fluttify: ^0.7.4+356f11c
   flutter_staggered_grid_view: ^0.3.0
   cached_network_image: ^2.0.0
-  jh_debug:
-    path: ../jh_debug/ # 指定此库源文件位置
+  flutter_advanced_networkimage: ^0.6.2
+  share: ^0.6.3+5 # 分享
+  flutter_spinkit: "^4.1.1"
+  # 测试区域
+  jh_debug: 
+    path: '../jh_debug'
+  majascan: ^0.3.5 # 扫码插件
 
 
 dev_dependencies:

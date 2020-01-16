@@ -8,7 +8,7 @@ class FadeInImageNetwork extends StatelessWidget {
   final double height;
   final double width;
 
-  final Uint8List kTransparentImage = new Uint8List.fromList([
+  static final Uint8List kTransparentImage = new Uint8List.fromList([
     0x89,
     0x50,
     0x4E,

@@ -1,4 +1,4 @@
-import 'package:baixing/service/service_method.dart';
+import '../../../service/service_method.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

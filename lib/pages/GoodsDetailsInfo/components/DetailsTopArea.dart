@@ -1,5 +1,7 @@
-import 'package:baixing/components/FadeInImageNetwork/FadeInImageNetwork.dart';
-import '../store/goodsDetailsInfo_stroe.dart';
+import 'package:share/share.dart';
+
+import '../../../components/FadeInImageNetwork/FadeInImageNetwork.dart';
+import '../provider/goodsDetailsInfo_stroe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -46,12 +48,39 @@ class DetailsTopArea extends StatelessWidget {
 
   // 商品图片
   Widget _goodsImage(goodsInfo) {
-    return Hero(
-      tag: '${goodsInfo['goodsId']}',
-      child: FadeInImageNetwork(
-        imageUrl: goodsInfo['image1'].toString(),
-        height: ScreenUtil().setHeight(680), // 图片高度及占位高位
+    return Stack(
+      children: <Widget>[
+        Hero(
+          tag: '${goodsInfo['goodsId']}',
+          child: FadeInImageNetwork(
+            imageUrl: goodsInfo['image1'].toString(),
+            height: ScreenUtil().setHeight(680), // 图片高度及占位高位
+          ),
+        ),
+        Positioned(
+          top: 2,
+          right: 1,
+          child: shareBtn(),
+        ),
+      ],
+    );
+  }
+
+  /// 分享按钮
+  Widget shareBtn() {
+    return GestureDetector(
+      child: Container(
+        width: ScreenUtil().setWidth(80),
+        height: ScreenUtil().setHeight(80),
+        decoration: BoxDecoration(
+          color: Colors.black12,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(Icons.share, color: Colors.white),
       ),
+      onTap: () async {
+        Share.share('分享：我的个人博客 https://www.jonhuu.com');
+      },
     );
   }
 

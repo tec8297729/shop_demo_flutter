@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-/// debug调试按钮，指定方式按下才会触发，操作方式：快速双击二次，然后按住按钮 下移2的距离（重力加速度），上移6的距离（重力加速度）。
-///
-/// 注意：请在3秒内完成所有操作
 class DebugBtn extends StatefulWidget {
+  /// debug调试按钮，指定方式按下才会触发，操作方式：快速双击二次，然后按住按钮 下移2的距离（重力加速度），上移6的距离（重力加速度）。
+  ///
+  /// 注意：请在3秒内完成所有操作
   DebugBtn({@required this.child, @required this.success});
 
   /// 渲染的组件
@@ -77,7 +77,7 @@ class _DebugBtnState extends State<DebugBtn> {
     if (debugFlag['onVerticalTop'] && debugFlag['onVerticalBottom']) return;
     double yNum = e.delta.dy;
 
-    if (yNum > 1.5 && yNum < 2.5) {
+    if (yNum > 1.3 && yNum < 2.5) {
       // 下移指定范围
       debugFlag['onVerticalBottom'] = true;
     } else if (yNum > -6 && yNum < -3.2) {

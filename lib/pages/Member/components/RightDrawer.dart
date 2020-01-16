@@ -1,9 +1,9 @@
-import 'package:baixing/store/themeStore/themeStore.dart';
+import '../../../provider/themeStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:baixing/constants/themes/themeBlueGrey.dart';
-import 'package:baixing/constants/themes/themeLightBlue.dart';
-import 'package:baixing/constants/themes/themePink.dart';
+import '../../../constants/themes/themeBlueGrey.dart';
+import '../../../constants/themes/themeLightBlue.dart';
+import '../../../constants/themes/themePink.dart';
 import 'package:provider/provider.dart';
 
 class RightDrawer extends StatelessWidget {

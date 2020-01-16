@@ -1,11 +1,11 @@
-import 'package:baixing/components/RoutsAnimation/RoutsAnimation.dart';
-import 'package:baixing/pages/BarTabs/BarTabs.dart';
-import 'package:baixing/pages/BarTabs/store/barTabsStore.dart';
+import '../../HomeBarTabs/HomeBarTabs.dart';
+import '../../HomeBarTabs/provider/homeBarTabsStore.p.dart';
+import '../../../components/RoutsAnimation/RoutsAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../store/goodsDetailsInfo_stroe.dart';
-import 'package:baixing/pages/Cart/store/cartStore.dart';
+import '../provider/goodsDetailsInfo_stroe.dart';
+import '../../Cart/provider/cartStore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class DetailsBottom extends StatelessWidget {
@@ -33,10 +33,10 @@ class DetailsBottom extends StatelessWidget {
         GestureDetector(
           onTap: () {
             // 跳转路由缓存
-            Navigator.popUntil(context, ModalRoute.withName('/'));
+            Navigator.popUntil(context, ModalRoute.withName('/home'));
             // 首页切换tabs操作
             PageController homeCont =
-                Provider.of<BarTabsStore>(context).barTabsController;
+                Provider.of<HomeBarTabsStore>(context).barTabsController;
             homeCont.jumpToPage(2);
             // ModalRoute.of(context).
           },
@@ -120,10 +120,9 @@ class DetailsBottom extends StatelessWidget {
   Widget buyShopWidget(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // cartStore.remove(); // 清空购物车
         Navigator.of(context).push(
           RoutsAnimation(
-            child: BarTabs(
+            child: HomeBarTabs(
               params: {'pageId': 2},
             ),
           ),

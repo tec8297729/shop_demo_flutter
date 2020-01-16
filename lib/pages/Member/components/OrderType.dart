@@ -7,8 +7,8 @@ class OrderType extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 5),
+      padding: EdgeInsets.only(top: 10),
       height: ScreenUtil().setHeight(150),
-      padding: EdgeInsets.only(top: 20),
       color: Colors.white,
       child: Row(
         children: <Widget>[

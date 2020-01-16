@@ -1,6 +1,6 @@
-import 'package:baixing/config/servcie_url.dart';
-import 'package:baixing/model/search_model.dart';
-import 'package:baixing/utils/dio/safeRequest.dart';
+import '../config/servcie_url.dart';
+import '../models/search_model.dart';
+import '../utils/dio/safeRequest.dart';
 import 'package:dio/dio.dart';
 
 final tokenData = {'lon': '115.02932', 'lat': '35.76189'};

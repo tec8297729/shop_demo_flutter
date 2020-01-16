@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../store/goodsDetailsInfo_stroe.dart';
+import '../provider/goodsDetailsInfo_stroe.dart';
 
 // 商品详情内容区域
 class DetailsTabBar extends StatefulWidget {

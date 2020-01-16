@@ -36,21 +36,11 @@ class _AmapSearchState extends State<SearchGeocodePage>
           // 确认查询
           RaisedButton(
             child: Text('查询'),
-            onPressed: () async {
-              print('object');
-
-              /// 逆地理编码（坐标转地址）
-              final reGeocodeList = await AmapSearch.searchReGeocode(
-                LatLng(
-                  double.parse(latLng1Controller.text),
-                  double.parse(latLng2Controller.text),
-                ),
-                radius: double.parse(radiusController.text),
+            onPressed: () {
+              _getAddress(
+                double.parse(latLng1Controller.text),
+                double.parse(latLng2Controller.text),
               );
-              print(reGeocodeList.toString());
-              setState(() {
-                textAmap = reGeocodeList.toString();
-              });
             },
           ),
 
@@ -61,6 +51,26 @@ class _AmapSearchState extends State<SearchGeocodePage>
         ],
       ),
     );
+  }
+
+  _getAddress(double lat, double lng) async {
+    if (lat > 0 && lng > 0) {
+      var latLng = LatLng(lat, lng);
+
+      /// 逆地理编码（坐标转地址）
+      var reGeocodeList = await AmapSearch.searchReGeocode(
+        latLng,
+        radius: 200.0,
+      );
+      print('object>>>>');
+      if (reGeocodeList != null) {
+        var result = await reGeocodeList.formatAddress;
+        setState(() {
+          textAmap = result;
+        });
+        print(result);
+      }
+    }
   }
 
   // 坐标组件

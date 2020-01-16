@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:baixing/components/PageLoding/PageLoding.dart';
+import '../../../components/PageLoding/PageLoding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
