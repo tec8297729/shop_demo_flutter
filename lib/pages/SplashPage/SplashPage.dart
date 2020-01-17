@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:baixing/config/app_config.dart';
 import 'package:baixing/pages/SplashPage/components/AdPage.dart';
 import 'package:baixing/pages/SplashPage/components/WelcomePage.dart';
 import 'package:flutter/services.dart';
@@ -35,15 +36,18 @@ class _SplashPageState extends State<SplashPage> {
     await SpUtil.getInstance();
     setState(() {
       /// 是否显示引导页。
-      SpUtil.getInstance();
-      if (SpUtil.getData<bool>("key_guide")) {
+      if (SpUtil.getData<bool>("key_guide", defValue: true)) {
         SpUtil.setData("key_guide", true);
         child = WelcomePage();
       } else {
         child = AdPage();
       }
     });
-    Navigator.of(context).pushReplacementNamed('/home');
+
+    /// 调试阶段，直接跳过此组件
+    if (AppConfig.notSplash) {
+      Navigator.of(context).pushReplacementNamed('/home');
+    }
   }
 
   @override

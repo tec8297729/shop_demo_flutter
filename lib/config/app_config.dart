@@ -1,3 +1,4 @@
 class AppConfig {
-  static const IsDebug = true;
+  /// 是否跳过闪屏页，调试功能
+  static const notSplash = false;
 }

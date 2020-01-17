@@ -10,12 +10,3 @@ const servicePath = {
   'searchUrl':
       'https://m.ctrip.com/restapi/h5api/searchapp/search?source=mobileweb&action=autocomplete&contentType=json&keyword=', // 搜索旅游数据
 };
-// const servicePath = {
-//   'homePageContent': 'wxmini/homePageContent', //商店首页信息
-//   'homePageBelowConten': 'wxmini/homePageBelowConten', //商城首页热卖商品
-//   'getCategory': 'wxmini/getCategory', //商品类别信息
-//   'getMallGoods': 'wxmini/getMallGoods', //商品分类的商品列表
-//   'getGoodDetailById': 'wxmini/getGoodDetailById', //商品详细信息
-//   'searchUrl':
-//       'https://m.ctrip.com/restapi/h5api/searchapp/search?source=mobileweb&action=autocomplete&contentType=json&keyword=', // 搜索旅游数据
-// };

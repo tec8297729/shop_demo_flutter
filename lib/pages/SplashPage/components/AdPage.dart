@@ -35,9 +35,7 @@ class _AdPageState extends State<AdPage> {
 
     _timer = Timer.periodic(timeDur, (Timer t) {
       if (timeCount <= 0) {
-        if (AppConfig.IsDebug) {
-          Navigator.of(context).pushReplacementNamed('/home');
-        }
+        Navigator.of(context).pushReplacementNamed('/home');
         return;
       }
       setState(() {

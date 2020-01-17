@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:jh_debug/jh_debug.dart';
@@ -36,7 +35,6 @@ class MyApp extends StatelessWidget {
     return Consumer<ThemeStore>(
       builder: (_, themeStore, child) {
         return MaterialApp(
-          navigatorKey: jhDebug.getNavigatorKey,
           // locale: Locale('en', 'US'),
           locale: Locale('zh', 'CH'),
           localizationsDelegates: [

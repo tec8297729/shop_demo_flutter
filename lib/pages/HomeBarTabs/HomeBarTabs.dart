@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import '../../components/TipsExitAnimated/TipsExitAnimated.dart';
 import '../Home/Home.dart';
 import './provider/homeBarTabsStore.p.dart';
-import '../../plugin/asr_manager.dart';
+// import '../../plugin/asr_manager.dart';
 
 class HomeBarTabs extends StatefulWidget {
   final params;
@@ -24,7 +24,7 @@ class HomeBarTabs extends StatefulWidget {
 }
 
 class _HomeBarTabsState extends State<HomeBarTabs> {
-  int currentIndex = 3; // 接收bar当前点击索引
+  int currentIndex = 0; // 接收bar当前点击索引
   PageController pageController;
 
   // 导航菜单渲染数据源
@@ -66,8 +66,12 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
       btnTap1: () {
         print('btn1>>>');
       },
-      btnTitle1: '止是中',
+      btnTitle1: '测试',
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      jhDebug.showDebugBtn();
+    });
   }
 
   @override
@@ -93,6 +97,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
         ScreenUtil(width: 750, height: 1334, allowFontScaling: true)
           ..init(context);
     Provider.of<HomeBarTabsStore>(context).saveController(pageController);
+
     return Scaffold(
       body: PageView(
         controller: pageController, // 控制器
