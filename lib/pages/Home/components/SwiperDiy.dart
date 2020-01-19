@@ -12,6 +12,7 @@ class SwiperDiy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       height: ScreenUtil().setHeight(370),
       child: Swiper(
         autoplay: true, // 自动播放

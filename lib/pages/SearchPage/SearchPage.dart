@@ -63,9 +63,9 @@ class _SearchPageState extends State<SearchPage> {
   String _typeImage(String type) {
     // String path = 'travelgroup';
     if (IMAGES_ICON_TYPES[type] ?? false) {
-      return 'images/type_$type.png';
+      return 'asset/images/type_$type.png';
     }
-    return 'images/type_travelgroup.png';
+    return 'asset/images/type_travelgroup.png';
   }
 
   @override

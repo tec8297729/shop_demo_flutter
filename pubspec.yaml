@@ -11,7 +11,7 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.1+1
 
 environment:
   sdk: ">=2.6.0 <3.0.0"
@@ -38,17 +38,20 @@ dependencies:
   characters: ^0.5.0 # 字符串表情处理
   webview_flutter: ^0.3.18+1
   flutter_webview_plugin: ^0.3.10
-  permission_handler: ^4.0.0
+  permission_handler: ^4.2.0
   amap_map_fluttify: ^0.17.9+356f11c # 高德地图插件
   amap_search_fluttify: ^0.7.4+356f11c
   flutter_staggered_grid_view: ^0.3.0
   cached_network_image: ^2.0.0
   flutter_advanced_networkimage: ^0.6.2
   share: ^0.6.3+5 # 分享
-  flutter_spinkit: "^4.1.1"
+  flutter_spinkit: ^4.1.1
+  package_info: ^0.4.0+13 # app相关信息获取
+  jh_debug: ^0.3.0
+  ota_update: ^2.1.0 # 支持Android应用内下载更新
   # 测试区域
-  jh_debug: 
-    path: '../jh_debug'
+  # jh_debug: 
+  #   path: '../jh_debug'
   majascan: ^0.3.5 # 扫码插件
 
 
@@ -67,7 +70,8 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-   - images/
+   - asset/images/
+   - asset/images/updateVersion/header/up_header.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

@@ -9,7 +9,7 @@
     "build:apk": "flutter build apk",
     "build:ios": "flutter build ios",
     "build:web": "flutter build web",
-    "upsdk": "flutter upgrade"
+    "upsdk": "flutter upgrade --force"
   },
   "dependencies": {}
 }

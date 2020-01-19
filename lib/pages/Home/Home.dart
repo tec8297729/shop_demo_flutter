@@ -205,8 +205,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
 
     return _easyRefresh(
       child: ListView(
-        // shrinkWrap: true,
-        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        // padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         children: <Widget>[
           SwiperDiy(swiperDataList: swiperList), // 轮播
           TopNavigator(navigatorList: navigatorList), // nav区域

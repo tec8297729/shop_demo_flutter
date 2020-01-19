@@ -1,3 +1,9 @@
+import 'dart:io';
+
+import 'package:ota_update/ota_update.dart';
+import 'package:package_info/package_info.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../../pages/Cart/Cart.dart';
 import '../../pages/Category/Category.dart';
 import '../../pages/Member/Member.dart';
@@ -26,6 +32,8 @@ class HomeBarTabs extends StatefulWidget {
 class _HomeBarTabsState extends State<HomeBarTabs> {
   int currentIndex = 0; // 接收bar当前点击索引
   PageController pageController;
+  String vInfo = '';
+  String progress = '';
 
   // 导航菜单渲染数据源
   List<Map<String, dynamic>> barData = [
@@ -62,15 +70,26 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
       keepPage: true, // 是否开启缓存，即回退也会在当时的滚动位置
     );
     jhDebug.init(
-      context: context,
-      btnTap1: () {
-        print('btn1>>>');
-      },
-      btnTitle1: '测试',
-    );
+        context: context,
+        btnTap1: () {
+          print('btn1>>>');
+          _initData();
+        },
+        btnTitle1: '测试',
+        btnTap2: () {
+          print('更新');
+        });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       jhDebug.showDebugBtn();
+    });
+  }
+
+  void _initData() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    String version = packageInfo.version;
+    setState(() {
+      vInfo = Platform.isIOS ? 'iOS_$version' : 'android_$version';
     });
   }
 

@@ -1,3 +1,4 @@
+import 'package:baixing/components/UpdateAppVersion/UpdateAppVersion.dart';
 import 'package:baixing/utils/sp_util.dart';
 import 'package:flutter/material.dart';
 
@@ -36,9 +37,16 @@ class _WelcomePageState extends State<WelcomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).pushReplacementNamed('/home');
+          // Navigator.of(context).pushReplacementNamed('/home');
+          showDialog(
+            context: context,
+            child: Dialog(
+              backgroundColor: Colors.transparent, // 背景颜色
+              child: UpdateAppVersion(),
+            ),
+            // child: UpdateAppVersion(),
+          );
         },
-        child: Icon(Icons.navigate_next),
       ),
     );
   }
