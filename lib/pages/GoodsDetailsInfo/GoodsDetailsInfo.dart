@@ -1,5 +1,5 @@
 import '../../components/PageLoding/PageLoding.dart';
-import '../Cart/provider/cartStore.dart';
+import '../HomeBarTabs/Cart/provider/cartStore.dart';
 import '../GoodsDetailsInfo/components/DetailsBottom.dart';
 import '../GoodsDetailsInfo/components/DetailsWeb.dart';
 import 'package:flutter/cupertino.dart';

@@ -1,6 +1,10 @@
 import 'dart:async';
+import 'package:baixing/components/UpdateAppVersion/UpdateAppVersion.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:package_info/package_info.dart';
+import '../service/service_method.dart';
 
 class Util {
   /// 防抖函数
@@ -24,23 +28,5 @@ class Util {
       // gravity: ToastGravity.CENTER, // 提示位置
       fontSize: 18, // 提示文字大小
     );
-  }
-
-  /// 基础权限申请
-  static Future initPermissions() async {
-    storagePerm();
-  }
-
-  /// 存储权限申请
-  static Future<bool> storagePerm() async {
-    // 权限检查
-    PermissionStatus permission = await PermissionHandler()
-        .checkPermissionStatus(PermissionGroup.storage);
-    if (permission != PermissionStatus.granted) {
-      var permissions = await PermissionHandler()
-          .requestPermissions([PermissionGroup.storage]);
-      return permissions[PermissionGroup.storage] == PermissionStatus.granted;
-    }
-    return true;
   }
 }

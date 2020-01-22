@@ -1,19 +1,17 @@
 import 'dart:io';
-
-import 'package:ota_update/ota_update.dart';
+import 'package:baixing/components/UpdateAppVersion/UpdateAppVersion.dart';
+import 'package:baixing/service/service_method.dart';
 import 'package:package_info/package_info.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../../pages/Cart/Cart.dart';
-import '../../pages/Category/Category.dart';
-import '../../pages/Member/Member.dart';
+import 'Home/Home.dart';
+import 'Cart/Cart.dart';
+import 'Category/Category.dart';
+import 'Member/Member.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
 import '../../components/TipsExitAnimated/TipsExitAnimated.dart';
-import '../Home/Home.dart';
 import './provider/homeBarTabsStore.p.dart';
 // import '../../plugin/asr_manager.dart';
 
@@ -30,10 +28,8 @@ class HomeBarTabs extends StatefulWidget {
 }
 
 class _HomeBarTabsState extends State<HomeBarTabs> {
-  int currentIndex = 0; // 接收bar当前点击索引
+  int currentIndex = 2; // 接收bar当前点击索引
   PageController pageController;
-  String vInfo = '';
-  String progress = '';
 
   // 导航菜单渲染数据源
   List<Map<String, dynamic>> barData = [
@@ -69,28 +65,11 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
       initialPage: currentIndex, // 默认显示哪个widget组件
       keepPage: true, // 是否开启缓存，即回退也会在当时的滚动位置
     );
-    jhDebug.init(
-        context: context,
-        btnTap1: () {
-          print('btn1>>>');
-          _initData();
-        },
-        btnTitle1: '测试',
-        btnTap2: () {
-          print('更新');
-        });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      jhDebug.showDebugBtn();
-    });
-  }
-
-  void _initData() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    String version = packageInfo.version;
-    setState(() {
-      vInfo = Platform.isIOS ? 'iOS_$version' : 'android_$version';
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   getNewAppVer();
+    // });
+    getNewAppVer();
   }
 
   @override
@@ -109,12 +88,30 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
     }
   }
 
+  /// 获取最新APP
+  Future<String> getNewAppVer() async {
+    Map resData = await getVersion();
+    PackageInfo packageInfo = await PackageInfo.fromPlatform(); // 本地APP信息
+    // APP版本号检查
+    if (resData['version'] == packageInfo.version) return null;
+
+    showDialog(
+      context: context,
+      child: Dialog(
+        backgroundColor: Colors.transparent, // 背景颜色
+        child: UpdateAppVersion(
+          version: resData['version'] ?? '',
+          info: (resData['info'] as List).cast<String>() ?? [],
+        ),
+      ),
+    );
+    return resData['version'].toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     // 初始化设计稿尺寸
-    ScreenUtil.instance =
-        ScreenUtil(width: 750, height: 1334, allowFontScaling: true)
-          ..init(context);
+    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
     Provider.of<HomeBarTabsStore>(context).saveController(pageController);
 
     return Scaffold(

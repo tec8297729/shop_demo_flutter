@@ -1,5 +1,3 @@
-import 'package:baixing/components/UpdateAppVersion/UpdateAppVersion.dart';
-import 'package:baixing/utils/sp_util.dart';
 import 'package:flutter/material.dart';
 
 /// 指引页面
@@ -36,16 +34,16 @@ class _WelcomePageState extends State<WelcomePage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.navigate_next),
         onPressed: () {
-          // Navigator.of(context).pushReplacementNamed('/home');
-          showDialog(
-            context: context,
-            child: Dialog(
-              backgroundColor: Colors.transparent, // 背景颜色
-              child: UpdateAppVersion(),
-            ),
-            // child: UpdateAppVersion(),
-          );
+          Navigator.of(context).pushReplacementNamed('/home');
+          // showDialog(
+          //   context: context,
+          //   child: Dialog(
+          //     backgroundColor: Colors.transparent, // 背景颜色
+          //     child: UpdateAppVersion(),
+          //   ),
+          // );
         },
       ),
     );

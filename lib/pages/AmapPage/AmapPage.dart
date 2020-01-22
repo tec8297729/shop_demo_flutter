@@ -157,7 +157,7 @@ class _AmapPageState extends State<AmapPage> {
       // 标记
       markers: markerOption,
       // 标识点击回调
-      onMarkerClicked: (Marker marker) {},
+      // onMarkerClicked: (Marker marker) {},
 
       // 地图点击回调
       onMapClicked: (LatLng coord) async {

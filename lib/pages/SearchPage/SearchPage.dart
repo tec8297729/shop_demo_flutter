@@ -1,4 +1,3 @@
-import '../../pages/Member/components/WebView.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../models/search_model.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +5,6 @@ import '../../service/service_method.dart';
 import 'package:jh_debug/jh_debug.dart';
 import '../../utils/util.dart';
 import '../../components/SearchBar/SearchBar.dart';
-import '../../components/RoutsAnimation/RoutsAnimation.dart';
 import '../../constants/index_constants.dart';
 
 class SearchPage extends StatefulWidget {

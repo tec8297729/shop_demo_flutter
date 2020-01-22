@@ -1,17 +1,45 @@
 import 'dart:convert';
-import 'dart:io';
+import 'package:baixing/config/app_config.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'dioErrorUtil.dart';
+import '../../config/app_config.dart';
+import 'interceptors/header_interceptor.dart';
+import 'interceptors/log_interceptor.dart';
 
-Future<T> safeRequest<T>(String url, {Object data, Options options}) async {
+/// 底层请求方法说明
+///
+/// [options] dio请求的配置参数，默认get请求
+///
+/// [data] 请求参数
+///
+/// [cancelToken] 请求取消对象
+///
+///```dart
+///CancelToken token = CancelToken(); // 通过CancelToken来取消发起的请求
+///
+///safeRequest(
+///  "/test",
+///  data: {"id": 12, "name": "xx"},
+///  options: Options(method: "POST"),
+/// cancelToken: token,
+///);
+///
+///// 取消请求
+///token.cancel("cancelled");
+///```
+Future safeRequest(
+  String url, {
+  Object data,
+  Options options,
+  Map<String, dynamic> queryParameters,
+  CancelToken cancelToken,
+}) async {
   try {
     BaseOptions baseOpts = new BaseOptions(
-      // baseUrl: 'http://v.jspang.com:8088/baixing/', // 请求前缀url
+      baseUrl: AppConfig.host, // 前缀url
       // connectTimeout: 5000, // 连接服务器超时时间，单位是毫秒
       // receiveTimeout: 3000, // 接收数据的最长时限
       responseType: ResponseType.plain, // 数据类型
-      contentType: 'application/x-www-form-urlencoded',
       // cookies: Iterable.empty(), // 可以添加一些公共cookie
       // maxRedirects: 2, // 重定向最大次数。
       // 当响应状态码不是成功状态(如404)时，是否接收响应内容，如果是false,则response.data将会为null
@@ -19,38 +47,30 @@ Future<T> safeRequest<T>(String url, {Object data, Options options}) async {
     );
 
     Dio dioClient = new Dio(baseOpts); // 实例化请求，可以传入options参数
-    final adapter = dioClient.httpClientAdapter as DefaultHttpClientAdapter;
-    adapter.onHttpClientCreate = (client) {
-      // 设置http请求代理
-      // client.findProxy = (uri) {
-      //   // 把所有url请求链接一起代理到指定IP地址
-      //   return "PROXY http://192.168.124.94:8888";
-      // };
-      // 验证证书，返回true者验证通过
-      client.badCertificateCallback = (cert, host, port) => true;
-    };
+    if (AppConfig.usingProxy) {
+      final adapter = dioClient.httpClientAdapter as DefaultHttpClientAdapter;
+      adapter.onHttpClientCreate = (client) {
+        // 设置Http代理
+        client.findProxy = (uri) {
+          return "PROXY ${AppConfig.proxyAddress}:${AppConfig.proxyPort}'";
+        };
+        // https证书校验
+        client.badCertificateCallback = (cert, host, port) => true;
+      };
+    }
 
-    dioClient.interceptors.add(InterceptorsWrapper(
-      // 请求拦截
-      onRequest: (RequestOptions options) async {
-        return options; //continue
-      },
-      // 响应拦截
-      onResponse: (Response response) async {
-        return response; // continue
-      },
-      // 当请求失败时做一些预处理
-      onError: (DioError e) async {
-        throw HttpException(DioErrorUtil.handleError(e));
-        // return DioErrorUtil.handleError(e);
-      },
-    ));
+    dioClient.interceptors.addAll([
+      new HeaderInterceptors(),
+      new LogsInterceptors(),
+    ]);
 
     return dioClient
         .request(
           url,
           data: data,
+          queryParameters: queryParameters,
           options: options,
+          cancelToken: cancelToken,
         )
         .then((data) => jsonDecode(data.data));
   } catch (e) {

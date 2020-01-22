@@ -11,7 +11,7 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.1+1
+version: 1.1.0+1
 
 environment:
   sdk: ">=2.6.0 <3.0.0"
@@ -25,10 +25,10 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   http: ^0.12.0+2
-  dio: ^3.0.3
-  provider: ^3.2.0
+  dio: ^3.0.8
+  provider: ^4.0.2
   flutter_swiper: ^1.1.6
-  flutter_screenutil: ^0.6.1
+  flutter_screenutil: ^1.0.2
   url_launcher: ^5.2.7
   cupertino_icons: ^0.1.2
   flutter_easyrefresh: ^2.0.4
@@ -44,10 +44,15 @@ dependencies:
   flutter_staggered_grid_view: ^0.3.0
   cached_network_image: ^2.0.0
   flutter_advanced_networkimage: ^0.6.2
+  # 极光推送
+  jpush_flutter: 
+    git:
+      url: git://github.com/jpush/jpush-flutter-plugin.git
+      ref: master
   share: ^0.6.3+5 # 分享
   flutter_spinkit: ^4.1.1
   package_info: ^0.4.0+13 # app相关信息获取
-  jh_debug: ^0.3.0
+  jh_debug: ^0.3.1
   ota_update: ^2.1.0 # 支持Android应用内下载更新
   # 测试区域
   # jh_debug: 
@@ -71,7 +76,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - asset/images/
-   - asset/images/updateVersion/header/up_header.png
+   - asset/images/updateVersion/header/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

@@ -1,9 +1,20 @@
-import '../config/servcie_url.dart';
+import './servcie_url.dart';
 import '../models/search_model.dart';
 import '../utils/dio/safeRequest.dart';
 import 'package:dio/dio.dart';
 
 final tokenData = {'lon': '115.02932', 'lat': '35.76189'};
+
+/// 获取APP最新版本号, 可指定版本号,传入版本号'1.0.0'
+Future<Map> getVersion([String version]) async {
+  print('获取版本号......');
+  Map resData = await safeRequest(
+    servicePath['getVersion'],
+    queryParameters: {'version': version},
+  );
+
+  return resData['data'] ?? {};
+}
 
 // 获取首页主题内容
 Future getHomePageContent() async {

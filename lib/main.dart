@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           // locale: Locale('en', 'US'),
           locale: Locale('zh', 'CH'),
+          navigatorKey: jhDebug.getNavigatorKey,
           localizationsDelegates: [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
