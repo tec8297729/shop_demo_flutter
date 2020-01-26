@@ -36,7 +36,7 @@ dependencies:
   flutter_html: ^0.11.0
   shared_preferences: ^0.5.6
   characters: ^0.5.0 # 字符串表情处理
-  webview_flutter: ^0.3.18+1
+  webview_flutter: ^0.3.19+5
   flutter_webview_plugin: ^0.3.10
   permission_handler: ^4.2.0
   amap_map_fluttify: ^0.17.9+356f11c # 高德地图插件
@@ -52,12 +52,12 @@ dependencies:
   share: ^0.6.3+5 # 分享
   flutter_spinkit: ^4.1.1
   package_info: ^0.4.0+13 # app相关信息获取
-  jh_debug: ^0.3.1
   ota_update: ^2.1.0 # 支持Android应用内下载更新
+  majascan: ^0.3.5 # 扫码插件
   # 测试区域
+  jh_debug: ^0.3.1
   # jh_debug: 
   #   path: '../jh_debug'
-  majascan: ^0.3.5 # 扫码插件
 
 
 dev_dependencies:

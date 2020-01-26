@@ -25,13 +25,14 @@ class _GoodsDetailsInfoState extends State<GoodsDetailsInfo>
 
   bool get wantKeepAlive => true;
   GoodsDetailsInfoStore goodsStore;
+  CartStore _cartStore;
 
   // 请求详情页数据
   Future _getGoodsInfo() async {
     return _memoizer.runOnce(() async {
       Map goodsInfo = await goodsStore.getGoodsInfo(widget.params['goodsId']);
       // 更新当前详情商品数量
-      await Provider.of<CartStore>(context).changeGoodsSum(goodsInfo);
+      await _cartStore.changeGoodsSum(goodsInfo);
       return goodsInfo;
     });
   }
@@ -39,6 +40,7 @@ class _GoodsDetailsInfoState extends State<GoodsDetailsInfo>
   @override
   Widget build(BuildContext context) {
     goodsStore = Provider.of<GoodsDetailsInfoStore>(context);
+    _cartStore = Provider.of<CartStore>(context);
 
     return Scaffold(
       appBar: AppBar(

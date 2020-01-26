@@ -60,12 +60,13 @@
     <application android:name="io.flutter.app.FlutterApplication" android:label="百姓" android:icon="@mipmap/ic_launcher">
         <activity android:name=".MainActivity" android:launchMode="singleTop" android:theme="@style/LaunchTheme" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode" android:hardwareAccelerated="true" android:windowSoftInputMode="adjustResize">
             <!-- 解决启动中间的黑屏，Flutter的启动阶段会有黑屏 -->
-            <meta-data android:name="io.flutter.app.android.SplashScreenUntilFirstFrame" android:value="true" />
+            <!-- <meta-data android:name="io.flutter.app.android.SplashScreenUntilFirstFrame" android:value="true" /> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <!-- 扫码插件 -->
         <activity android:name="com.djgeo.majascan.g_scanner.QrCodeScannerActivity"/>
         <!-- ota_update更新APP插件 -->

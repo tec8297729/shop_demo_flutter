@@ -98,6 +98,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     );
   }
 
+  // 跳转搜索页面
+  goSearchPage() {
+    Navigator.pushNamed(context, '/searchPage');
+  }
+
   // 顶部栏组件
   Widget headerWidget() {
     Widget searchWidget = SearchBar(
@@ -105,13 +110,10 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
           ? SearchBarType.homeLight // 大于二分之一时，高亮显示
           : SearchBarType.home,
       defaultText: '网红热门打卡 美食、景点、酒店',
-      leftButtonClick: () {},
-      inputBoxClick: () {
-        Navigator.pushNamed(context, '/searchPage');
-      },
-      rightButtonClick: () {
-        Navigator.pushNamed(context, '/searchPage');
-      },
+      leftButtonClick: () => goSearchPage(),
+      speakClick: () => goSearchPage(),
+      inputBoxClick: () => goSearchPage(),
+      rightButtonClick: () => goSearchPage(),
     );
 
     // 搜索整体组件

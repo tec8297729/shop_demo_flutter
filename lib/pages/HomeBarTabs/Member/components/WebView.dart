@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 
 import '../../../../components/PageLoding/PageLoding.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ class _WebViewState extends State<WebView> {
   StreamSubscription<WebViewHttpError> _onHttpError;
   bool isErrorWidget = false; // 是否显示错误页面组件
   bool isBackIcon = false; // 是否显示回退图标，false为X图标
+  bool loadingTitle = false; // 标题显示加载中
   String _appBarTitle = 'H5页面加载中...';
 
   @override
@@ -57,6 +59,7 @@ class _WebViewState extends State<WebView> {
     _onUrlChang.cancel();
     _onStateChanged.cancel();
     _onHttpError.cancel();
+    webviewReference.close();
     webviewReference.dispose();
     super.dispose();
   }
@@ -64,8 +67,12 @@ class _WebViewState extends State<WebView> {
   // 监听页面变化时，执行的函数
   void onStateListenFn(WebViewStateChanged webState) async {
     switch (webState.type) {
+      case WebViewState.shouldStart: // 加载之前
+        setState(() {
+          loadingTitle = true;
+        });
+        break;
       case WebViewState.startLoad: // 开始加载的时候
-        print(webState.url);
         bool canGoBack = await webviewReference.canGoBack();
         setState(() {
           isBackIcon = canGoBack;
@@ -73,14 +80,13 @@ class _WebViewState extends State<WebView> {
         break;
       case WebViewState.finishLoad: // 页面加载完成时
         // 获取H5标题
-        webviewReference.evalJavascript('document.title').then((value) {
-          // print(value);
-          String title = value?.replaceAll('"', '');
-          if (title.length <= 0) title = '服务器正忙...';
+        String value = await webviewReference.evalJavascript('document.title');
+        String title = value?.replaceAll('"', '');
+        if (title.length <= 0) title = '...';
 
-          setState(() {
-            _appBarTitle = title;
-          });
+        setState(() {
+          _appBarTitle = title;
+          loadingTitle = false;
         });
         break;
       default:
@@ -104,34 +110,45 @@ class _WebViewState extends State<WebView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_appBarTitle),
-        leading: IconButton(
-          icon: Icon(isBackIcon ? Icons.arrow_back : Icons.close),
+        title: Row(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.centerLeft,
+              width: 300,
+              child: Text(_appBarTitle),
+            ),
+            if (loadingTitle) CupertinoActivityIndicator(),
+          ],
+        ),
+        leading: Container(
           padding: EdgeInsets.all(0),
-          onPressed: handleWebGoBack, // 点击事件
+          margin: EdgeInsets.all(0),
+          width: 22,
+          child: IconButton(
+            icon: Icon(isBackIcon ? Icons.arrow_back : Icons.close),
+            // padding: EdgeInsets.all(0),
+            onPressed: handleWebGoBack, // 点击事件
+          ),
         ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          handleWebView(),
-        ],
+        children: <Widget>[handleWebView()],
       ),
     );
   }
 
   // H5组件页面
   handleWebView() {
-    if (isErrorWidget) {
-      return errorWebViewWidget();
-    }
+    if (isErrorWidget) return errorWebViewWidget();
+
     return Expanded(
       child: WebviewScaffold(
         url: widget.url,
         withZoom: true, // 是否可以缩放
         withLocalStorage: true, // 是否本地储存
         hidden: true, // 默认是否隐藏
-
+        primary: false,
         // 在未页面加载页面之前显示的组件（等待页面）
         initialChild: PageLoading(),
       ),
@@ -144,11 +161,7 @@ class _WebViewState extends State<WebView> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Center(
-          child: Icon(
-            Icons.error, // 图标
-            color: Colors.red, // 颜色
-            size: 66, // 大小
-          ),
+          child: Icon(Icons.error, color: Colors.red, size: 66),
         ),
         SizedBox(height: ScreenUtil().setHeight(33)),
         Text(

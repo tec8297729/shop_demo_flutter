@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:baixing/components/DebugBtn/DebugBtn.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,6 +18,7 @@ class ActionList extends StatefulWidget {
 
 class _ActionListState extends State<ActionList> {
   JPush jPush = JPush();
+  Map<String, dynamic> pushParams;
 
   @override
   void initState() {
@@ -43,16 +45,20 @@ class _ActionListState extends State<ActionList> {
       jPush.addEventHandler(
         // 接收通知回调方法。
         onReceiveNotification: (Map<String, dynamic> message) async {
-          print('拉收到的推送>>>$message');
+          // print('接收到的推送>>>${message['extras']['cn.jpush.android.EXTRA']}');
+          String argStr = await message['extras']['cn.jpush.android.EXTRA'];
+          pushParams = jsonDecode(argStr);
         },
         // 点击通知回调方法。
         onOpenNotification: (Map<String, dynamic> message) async {
-          print("flutter onOpenNotification: $message");
+          Navigator.pushNamed(context, '/goodsDetailsInfo', arguments: {
+            'goodsId': pushParams['goodsId'],
+          });
         },
         // 接收自定义消息回调方法。
-        onReceiveMessage: (Map<String, dynamic> message) async {
-          print("flutter onReceiveMessage: $message");
-        },
+        // onReceiveMessage: (Map<String, dynamic> message) async {
+        //   print("flutter onReceiveMessage: $message");
+        // },
       );
     } on PlatformException {
       // 配置不对或是服务器版本不对,都会进入此区域
@@ -76,7 +82,8 @@ class _ActionListState extends State<ActionList> {
           myListTitle('地图调用', onTap: () {
             Navigator.of(context).pushNamed('/amapPage');
           }),
-          // myListTitle('已领取优惠券', onTap: () async {}),
+          // myListTitle('测试', onTap: () async {}),
+          myListTitle('测试', onTap: () async {}),
 
           myListTitle('扫一扫', onTap: () async {
             String qrResult = await MajaScan.startScan(
@@ -95,17 +102,17 @@ class _ActionListState extends State<ActionList> {
             onTap: () async {
               // 创建一个通知
               LocalNotification _localNotification = LocalNotification(
-                id: 232323,
-                buildId: 2,
-                title: '主标题', // 标题
-                subtitle: '副标题',
-                content: '推送内容',
-                fireTime: DateTime.now(), // 推送时间
-              );
+                  id: 232323,
+                  buildId: 2,
+                  title: '京宫二锅头限量免费送', // 标题
+                  content: '好货不断,每天惊喜机器人免费抢',
+                  fireTime: DateTime.now(), // 推送时间
+                  // 传入参数
+                  extra: {
+                    "goodsId": "035b55e444db4d308fd963543c7d884f",
+                  });
               // 发送本地通知
-              jPush.sendLocalNotification(_localNotification).then((res) {
-                print('通知结果???$res');
-              });
+              jPush.sendLocalNotification(_localNotification);
             },
           ),
           DebugBtn(

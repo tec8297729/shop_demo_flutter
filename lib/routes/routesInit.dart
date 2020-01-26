@@ -1,3 +1,5 @@
+import '../pages/SpeakPage/SpeakPage.dart';
+
 import '../pages/SplashPage/SplashPage.dart';
 import 'package:flutter/material.dart';
 import '../pages/HomeBarTabs/HomeBarTabs.dart';
@@ -24,4 +26,6 @@ final Map<String, WidgetBuilder> routesInit = {
   // 搜索页面
   '/searchPage': (BuildContext context, {params}) => SearchPage(params: params),
   '/flowLayout': (BuildContext context, {params}) => FlowLayout(),
+  // 语音识别页面
+  '/speakPage': (BuildContext context, {params}) => SpeakPage(),
 };

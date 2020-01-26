@@ -6,7 +6,6 @@ import 'routes/onGenerateRoute.dart';
 import 'routes/routesInit.dart'; // 路由配置
 import 'provider/themeStore.dart'; // 全局主题
 import 'providers_config.dart';
-import 'utils/sp_util.dart';
 
 void main() {
   jhDebugMain(
@@ -19,23 +18,11 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  void initState() {
-    _initAsync();
-  }
-
-  _initAsync() async {
-    await SpUtil.getInstance();
-    SpUtil.setData("username", "sky24");
-    String name = SpUtil.getData<String>("username");
-    print("MyApp name: $name");
-  }
-
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeStore>(
       builder: (_, themeStore, child) {
         return MaterialApp(
-          // locale: Locale('en', 'US'),
           locale: Locale('zh', 'CH'),
           navigatorKey: jhDebug.getNavigatorKey,
           localizationsDelegates: [

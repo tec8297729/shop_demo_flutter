@@ -2,7 +2,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../models/search_model.dart';
 import 'package:flutter/material.dart';
 import '../../service/service_method.dart';
-import 'package:jh_debug/jh_debug.dart';
 import '../../utils/util.dart';
 import '../../components/SearchBar/SearchBar.dart';
 import '../../constants/index_constants.dart';
@@ -28,7 +27,6 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -73,7 +71,6 @@ class _SearchPageState extends State<SearchPage> {
       body: Column(
         children: <Widget>[
           _appBar(), // 顶部组件
-
           Expanded(
             flex: 1,
             child: ListView.builder(
@@ -117,7 +114,7 @@ class _SearchPageState extends State<SearchPage> {
             keyEnterFn: _onSearchFn,
             // 语音搜索事件
             speakClick: () {
-              jhDebug.showLog();
+              Navigator.pushNamed(context, '/speakPage');
             },
           ),
         ),
