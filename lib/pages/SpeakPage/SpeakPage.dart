@@ -58,6 +58,9 @@ class _SpeakPageState extends State<SpeakPage>
     controller.reset(); // 恢复动画原位置
     controller.stop(); // 停止动画,不然未停止
     // AsrManager.stop();
+    setState(() {
+      tipsText = '- 长按说话 -';
+    });
   }
 
   /// 语音取消事件

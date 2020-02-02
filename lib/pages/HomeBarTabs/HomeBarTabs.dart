@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
-import '../../components/TipsExitAnimated/TipsExitAnimated.dart';
+import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
 import './provider/homeBarTabsStore.p.dart';
 // import '../../plugin/asr_manager.dart';
 
@@ -28,7 +28,7 @@ class HomeBarTabs extends StatefulWidget {
 }
 
 class _HomeBarTabsState extends State<HomeBarTabs> {
-  int currentIndex = 2; // 接收bar当前点击索引
+  int currentIndex = 3; // 接收bar当前点击索引
   PageController pageController;
 
   // 导航菜单渲染数据源
@@ -66,10 +66,9 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
       keepPage: true, // 是否开启缓存，即回退也会在当时的滚动位置
     );
 
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   getNewAppVer();
-    // });
-    getNewAppVer();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getNewAppVer();
+    });
   }
 
   @override
@@ -161,7 +160,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
             // 自定义退出APP的动画组件
             Positioned(
               bottom: 20,
-              child: TipsExitAnimated(),
+              child: DoubleBackExitApp(),
             ),
           ],
         );

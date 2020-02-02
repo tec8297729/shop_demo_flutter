@@ -1,5 +1,6 @@
 import 'package:baixing/components/PageLoding/PageLoding.dart';
 import 'package:baixing/components/SearchBar/SearchBar.dart';
+import 'package:baixing/pages/HomeBarTabs/Home/components/SliverFiedHeader.dart';
 import 'package:baixing/service/service_method.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'components/FloorContent.dart';
 import 'components/FloorTitle.dart';
 import 'components/HotGoods.dart';
 import 'components/LeaderPhone.dart';
+import 'components/MyAppBar.dart';
 import 'components/Recommend.dart';
 import 'components/SwiperDiy.dart';
 import 'components/TopNavigator.dart';
@@ -87,74 +89,14 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) {
     super.build(context); // 使用缓存组件调用
     return Scaffold(
+      // 顶部区域
+      appBar: MyAppBar(appBarAlpha: appBarAlpha),
       body: Stack(
         children: <Widget>[
           // 内容区域
           contextWrap(),
-          // 顶部区域
-          headerWidget(),
         ],
       ),
-    );
-  }
-
-  // 跳转搜索页面
-  goSearchPage() {
-    Navigator.pushNamed(context, '/searchPage');
-  }
-
-  // 顶部栏组件
-  Widget headerWidget() {
-    Widget searchWidget = SearchBar(
-      searchBarType: appBarAlpha > 0.2
-          ? SearchBarType.homeLight // 大于二分之一时，高亮显示
-          : SearchBarType.home,
-      defaultText: '网红热门打卡 美食、景点、酒店',
-      leftButtonClick: () => goSearchPage(),
-      speakClick: () => goSearchPage(),
-      inputBoxClick: () => goSearchPage(),
-      rightButtonClick: () => goSearchPage(),
-    );
-
-    // 搜索整体组件
-    Widget searWrap = Container(
-      decoration: BoxDecoration(
-        // 线性渐变颜色
-        gradient: LinearGradient(
-          colors: [
-            Color(0x66000000),
-            Colors.transparent, // 透明
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-        // 阴影
-        boxShadow: appBarAlpha > 0.2
-            ? [BoxShadow(color: Colors.black12, blurRadius: 4.5)]
-            : null,
-      ),
-      child: Container(
-        height: ScreenUtil().setHeight(160),
-        padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-        decoration: BoxDecoration(
-          // 动态改变盒子的背景色--透明度，滑动
-          color: Color.fromARGB((appBarAlpha * 255).toInt(), 255, 255, 255),
-        ),
-        child: searchWidget,
-      ),
-    );
-
-    return Column(
-      children: <Widget>[
-        // 模式1：内置透明组件
-        // Opacity(
-        //   opacity: appBarAlpha,
-        //   child: searWrap,
-        // ),
-
-        // 模式2：带透明底色
-        searWrap,
-      ],
     );
   }
 
@@ -162,6 +104,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   Widget contextWrap() {
     return MediaQuery.removePadding(
       context: context,
+      removeTop: true,
       child: FutureBuilder(
         future: _fetchData(),
         builder: (context, snap) {
@@ -196,30 +139,46 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     List<Map> floor3 = (data['floor3'] as List).cast();
 
     return _easyRefresh(
-      child: ListView(
+      child: CustomScrollView(
         // padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        children: <Widget>[
-          SwiperDiy(swiperDataList: swiperList), // 轮播
-          TopNavigator(navigatorList: navigatorList), // nav区域
-          AdBanner(adPicture: adPicture), // 广告AD
-          // 店长电话组件
-          LeaderPhone(
-            leaderImg: leaderData['leaderImage'],
-            phone: leaderData['leaderPhone'],
+        slivers: <Widget>[
+          SliverList(
+            delegate: SliverChildListDelegate([
+              // 轮播
+              SwiperDiy(swiperDataList: swiperList),
+              // nav区域
+              TopNavigator(navigatorList: navigatorList),
+              // 广告AD
+              AdBanner(adPicture: adPicture),
+              // 店长电话组件
+              LeaderPhone(
+                leaderImg: leaderData['leaderImage'],
+                phone: leaderData['leaderPhone'],
+              ),
+              // 推荐商品
+              Recommend(listData: recommendList)
+            ]),
           ),
-          // 推荐组件
-          Recommend(listData: recommendList),
 
-          FloorTitle(pictureAddress: floor1Title),
-          FloorContent(listData: floor1),
-          FloorTitle(pictureAddress: floor2Title),
-          FloorContent(listData: floor2),
-          FloorTitle(pictureAddress: floor3Title),
-          FloorContent(listData: floor3),
+          // 滚动置顶
+          // SliverFiedHeader(),
+
+          SliverList(
+            delegate: SliverChildListDelegate([
+              FloorTitle(pictureAddress: floor1Title),
+              FloorContent(listData: floor1),
+              FloorTitle(pictureAddress: floor2Title),
+              FloorContent(listData: floor2),
+              FloorTitle(pictureAddress: floor3Title),
+              FloorContent(listData: floor3),
+            ]),
+          ),
 
           // 火爆专区
-          HotGoods(
-            hotGoodsList: hotGoodsList,
+          SliverList(
+            delegate: SliverChildListDelegate([
+              HotGoods(hotGoodsList: hotGoodsList),
+            ]),
           ),
         ],
       ),
@@ -278,7 +237,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
       // 上拉加载
       onLoad: () async {
         _getHotGoods();
-        print('加载更多$page');
       },
       child: child,
     );

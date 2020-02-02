@@ -12,7 +12,7 @@ class SwiperDiy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      // padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       height: ScreenUtil().setHeight(370),
       child: Swiper(
         autoplay: true, // 自动播放
@@ -28,6 +28,7 @@ class SwiperDiy extends StatelessWidget {
           // );
           return CachedNetworkImage(
             imageUrl: '${swiperDataList[index]['image']}',
+            fit: BoxFit.cover,
             // 图片读取失败显示的weiget组件
             errorWidget: (context, url, error) => new Icon(Icons.error),
           );

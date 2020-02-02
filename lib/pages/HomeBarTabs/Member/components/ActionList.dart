@@ -45,7 +45,6 @@ class _ActionListState extends State<ActionList> {
       jPush.addEventHandler(
         // 接收通知回调方法。
         onReceiveNotification: (Map<String, dynamic> message) async {
-          // print('接收到的推送>>>${message['extras']['cn.jpush.android.EXTRA']}');
           String argStr = await message['extras']['cn.jpush.android.EXTRA'];
           pushParams = jsonDecode(argStr);
         },
@@ -55,10 +54,6 @@ class _ActionListState extends State<ActionList> {
             'goodsId': pushParams['goodsId'],
           });
         },
-        // 接收自定义消息回调方法。
-        // onReceiveMessage: (Map<String, dynamic> message) async {
-        //   print("flutter onReceiveMessage: $message");
-        // },
       );
     } on PlatformException {
       // 配置不对或是服务器版本不对,都会进入此区域
@@ -83,7 +78,7 @@ class _ActionListState extends State<ActionList> {
             Navigator.of(context).pushNamed('/amapPage');
           }),
           // myListTitle('测试', onTap: () async {}),
-          myListTitle('测试', onTap: () async {}),
+          // myListTitle('测试', onTap: () async {}),
 
           myListTitle('扫一扫', onTap: () async {
             String qrResult = await MajaScan.startScan(

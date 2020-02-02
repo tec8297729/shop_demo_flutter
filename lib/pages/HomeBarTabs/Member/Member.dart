@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:baixing/components/NumAnimation/NumAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -63,34 +64,26 @@ class _MemberState extends State<Member> {
       height: ScreenUtil().setHeight(400),
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        gradient: RadialGradient(
+        gradient: LinearGradient(
           colors: [
             Colors.lightBlue.withOpacity(0.3),
             Colors.purple.withOpacity(0.3),
-            Color(0xFFE2B0FF).withOpacity(0.3),
+            Color(0xFFEFD98D).withOpacity(0.3),
             Color(0xFF9F44D3).withOpacity(.5),
           ],
-          radius: 0.2, // 渐变的半径，具体数值需要乘以盒子的宽度
-          tileMode: TileMode.repeated, // 平铺模式
-          stops: [0.3, 0.5, 0.6, 1], // 颜色的分割比例，数值是递增的，值0-1之间的
+          // tileMode: TileMode.clamp, // 平铺模式
+          stops: [0.2, 0.4, 0.6, 1], // 颜色的分割比例
+          transform: GradientRotation(111), // 旋转角度
         ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          // 头像
           Container(
             width: ScreenUtil().setWidth(180),
             height: ScreenUtil().setHeight(180),
             child: ClipOval(
-              // child: CachedNetworkImage(
-              //   imageUrl:
-              //       'https://i.keaitupian.net/up/fe/98/d9/884ada56623a11f6a0f38ab29fd998fe.jpg',
-              //   fit: BoxFit.cover,
-              //   // 动画组件，需要回传一个weiget组件
-              //   placeholder: (context, url) => new CircularProgressIndicator(),
-              //   // 图片读取失败显示的weiget组件
-              //   errorWidget: (context, url, error) => new Icon(Icons.error),
-              // ),
               child: Image(
                 image: AdvancedNetworkImage(
                   'https://i.keaitupian.net/up/fe/98/d9/884ada56623a11f6a0f38ab29fd998fe.jpg',
@@ -100,15 +93,25 @@ class _MemberState extends State<Member> {
               ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 20),
-            child: Text(
-              '未知的小强',
-              style: TextStyle(
-                fontSize: ScreenUtil().setSp(36),
-                color: Colors.black,
+          // 文字区域
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(top: 20, right: 5),
+                child: Text(
+                  '未知的小强',
+                  style: TextStyle(
+                    fontSize: ScreenUtil().setSp(36),
+                    color: Colors.black,
+                  ),
+                ),
               ),
-            ),
+              Container(
+                margin: EdgeInsets.only(top: 22),
+                child: NumAnimation(value: 1000),
+              ),
+            ],
           ),
         ],
       ),
