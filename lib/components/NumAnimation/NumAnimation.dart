@@ -6,7 +6,7 @@ class NumAnimation extends StatefulWidget {
   NumAnimation({
     @required this.value,
     this.style,
-    this.milliseconds = 3000,
+    this.milliseconds = 1000,
   });
 
   /// 会变动的动画数值
@@ -15,7 +15,7 @@ class NumAnimation extends StatefulWidget {
   /// 数值显示样式
   final TextStyle style;
 
-  /// 动画持续时间, 默认3秒
+  /// 动画持续时间,
   final int milliseconds;
   @override
   _NumAnimationState createState() => _NumAnimationState();

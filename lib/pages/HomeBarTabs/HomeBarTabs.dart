@@ -28,7 +28,7 @@ class HomeBarTabs extends StatefulWidget {
 }
 
 class _HomeBarTabsState extends State<HomeBarTabs> {
-  int currentIndex = 3; // 接收bar当前点击索引
+  int currentIndex = 0; // 接收bar当前点击索引
   PageController pageController;
 
   // 导航菜单渲染数据源

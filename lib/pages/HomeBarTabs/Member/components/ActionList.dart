@@ -4,6 +4,7 @@ import 'package:baixing/components/DebugBtn/DebugBtn.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:jpush_flutter/jpush_flutter.dart';
 import 'package:majascan/majascan.dart';
 import 'package:flutter/material.dart';
