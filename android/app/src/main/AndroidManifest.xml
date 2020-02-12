@@ -82,15 +82,12 @@
         <meta-data android:name="android.max_aspect" android:value="2.3" />
 
         <!-- 高德地图key -->
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="	1c2f3c4f7d0bcf35c20da3b0d4e53958"/>
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="1c2f3c4f7d0bcf35c20da3b0d4e53958"/>
 
         <!-- 百度语音key -->
         <meta-data android:name="com.baidu.speech.18226409" android:value="9788136" />
         <meta-data android:name="com.baidu.speech.o5X4Iyc1ClrUmA26VlyYdD12" android:value="0GjQNO5H4pGPf9HyA3AmZEbz" />
         <meta-data android:name="com.baidu.speech.WrK2AbDfgW54hOEvM4EnSvfIN2pjen7G " android:value="db981ef3ec647ba8a09b599ad7447a24" />
-
-        <!-- 友盟分享 -->
-        <!-- <data android:scheme="5e1efe324ca357f674000796" /> -->
 
     </application>
 </manifest>

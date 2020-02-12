@@ -1,3 +1,6 @@
+import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/utils/util.dart';
+
 import '../../Category/provider/category_goodsList_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
@@ -117,7 +120,7 @@ class _RightCatgegoryGoodsListState extends State<RightCatgegoryGoodsList> {
       width: ScreenUtil().setWidth(200),
       child: Hero(
         tag: '${_goodsList[index]['goodsId']}',
-        child: Image.network(_goodsList[index]['image']),
+        child: ImageUtils.getNetWorkImageWidget(_goodsList[index]['image']),
       ),
     );
   }
@@ -128,7 +131,7 @@ class _RightCatgegoryGoodsListState extends State<RightCatgegoryGoodsList> {
       // 商品点击事件
       onTap: () {
         // print('商品点击》》${_goodsList[index]['goodsId']}');
-        Navigator.pushNamed(context, '/goodsDetailsInfo', arguments: {
+        Navigator.pushNamed(context, RouterName.goodsDetailsInfo, arguments: {
           'goodsId': _goodsList[index]['goodsId'],
         });
       },

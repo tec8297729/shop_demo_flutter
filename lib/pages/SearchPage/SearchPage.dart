@@ -1,8 +1,9 @@
+import 'package:baixing/routes/routerName.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../models/search_model.dart';
 import 'package:flutter/material.dart';
-import '../../service/service_method.dart';
-import '../../utils/util.dart';
+import '../../services/service_method.dart';
+import '../../utils/util.dart' show Util;
 import '../../components/SearchBar/SearchBar.dart';
 import '../../constants/index_constants.dart';
 
@@ -114,7 +115,7 @@ class _SearchPageState extends State<SearchPage> {
             keyEnterFn: _onSearchFn,
             // 语音搜索事件
             speakClick: () {
-              Navigator.pushNamed(context, '/speakPage');
+              Navigator.pushNamed(context, RouterName.speakPage);
             },
           ),
         ),

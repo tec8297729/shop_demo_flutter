@@ -1,8 +1,7 @@
 import 'package:baixing/components/PageLoding/PageLoding.dart';
-import 'package:baixing/components/SearchBar/SearchBar.dart';
-import 'package:baixing/pages/HomeBarTabs/Home/components/SliverFiedHeader.dart';
-import 'package:baixing/service/service_method.dart';
-import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'components/SliverFiedHeader/SliverFiedHeader.dart';
+import 'package:baixing/services/service_method.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'components/AdBanner.dart';
 import 'components/FloorContent.dart';
@@ -14,7 +13,8 @@ import 'components/Recommend.dart';
 import 'components/SwiperDiy.dart';
 import 'components/TopNavigator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart'; // 上拉加载插件
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'provider/homeStroe.p.dart'; // 上拉加载插件
 
 const APPBAR_SCROLL_OFFSET = 100; // 滚动透明度*的基数
 
@@ -58,7 +58,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     setState(() {
       appBarAlpha = alpha;
     });
-    // print('滚动值>>$alpha');
   }
 
   // 获取热门商品列表
@@ -88,6 +87,8 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context); // 使用缓存组件调用
+    // 保存首页滚动控制器
+    Provider.of<HomeStore>(context).saveController(scrollControll);
     return Scaffold(
       // 顶部区域
       appBar: MyAppBar(appBarAlpha: appBarAlpha),
@@ -143,6 +144,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         // padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         slivers: <Widget>[
           SliverList(
+            key: Provider.of<HomeStore>(context).getSliverListTopKey,
             delegate: SliverChildListDelegate([
               // 轮播
               SwiperDiy(swiperDataList: swiperList),
@@ -161,7 +163,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
           ),
 
           // 滚动置顶
-          // SliverFiedHeader(),
+          SliverFiedHeader(),
 
           SliverList(
             delegate: SliverChildListDelegate([

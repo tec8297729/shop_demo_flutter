@@ -1,13 +1,18 @@
+import 'package:baixing/initPub.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
+import 'ioc/locator.dart' show setupLocator, locator, CommonService;
 import 'routes/onGenerateRoute.dart';
-import 'routes/routesInit.dart'; // 路由配置
+import 'routes/routesData.dart'; // 路由配置
 import 'provider/themeStore.dart'; // 全局主题
 import 'providers_config.dart';
+import 'routes/analyticsObserver.dart';
 
 void main() {
+  initPub();
+  setupLocator();
   jhDebugMain(
     appChild: MultiProvider(
       providers: providersConfig,
@@ -20,6 +25,8 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    jhDebug.setGlobalKey = locator.get<CommonService>().getGlobalKey;
+
     return Consumer<ThemeStore>(
       builder: (_, themeStore, child) {
         return MaterialApp(
@@ -37,7 +44,7 @@ class MyApp extends StatelessWidget {
           initialRoute: initialRoute,
           onGenerateRoute: onGenerateRoute,
           debugShowCheckedModeBanner: false,
-          // navigatorObservers: [],
+          navigatorObservers: [AnalyticsObserver()],
         );
       },
     );

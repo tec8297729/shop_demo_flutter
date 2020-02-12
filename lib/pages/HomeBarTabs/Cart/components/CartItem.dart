@@ -1,3 +1,6 @@
+import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/utils/util.dart';
+
 import '../../Cart/provider/cartStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,7 +60,7 @@ class CartItem extends StatelessWidget {
   Widget cartImage(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/goodsDetailsInfo', arguments: {
+        Navigator.pushNamed(context, RouterName.goodsDetailsInfo, arguments: {
           'goodsId': itemData['goodsId'],
         });
       },
@@ -67,7 +70,7 @@ class CartItem extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(width: 1, color: Colors.black12),
         ),
-        child: Image.network(itemData['image1']),
+        child: ImageUtils.getNetWorkImageWidget(itemData['image1']),
       ),
     );
   }
@@ -83,9 +86,10 @@ class CartItem extends StatelessWidget {
         children: <Widget>[
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/goodsDetailsInfo', arguments: {
-                'goodsId': itemData['goodsId'],
-              });
+              Navigator.pushNamed(context, RouterName.goodsDetailsInfo,
+                  arguments: {
+                    'goodsId': itemData['goodsId'],
+                  });
             },
             child: Text(itemData['goodsName']),
           ),

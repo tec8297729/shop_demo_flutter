@@ -1,4 +1,4 @@
-import 'package:baixing/service/service_method.dart';
+import 'package:baixing/services/service_method.dart';
 
 import '../../Category/provider/category_goodsList_store.dart';
 import 'package:flutter/material.dart';

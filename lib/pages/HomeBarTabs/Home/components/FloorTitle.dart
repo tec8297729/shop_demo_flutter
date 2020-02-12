@@ -1,3 +1,4 @@
+import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 
 // 楼层标题图片
@@ -9,7 +10,7 @@ class FloorTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(8),
-      child: Image.network(pictureAddress),
+      child: Image(image: ImageUtils.getNetWorkImage(pictureAddress)),
     );
   }
 }

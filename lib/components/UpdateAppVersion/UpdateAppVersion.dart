@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:baixing/utils/util.dart';
+import 'package:baixing/utils/util.dart' show Util;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ota_update/ota_update.dart';
@@ -7,6 +7,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../utils/perm_utils.dart';
 import 'components/UpdateHeader.dart';
 import 'components/UpdateInstr.dart';
+
+export 'getNewAppVer.dart';
 
 /// 更新APP组件
 class UpdateAppVersion extends StatefulWidget {
@@ -25,16 +27,25 @@ class UpdateAppVersion extends StatefulWidget {
   _UpdateAppVersionState createState() => _UpdateAppVersionState();
 }
 
-class _UpdateAppVersionState extends State<UpdateAppVersion> {
+class _UpdateAppVersionState extends State<UpdateAppVersion>
+     {
   final double widthWrap = ScreenUtil().setWidth(550);
   bool downloadFlag = false; // 是否正在下载
   double downAppProgress = 0;
   String appVersion; // 最新版本号
+  Animation<double> animation;
+  Animation<Offset> animation2;
+  AnimationController animatController;
 
   @override
   void initState() {
     super.initState();
     appVersion = widget.version;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   /// APP版本更新
@@ -53,7 +64,7 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
           'https://github.com/tec8297729/shop_demo_flutter/releases/download/v$appVersion/app-release.apk';
       try {
         // TODO: 下载后的apk替换换新名称 flutter.apk(自定义)
-        OtaUpdate().execute(url, destinationFilename: 'flutter.apk').listen(
+        OtaUpdate().execute(url, destinationFilename: 'baixing.apk').listen(
           (OtaEvent event) {
             switch (event.status) {
               case OtaStatus.DOWNLOADING: // 下载中
@@ -92,12 +103,27 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
         ],
       ),
     );
+    // return ScaleTransition(
+    //   alignment: Alignment.center, // 指定缩放中心点
+    //   scale: animation,
+    //   child: Container(
+    //     width: widthWrap,
+    //     height: ScreenUtil().setHeight(740),
+    //     color: Colors.transparent,
+    //     child: Column(
+    //       children: <Widget>[
+    //         UpdateHeader(version: appVersion), // 头部
+    //         UpdateInstr(data: widget?.info),
+    //         bottomW(),
+    //       ],
+    //     ),
+    //   ), // 你要显示的组件
+    // );
   }
 
   /// 底部组件
   Widget bottomW() {
     Widget _child = upAppBtn();
-
     if (downloadFlag) {
       // 下载中，进度条
       _child = downProgressWidget();

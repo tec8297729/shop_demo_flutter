@@ -1,3 +1,5 @@
+import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -52,11 +54,12 @@ class FloorContent extends StatelessWidget {
       child: GestureDetector(
         // 商品点击事件
         onTap: () {
-          Navigator.pushNamed(_context, '/goodsDetailsInfo', arguments: {
-            'goodsId': goods['goodsId'],
-          });
+          Navigator.pushNamed(_context, RouterName.goodsDetailsInfo,
+              arguments: {
+                'goodsId': goods['goodsId'],
+              });
         },
-        child: Image.network(goods['image']),
+        child: ImageUtils.getNetWorkImageWidget(goods['image']),
       ),
     );
   }

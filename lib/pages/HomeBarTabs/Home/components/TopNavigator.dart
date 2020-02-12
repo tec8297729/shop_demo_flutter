@@ -1,5 +1,6 @@
 import 'package:baixing/components/FadeInImageNetwork/FadeInImageNetwork.dart';
 import 'package:baixing/pages/HomeBarTabs/provider/homeBarTabsStore.p.dart';
+import 'package:baixing/utils/util.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -64,10 +65,8 @@ class TopNavigator extends StatelessWidget {
           Container(
             width: ScreenUtil().setWidth(95),
             child: Image(
-              image: AdvancedNetworkImage(
+              image: ImageUtils.getNetWorkImage(
                 '${item['image']}',
-                useDiskCache: true,
-                cacheRule: CacheRule(maxAge: const Duration(days: 30)),
                 fallbackImage: FadeInImageNetwork.kTransparentImage,
               ),
             ),

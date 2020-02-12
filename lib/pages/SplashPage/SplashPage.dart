@@ -1,12 +1,12 @@
-import 'dart:async';
 import 'package:baixing/config/app_config.dart';
 import 'package:baixing/pages/SplashPage/components/AdPage.dart';
 import 'package:baixing/pages/SplashPage/components/WelcomePage.dart';
+import 'package:baixing/routes/routerName.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
-import '../../utils/sp_util.dart';
+import '../../utils/util.dart';
 import 'package:flutter/material.dart';
 
 /// 闪屏页。
@@ -49,7 +49,7 @@ class _SplashPageState extends State<SplashPage> {
 
     /// 调试阶段，直接跳过此组件
     if (AppConfig.notSplash) {
-      Navigator.of(context).pushReplacementNamed('/home');
+      Navigator.of(context).pushReplacementNamed(RouterName.home);
     }
   }
 

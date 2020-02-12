@@ -55,20 +55,19 @@ class _AmapSearchState extends State<SearchGeocodePage>
 
   _getAddress(double lat, double lng) async {
     if (lat > 0 && lng > 0) {
-      var latLng = LatLng(lat, lng);
+      LatLng latLng = LatLng(lat, lng);
 
       /// 逆地理编码（坐标转地址）
-      var reGeocodeList = await AmapSearch.searchReGeocode(
+      ReGeocode reGeocodeList = await AmapSearch.searchReGeocode(
         latLng,
         radius: 200.0,
       );
-      print('object>>>>');
+
       if (reGeocodeList != null) {
-        var result = await reGeocodeList.formatAddress;
+        var result = await reGeocodeList.formatAddress; // 获取地址全称
         setState(() {
           textAmap = result;
         });
-        print(result);
       }
     }
   }

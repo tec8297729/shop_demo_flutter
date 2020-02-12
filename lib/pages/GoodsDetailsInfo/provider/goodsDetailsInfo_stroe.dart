@@ -1,6 +1,6 @@
-import 'package:baixing/utils/sp_util.dart';
+import 'package:baixing/utils/util.dart' show SpUtil;
 import 'package:flutter/material.dart';
-import '../../../service/service_method.dart';
+import '../../../services/service_method.dart';
 
 class GoodsDetailsInfoStore with ChangeNotifier {
   var goodsInfo = {};

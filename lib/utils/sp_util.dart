@@ -71,7 +71,6 @@ class SpUtil {
   static T getData<T>(String key, {T defValue}) {
     if (_prefs == null) return null;
     T resData;
-    print(T);
     switch (T) {
       case String:
         resData = (_prefs.getString(key) ?? defValue) as T;
@@ -87,8 +86,6 @@ class SpUtil {
         break;
       default:
     }
-
-    print(T is List);
     return resData;
   }
 

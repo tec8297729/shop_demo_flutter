@@ -1,6 +1,5 @@
 import 'dart:async';
-
-import 'package:baixing/config/app_config.dart';
+import 'package:baixing/routes/routerName.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -35,7 +34,7 @@ class _AdPageState extends State<AdPage> {
 
     _timer = Timer.periodic(timeDur, (Timer t) {
       if (timeCount <= 0) {
-        Navigator.of(context).pushReplacementNamed('/home');
+        Navigator.of(context).pushReplacementNamed(RouterName.home);
         return;
       }
       setState(() {
@@ -63,7 +62,7 @@ class _AdPageState extends State<AdPage> {
       right: 20,
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushReplacementNamed('/home');
+          Navigator.of(context).pushReplacementNamed(RouterName.home);
         },
         child: Container(
           alignment: Alignment.center,

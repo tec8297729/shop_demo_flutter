@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'pages/HomeBarTabs/Cart/provider/cartStore.dart';
 import 'pages/HomeBarTabs/Category/provider/category_goodsList_store.dart';
 import 'pages/HomeBarTabs/Category/provider/category_store.dart';
+import 'pages/HomeBarTabs/Home/provider/homeStroe.p.dart';
 import 'pages/HomeBarTabs/provider/homeBarTabsStore.p.dart';
 import 'pages/GoodsDetailsInfo/provider/goodsDetailsInfo_stroe.dart';
 import 'provider/themeStore.dart';
@@ -13,6 +14,7 @@ List<ChangeNotifierProvider> providersConfig = [
   ChangeNotifierProvider<ThemeStore>.value(value: ThemeStore()), // 主题颜色
   // 首页bartabs
   ChangeNotifierProvider<HomeBarTabsStore>.value(value: HomeBarTabsStore()),
+  ChangeNotifierProvider<HomeStore>.value(value: HomeStore()),
   // category页 右顶部数据
   ChangeNotifierProvider<CategoryStore>.value(value: CategoryStore()),
   // category页 分类列表

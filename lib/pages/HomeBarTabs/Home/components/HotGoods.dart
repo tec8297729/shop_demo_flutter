@@ -1,3 +1,5 @@
+import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,9 +51,10 @@ class _HotGoodsState extends State<HotGoods> {
         return GestureDetector(
           // 商品点击事件
           onTap: () {
-            Navigator.pushNamed(context, '/goodsDetailsInfo', arguments: {
-              'goodsId': val['goodsId'],
-            });
+            Navigator.pushNamed(context, RouterName.goodsDetailsInfo,
+                arguments: {
+                  'goodsId': val['goodsId'],
+                });
           },
           child: Container(
             width: ScreenUtil().setWidth(372),
@@ -60,7 +63,7 @@ class _HotGoodsState extends State<HotGoods> {
             margin: EdgeInsets.only(bottom: 3),
             child: Column(
               children: <Widget>[
-                Image.network(
+                ImageUtils.getNetWorkImageWidget(
                   val['image'],
                   width: ScreenUtil().setWidth(370),
                 ),

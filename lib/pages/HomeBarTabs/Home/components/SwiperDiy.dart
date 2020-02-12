@@ -1,3 +1,4 @@
+import 'package:baixing/routes/routerName.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,10 +23,6 @@ class SwiperDiy extends StatelessWidget {
         pagination: SwiperPagination(),
         itemCount: swiperDataList.length,
         itemBuilder: (BuildContext context, int index) {
-          // return Image.network(
-          //   '${swiperDataList[index]['image']}',
-          //   fit: BoxFit.fill,
-          // );
           return CachedNetworkImage(
             imageUrl: '${swiperDataList[index]['image']}',
             fit: BoxFit.cover,
@@ -35,7 +32,7 @@ class SwiperDiy extends StatelessWidget {
         },
         // 轮播点击事件
         onTap: (index) {
-          Navigator.pushNamed(context, '/goodsDetailsInfo', arguments: {
+          Navigator.pushNamed(context, RouterName.goodsDetailsInfo, arguments: {
             'goodsId': swiperDataList[index]['goodsId'],
           });
         },

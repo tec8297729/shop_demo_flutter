@@ -1,3 +1,4 @@
+import 'package:baixing/routes/routerName.dart';
 import '../../HomeBarTabs/HomeBarTabs.dart';
 import '../../HomeBarTabs/provider/homeBarTabsStore.p.dart';
 import '../../../components/RoutsAnimation/RoutsAnimation.dart';
@@ -27,18 +28,17 @@ class DetailsBottom extends StatelessWidget {
 
   // 左侧 购物车图标
   Widget cartWidget(BuildContext context) {
+    // 首页切换tabs控制器
+    PageController homeTabsController =
+        Provider.of<HomeBarTabsStore>(context).barTabsController;
     return Stack(
       overflow: Overflow.visible, // 超出范围是否剪裁，visible溢出范围显示，默认不显示
       children: <Widget>[
         GestureDetector(
           onTap: () {
             // 跳转路由缓存
-            Navigator.popUntil(context, ModalRoute.withName('/home'));
-            // 首页切换tabs操作
-            PageController homeCont =
-                Provider.of<HomeBarTabsStore>(context).barTabsController;
-            homeCont.jumpToPage(2);
-            // ModalRoute.of(context).
+            Navigator.popUntil(context, ModalRoute.withName(RouterName.home));
+            homeTabsController.jumpToPage(2);
           },
           child: Container(
             width: ScreenUtil().setWidth(110),
@@ -116,7 +116,7 @@ class DetailsBottom extends StatelessWidget {
     );
   }
 
-  // 立即购买
+  // 立即购买按钮组件
   Widget buyShopWidget(BuildContext context) {
     return GestureDetector(
       onTap: () {
@@ -125,6 +125,7 @@ class DetailsBottom extends StatelessWidget {
             child: HomeBarTabs(
               params: {'pageId': 2},
             ),
+            settings: RouteSettings(name: RouterName.home),
           ),
         );
       },

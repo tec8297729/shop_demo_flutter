@@ -1,13 +1,16 @@
 import 'dart:async';
 import 'package:baixing/components/NumAnimation/NumAnimation.dart';
+import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
+import 'package:flutter_advanced_networkimage/transition.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import './components/RightDrawer.dart';
 import './components/WebView.dart';
 import './components/OrderType.dart';
 import './components/H5View.dart';
 import 'components/ActionList.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Member extends StatefulWidget {
   Member({Key key, this.params}) : super(key: key);
@@ -83,35 +86,39 @@ class _MemberState extends State<Member> {
           Container(
             width: ScreenUtil().setWidth(180),
             height: ScreenUtil().setHeight(180),
-            child: ClipOval(
-              child: Image(
-                image: AdvancedNetworkImage(
-                  'https://i.keaitupian.net/up/fe/98/d9/884ada56623a11f6a0f38ab29fd998fe.jpg',
-                  useDiskCache: true,
-                  cacheRule: CacheRule(maxAge: const Duration(days: 30)),
-                ),
-              ),
+            child: CircleAvatar(
+              foregroundColor: Colors.cyan,
+              radius: 30, // 圆的直径
+              backgroundColor: Colors.transparent, // 背景颜色
+              backgroundImage: ImageUtils.getNetWorkImage(
+                  'https://i.keaitupian.net/up/fe/98/d9/884ada56623a11f6a0f38ab29fd998fe.jpg'),
             ),
           ),
+
           // 文字区域
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(top: 20, right: 5),
-                child: Text(
-                  '未知的小强',
-                  style: TextStyle(
-                    fontSize: ScreenUtil().setSp(36),
-                    color: Colors.black,
+          Shimmer.fromColors(
+            baseColor: Colors.black, // 背景底色
+            highlightColor: Colors.white, // 高亮颜色
+            period: Duration(milliseconds: 5000), // 动画时间
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(top: 20, right: 5),
+                  child: Text(
+                    '未知的小强',
+                    style: TextStyle(
+                      fontSize: ScreenUtil().setSp(36),
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 22),
-                child: NumAnimation(value: 1000),
-              ),
-            ],
+                Container(
+                  margin: EdgeInsets.only(top: 22),
+                  child: NumAnimation(value: 1000),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -132,12 +139,17 @@ class _MemberState extends State<Member> {
         trailing: Icon(Icons.arrow_right),
         // 标题组件整体点击事件
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-            // return H5View();
-            return WebView(
-              url: 'https://www.jonhuu.com',
-            );
-          }));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                settings: RouteSettings(name: 'h5页面'),
+                builder: (_) {
+                  // return H5View();
+                  return WebView(
+                    url: 'https://www.jonhuu.com',
+                  );
+                },
+              ));
         },
       ),
     );

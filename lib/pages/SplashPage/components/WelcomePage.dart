@@ -1,3 +1,4 @@
+import 'package:baixing/routes/routerName.dart';
 import 'package:flutter/material.dart';
 
 /// 指引页面
@@ -36,7 +37,7 @@ class _WelcomePageState extends State<WelcomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.navigate_next),
         onPressed: () {
-          Navigator.of(context).pushReplacementNamed('/home');
+          Navigator.of(context).pushReplacementNamed(RouterName.home);
           // showDialog(
           //   context: context,
           //   child: Dialog(

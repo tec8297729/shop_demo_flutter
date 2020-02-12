@@ -6,6 +6,9 @@ enum SearchBarType { home, normal, homeLight }
 
 /// 搜索组件
 class SearchBar extends StatefulWidget {
+  /// 左侧区域文字
+  final String leftTitle;
+
   /// 是否启用搜索
   final bool enabled;
 
@@ -51,6 +54,7 @@ class SearchBar extends StatefulWidget {
       this.speakClick,
       this.onChanged,
       this.inputBoxClick,
+      this.leftTitle,
       this.keyEnterFn})
       : super(key: key);
 
@@ -128,12 +132,13 @@ class _SearchBarState extends State<SearchBar> {
         children: <Widget>[
           // 左侧区域
           _wrapTap(
+            onTap: widget.leftButtonClick,
             child: Container(
               padding: EdgeInsets.fromLTRB(6, 5, 5, 5),
               child: Row(
                 children: <Widget>[
                   Text(
-                    '上海',
+                    widget.leftTitle ?? '上海',
                     style: TextStyle(
                       color: _homeFontColor(), // 颜色
                       fontSize: ScreenUtil().setSp(28),

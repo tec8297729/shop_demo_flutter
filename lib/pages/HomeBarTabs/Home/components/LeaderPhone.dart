@@ -1,3 +1,4 @@
+import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -12,7 +13,7 @@ class LeaderPhone extends StatelessWidget {
     return Container(
       child: InkWell(
         onTap: _handleUrl,
-        child: Image.network(leaderImg),
+        child: ImageUtils.getNetWorkImageWidget(leaderImg),
       ),
     );
   }

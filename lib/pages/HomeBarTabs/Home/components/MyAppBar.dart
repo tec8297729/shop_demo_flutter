@@ -1,4 +1,8 @@
+import 'package:amap_location_fluttify/amap_location_fluttify.dart';
+import 'package:amap_search_fluttify/amap_search_fluttify.dart';
 import 'package:baixing/components/SearchBar/SearchBar.dart';
+import 'package:baixing/routes/routerName.dart';
+import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,15 +14,38 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   _MyAppBarState createState() => _MyAppBarState();
 
   @override
-  // TODO: implement preferredSize
   // Size get preferredSize => Size.fromHeight(kToolbarHeight + (0.0));
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
 
-class _MyAppBarState extends State<MyAppBar> {
+class _MyAppBarState extends State<MyAppBar>
+    with AmapSearchDisposeMixin, AmapLocationDisposeMixin {
+  String myAddress;
+  @override
+  void initState() {
+    super.initState();
+    getMyAddress();
+    print('初始化');
+  }
+
+  // 获取自己当前位置
+  Future getMyAddress() async {
+    final location = await AmapLocation.fetchLocation();
+    LatLng myLatLng = await location.latLng;
+    ReGeocode reGeocodeList = await AmapSearch.searchReGeocode(
+      myLatLng, // 坐标
+      radius: 200.0, // 最大可找半径
+    );
+    myAddress = await reGeocodeList.cityName; // 获取地址
+    if (!myAddress.isNotEmpty) {
+      myAddress = '上海';
+    }
+    setState(() {});
+  }
+
   // 跳转搜索页面
   goSearchPage() {
-    Navigator.pushNamed(context, '/searchPage');
+    Navigator.pushNamed(context, RouterName.searchPage);
   }
 
   @override
@@ -37,7 +64,8 @@ class _MyAppBarState extends State<MyAppBar> {
           ? SearchBarType.homeLight // 大于二分之一时，高亮显示
           : SearchBarType.home,
       defaultText: '网红热门打卡 美食、景点、酒店',
-      leftButtonClick: () => goSearchPage(),
+      leftTitle: myAddress, // 默认显示上海
+      leftButtonClick: () => showCityModel(),
       speakClick: () => goSearchPage(),
       inputBoxClick: () => goSearchPage(),
       rightButtonClick: () => goSearchPage(),
@@ -47,12 +75,6 @@ class _MyAppBarState extends State<MyAppBar> {
     Widget searWrap = Container(
       decoration: BoxDecoration(
         color: Color(0xFFD1222A),
-        // 线性渐变颜色
-        // gradient: LinearGradient(
-        //   colors: [Color(0x66000000), Colors.transparent],
-        //   begin: Alignment.topCenter,
-        //   end: Alignment.bottomCenter,
-        // ),
         // 阴影
         boxShadow: widget.appBarAlpha > 0.2
             ? [BoxShadow(color: Colors.black12, blurRadius: 4.5)]
@@ -70,10 +92,19 @@ class _MyAppBarState extends State<MyAppBar> {
       ),
     );
     return searWrap;
-    // 模式2：内置透明组件
-    // Opacity(
-    //   opacity: appBarAlpha,
-    //   child: searWrap,
-    // ),
+  }
+
+  /// 显示省市区选择
+  showCityModel() async {
+    Result result2 = await CityPickers.showCitiesSelector(
+      context: context,
+      hotCities: [
+        HotCity(name: '上海市', id: 310100),
+        HotCity(name: '北京市', id: 110100),
+      ],
+    );
+    setState(() {
+      myAddress = result2.cityName;
+    });
   }
 }

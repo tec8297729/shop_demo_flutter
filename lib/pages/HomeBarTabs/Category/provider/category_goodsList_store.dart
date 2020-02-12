@@ -1,4 +1,4 @@
-import 'package:baixing/service/service_method.dart';
+import 'package:baixing/services/service_method.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:fluttertoast/fluttertoast.dart';

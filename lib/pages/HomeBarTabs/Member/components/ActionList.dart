@@ -1,15 +1,16 @@
-import 'dart:async';
 import 'dart:convert';
 import 'package:baixing/components/DebugBtn/DebugBtn.dart';
-import 'package:baixing/utils/util.dart';
+import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/utils/util.dart' show Util;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_advanced_networkimage/provider.dart';
+import 'package:flutter_umplus/flutter_umplus.dart';
 import 'package:jpush_flutter/jpush_flutter.dart';
 import 'package:majascan/majascan.dart';
 import 'package:flutter/material.dart';
 import 'package:jh_debug/jh_debug.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:baixing/components/UpdateAppVersion/UpdateAppVersion.dart'
+    show getNewAppVer;
 
 // 坚向的列表
 class ActionList extends StatefulWidget {
@@ -19,7 +20,7 @@ class ActionList extends StatefulWidget {
 
 class _ActionListState extends State<ActionList> {
   JPush jPush = JPush();
-  Map<String, dynamic> pushParams;
+  Map<String, dynamic> pushParams; // 推送参数
 
   @override
   void initState() {
@@ -27,19 +28,7 @@ class _ActionListState extends State<ActionList> {
     initPlatformState();
   }
 
-  // 权限GPS
-  Future<bool> requestPermission() async {
-    final permissions = await PermissionHandler()
-        .requestPermissions([PermissionGroup.location]);
-    print('判断GPS$permissions');
-    if (permissions[PermissionGroup.location] == PermissionStatus.granted) {
-      return true;
-    } else {
-      print('没有定位权限');
-      return false;
-    }
-  }
-
+  /// 初始化推送
   initPlatformState() async {
     try {
       // 监听极光推送事件
@@ -51,7 +40,7 @@ class _ActionListState extends State<ActionList> {
         },
         // 点击通知回调方法。
         onOpenNotification: (Map<String, dynamic> message) async {
-          Navigator.pushNamed(context, '/goodsDetailsInfo', arguments: {
+          Navigator.pushNamed(context, RouterName.goodsDetailsInfo, arguments: {
             'goodsId': pushParams['goodsId'],
           });
         },
@@ -75,12 +64,16 @@ class _ActionListState extends State<ActionList> {
       margin: EdgeInsets.only(top: 10),
       child: Column(
         children: <Widget>[
-          myListTitle('地图调用', onTap: () {
-            Navigator.of(context).pushNamed('/amapPage');
+          myListTitle('提现密码', onTap: () {
+            Navigator.of(context).pushNamed(RouterName.passwordPage);
           }),
-          // myListTitle('测试', onTap: () async {}),
-          // myListTitle('测试', onTap: () async {}),
-
+          myListTitle('地图调用', onTap: () {
+            Navigator.of(context).pushNamed(RouterName.amapPage);
+          }),
+          // myListTitle('测试', onTap: () async {
+          //   print('自定义事件2');
+          //   FlutterUmplus.event('广告', label: '广告222222');
+          // }),
           myListTitle('扫一扫', onTap: () async {
             String qrResult = await MajaScan.startScan(
               title: 'QRcode scanner',
@@ -90,7 +83,6 @@ class _ActionListState extends State<ActionList> {
               qRScannerColor: Colors.deepPurple, // 扫码线颜色
               flashlightEnable: true,
             );
-            print('扫一扫结果>>$qrResult');
             Util.toastTips('扫一扫结果>>$qrResult');
           }),
           myListTitle(
@@ -104,21 +96,28 @@ class _ActionListState extends State<ActionList> {
                   content: '好货不断,每天惊喜机器人免费抢',
                   fireTime: DateTime.now(), // 推送时间
                   // 传入参数
-                  extra: {
-                    "goodsId": "035b55e444db4d308fd963543c7d884f",
-                  });
+                  extra: {"goodsId": "035b55e444db4d308fd963543c7d884f"});
               // 发送本地通知
               jPush.sendLocalNotification(_localNotification);
             },
           ),
-          DebugBtn(
-            child: myListTitle('调试入口管理'),
-            success: () {
-              jhDebug.showDebugBtn();
-            },
-          ),
+          debugBtnStack(),
         ],
       ),
+    );
+  }
+
+  /// 调试按钮
+  Widget debugBtnStack() {
+    return Stack(
+      children: <Widget>[
+        DebugBtn(
+          child: myListTitle('调试入口管理'),
+          success: () {
+            jhDebug.showDebugBtn();
+          },
+        ),
+      ],
     );
   }
 

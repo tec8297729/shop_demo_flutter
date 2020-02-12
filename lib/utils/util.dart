@@ -1,10 +1,8 @@
 import 'dart:async';
-import 'package:baixing/components/UpdateAppVersion/UpdateAppVersion.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:package_info/package_info.dart';
-import '../service/service_method.dart';
+export 'sp_util.dart' show SpUtil;
+export 'perm_utils.dart' show PermUtils;
+export 'image_utils.dart' show ImageUtils;
 
 class Util {
   /// 防抖函数
