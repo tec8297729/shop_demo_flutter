@@ -68,7 +68,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       PermUtils.initPermissions(); // 手机权限申请
-      getNewAppVer();
+      getNewAppVer(); // app更新检查
     });
     analyticsService = locator.get<AnalyticsService>();
   }
