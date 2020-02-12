@@ -55,12 +55,11 @@
 			<string>iosamap</string>
 		</array>
 
-		<key>NSAppTransportSecurity</key>
-
 		<!-- 定位相关权限 for the `location` group -->
 		<!-- 使用期间访问位置 -->
 		<key>NSLocationWhenInUseUsageDescription</key>
-		<string>需要定位权限</string>
+		<string>需要定位权限.</string>
+		
 		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 		<string>Always and when in use!</string>
 		<!-- 访问位置 -->

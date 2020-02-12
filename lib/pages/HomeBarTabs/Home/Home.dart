@@ -40,8 +40,13 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     super.initState();
     _getHotGoods();
     getHomeData();
-
     scrollControll.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    scrollControll?.dispose();
+    super.dispose();
   }
 
   // 监听页面滚动事件

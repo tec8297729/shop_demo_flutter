@@ -53,6 +53,7 @@
 **/ios/**/Pods/
 **/ios/**/.symlinks/
 **/ios/**/profile
+**/ios/**/Podfile.lock
 **/ios/**/xcuserdata
 **/ios/.generated/
 **/ios/Flutter/App.framework

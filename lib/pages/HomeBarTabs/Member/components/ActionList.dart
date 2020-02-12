@@ -19,7 +19,7 @@ class ActionList extends StatefulWidget {
 }
 
 class _ActionListState extends State<ActionList> {
-  JPush jPush = JPush();
+  JPush jPush;
   Map<String, dynamic> pushParams; // 推送参数
 
   @override
@@ -30,6 +30,7 @@ class _ActionListState extends State<ActionList> {
 
   /// 初始化推送
   initPlatformState() async {
+    jPush = JPush();
     try {
       // 监听极光推送事件
       jPush.addEventHandler(

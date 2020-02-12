@@ -1,9 +1,6 @@
-import 'dart:async';
 import 'package:baixing/components/NumAnimation/NumAnimation.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_networkimage/provider.dart';
-import 'package:flutter_advanced_networkimage/transition.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import './components/RightDrawer.dart';
 import './components/WebView.dart';

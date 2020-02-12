@@ -75,7 +75,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
 
   @override
   void dispose() {
-    pageController.dispose();
+    pageController?.dispose();
     super.dispose();
   }
 
