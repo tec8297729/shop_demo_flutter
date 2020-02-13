@@ -65,16 +65,13 @@ class _ActionListState extends State<ActionList> {
       margin: EdgeInsets.only(top: 10),
       child: Column(
         children: <Widget>[
-          myListTitle('提现密码', onTap: () {
-            Navigator.of(context).pushNamed(RouterName.passwordPage);
-          }),
           myListTitle('地图调用', onTap: () {
             Navigator.of(context).pushNamed(RouterName.amapPage);
           }),
-          // myListTitle('测试', onTap: () async {
-          //   print('自定义事件2');
-          //   FlutterUmplus.event('广告', label: '广告222222');
-          // }),
+          myListTitle('测试', onTap: () async {
+            print('自定义事件2');
+            FlutterUmplus.event('233', label: '广告222222');
+          }),
           myListTitle('扫一扫', onTap: () async {
             String qrResult = await MajaScan.startScan(
               title: 'QRcode scanner',

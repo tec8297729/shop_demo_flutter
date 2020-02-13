@@ -40,7 +40,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.baixing" // 项目app的包名
+        applicationId "com.z.tec.baixing" // 项目app的包名
         minSdkVersion 28 // app最低兼容到的版本号，16是兼容到4.2，具体可以在软件中看
         targetSdkVersion 28 // 指定打包用的版本号，
         versionCode flutterVersionCode.toInteger() // 发布的版本号，读取flutter中的

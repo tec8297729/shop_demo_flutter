@@ -1,5 +1,4 @@
 import 'package:baixing/services/service_method.dart';
-
 import '../../Category/provider/category_goodsList_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,6 +21,11 @@ class _LeftCatgegoryNavState extends State<LeftCatgegoryNav> {
     _getCategory();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   // 获取左侧菜单数据
   void _getCategory() async {
     var res = await getCategory();
@@ -30,6 +34,12 @@ class _LeftCatgegoryNavState extends State<LeftCatgegoryNav> {
     setState(() {
       leftListData = listData;
     });
+
+    // 隐藏骨架屏
+    Future.delayed(Duration(seconds: 3), () {
+      categoryStore.setSkeWidget(true);
+    });
+
     // print('leftListData>>>$leftListData');
   }
 

@@ -3,6 +3,7 @@ import 'package:baixing/components/CustomDialog/CustomDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'components/ChangePassWordModal.dart';
+import 'components/MoneyCart.dart';
 import 'components/SMSVerifyDialog.dart';
 
 /// 提现密码页面
@@ -19,6 +20,7 @@ class _PasswordPageState extends State<PasswordPage> {
       body: Container(
         child: Column(
           children: <Widget>[
+            MoneyCart(),
             clickItem('修改密码', onTap: () {
               showModalBottomSheet(
                 context: context,

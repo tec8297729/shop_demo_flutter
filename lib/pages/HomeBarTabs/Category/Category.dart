@@ -1,3 +1,5 @@
+import 'package:baixing/components/SkeletonScreen/SkeletonScreen.dart';
+
 import '../Category/components/LeftCatgegoryNav.dart';
 import '../Category/components/RightCatgegoryGoodsList.dart';
 import '../Category/components/RightCatgegoryNav.dart';
@@ -5,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'provider/category_goodsList_store.dart';
+import 'provider/category_store.dart';
 
 class Category extends StatefulWidget {
   Category({Key key, this.params}) : super(key: key);
@@ -21,6 +24,11 @@ class _CategoryState extends State<Category>
   CategoryGoodsListStore categoryGoodsListStore;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     super.build(context);
     categoryGoodsListStore = Provider.of<CategoryGoodsListStore>(context);
@@ -30,7 +38,14 @@ class _CategoryState extends State<Category>
         title: Text('商品分类Category'),
         automaticallyImplyLeading: false,
       ),
-      body: Container(
+      body: _skeContext(),
+    );
+  }
+
+  Widget _skeContext() {
+    return SkeletonScreen(
+      isShow: Provider.of<CategoryStore>(context).isShow,
+      child: Container(
         child: Row(
           children: <Widget>[
             LeftCatgegoryNav(),

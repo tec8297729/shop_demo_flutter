@@ -1,4 +1,4 @@
-package com.example.baixing
+package com.z.tec.baixing
 
 import androidx.annotation.NonNull
 import io.flutter.embedding.android.FlutterActivity

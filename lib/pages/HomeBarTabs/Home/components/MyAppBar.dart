@@ -25,22 +25,22 @@ class _MyAppBarState extends State<MyAppBar>
   void initState() {
     super.initState();
     getMyAddress();
-    print('初始化');
   }
 
   // 获取自己当前位置
   Future getMyAddress() async {
-    final location = await AmapLocation.fetchLocation();
-    LatLng myLatLng = await location.latLng;
-    ReGeocode reGeocodeList = await AmapSearch.searchReGeocode(
-      myLatLng, // 坐标
-      radius: 200.0, // 最大可找半径
-    );
-    myAddress = await reGeocodeList.cityName; // 获取地址
-    if (!myAddress.isNotEmpty) {
+    try {
+      Location location = await AmapLocation.fetchLocation();
+      LatLng myLatLng = await location.latLng;
+      ReGeocode reGeocodeList = await AmapSearch.searchReGeocode(
+        myLatLng, // 坐标
+        radius: 300.0, // 最大可找半径
+      );
+      myAddress = await reGeocodeList.cityName; // 获取地址
+    } catch (e) {}
+    if (myAddress?.isEmpty ?? false) {
       myAddress = '上海';
     }
-    setState(() {});
   }
 
   // 跳转搜索页面

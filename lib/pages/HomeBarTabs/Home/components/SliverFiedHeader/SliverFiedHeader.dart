@@ -20,7 +20,7 @@ class _SliverFiedHeaderState extends State<SliverFiedHeader> {
         maxHeight: ScreenUtil().setHeight(170),
         child: Container(
           width: double.infinity,
-          // height: ScreenUtil().setHeight(300),
+          // height: ScreenUtil().setHeight(170),
           padding: EdgeInsets.only(top: 10, left: 20, right: 20),
           color: Colors.white,
           child: Column(

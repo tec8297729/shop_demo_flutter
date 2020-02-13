@@ -37,7 +37,7 @@ class ImageUtils {
     return TransitionToImage(
       image: ImageUtils.getNetWorkImage(url),
       // loadingWidgetBuilder: (_, double progress, __) =>
-      //     Image.asset('asset/404.jpg'),
+      //     Image.asset('asset/images/404.jpg'),
       fit: BoxFit.contain,
       placeholder: const Icon(Icons.refresh),
       width: width,

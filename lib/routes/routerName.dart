@@ -30,6 +30,6 @@ class RouterName {
   /// 提现密码页面
   static String passwordPage = '/passwordPage';
 
-  /// 城市列表
-  static String cityPage = '/cityPage';
+  /// 登陆页面
+  static String loginPage = '/loginPage';
 }

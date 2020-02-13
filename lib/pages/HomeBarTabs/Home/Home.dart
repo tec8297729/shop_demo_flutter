@@ -1,4 +1,5 @@
 import 'package:baixing/components/PageLoding/PageLoding.dart';
+import 'package:baixing/components/SkeletonScreen/SkeletonScreen.dart';
 import 'package:provider/provider.dart';
 import 'components/SliverFiedHeader/SliverFiedHeader.dart';
 import 'package:baixing/services/service_method.dart';
@@ -33,14 +34,19 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   List<Map> hotGoodsList = [];
   Map homeData; // 首页数据
   ScrollController scrollControll = ScrollController(); // 滚动控制器
+  GlobalKey _sliverListTopKey = GlobalKey();
   double appBarAlpha = 0; // 顶部透明度
+  HomeStore _homeStroe;
 
   @override
   void initState() {
     super.initState();
     _getHotGoods();
-    getHomeData();
     scrollControll.addListener(_onScroll);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // 此回调中，所有在build函数中实例的对象都已经完成，可以正常调用到
+      getHomeData();
+    });
   }
 
   @override
@@ -70,10 +76,8 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     Map formPage = {'page': page};
     var res = await getHomePageBeloContent(formPage);
     List<Map> newGoodsList = (res['data'] as List).cast<Map>();
-    setState(() {
-      hotGoodsList.addAll([...newGoodsList]);
-      page++;
-    });
+    hotGoodsList.addAll([...newGoodsList]);
+    page++;
   }
 
   // 获取首页数据
@@ -92,34 +96,25 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context); // 使用缓存组件调用
-    // 保存首页滚动控制器
-    Provider.of<HomeStore>(context).saveController(scrollControll);
-    return Scaffold(
-      // 顶部区域
-      appBar: MyAppBar(appBarAlpha: appBarAlpha),
-      body: Stack(
-        children: <Widget>[
-          // 内容区域
-          contextWrap(),
-        ],
-      ),
-    );
-  }
+    _homeStroe = Provider.of<HomeStore>(context);
+    _homeStroe.saveController(scrollControll); // 保存首页滚动控制器
+    _homeStroe.setSliverListTopKey(_sliverListTopKey);
 
-  // 内容区wrap层
-  Widget contextWrap() {
-    return MediaQuery.removePadding(
-      context: context,
-      removeTop: true,
-      child: FutureBuilder(
-        future: _fetchData(),
-        builder: (context, snap) {
-          if (snap.hasData) {
-            return homeContextWidget(snap);
-          }
-          // 加载中组件
-          return loadingWidget();
-        },
+    return Scaffold(
+      appBar: MyAppBar(appBarAlpha: appBarAlpha), // 顶部区域
+      body: MediaQuery.removePadding(
+        context: context,
+        removeTop: true,
+        child: FutureBuilder(
+          future: _fetchData(),
+          builder: (context, snap) {
+            if (snap.hasData) {
+              return homeContextWidget(snap);
+            }
+            // 加载中组件
+            return loadingWidget();
+          },
+        ),
       ),
     );
   }
@@ -146,10 +141,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
 
     return _easyRefresh(
       child: CustomScrollView(
-        // padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         slivers: <Widget>[
           SliverList(
-            key: Provider.of<HomeStore>(context).getSliverListTopKey,
+            key: _sliverListTopKey,
             delegate: SliverChildListDelegate([
               // 轮播
               SwiperDiy(swiperDataList: swiperList),
@@ -194,25 +188,14 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
 
   // 加载中动画组件
   Widget loadingWidget() {
-    return EasyRefresh(
-      child: ConstrainedBox(
-        constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(1334)),
-        child: PageLoading(),
-      ),
-      header: ClassicalHeader(
-        noMoreText: '', // 不显示 没有更多 文字
-        showInfo: true, // 显示当前刷新时间
-        infoText: '上次刷新时间: %T',
-        refreshText: '下拉加载...',
-        refreshReadyText: '下拉加载刷新',
-        refreshingText: '加载中...',
-        refreshedText: '加载完成',
-        refreshFailedText: '加载失败',
-      ),
-      onRefresh: () async {
-        getHomeData();
-      },
+    return ConstrainedBox(
+      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(1334)),
+      child: SkeletonScreen(isShow: false, child: Container()),
     );
+    // return ConstrainedBox(
+    //   constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(1334)),
+    //   child: PageLoading(),
+    // );
   }
 
   // 上拉加载组件配置

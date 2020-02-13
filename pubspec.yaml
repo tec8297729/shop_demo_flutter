@@ -61,9 +61,9 @@ dependencies:
   get_it: ^3.1.0
   shimmer: ^1.0.1
   flutter_umplus: ^0.0.1
-  jh_debug: ^0.3.2
-  # jh_debug: 
-  #   path: '../jh_debug'
+  # jh_debug: ^0.3.2
+  jh_debug: 
+    path: '../jh_debug'
 
 
 dev_dependencies:

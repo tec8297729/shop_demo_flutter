@@ -1,3 +1,5 @@
+import 'package:baixing/components/SkeletonScreen/SkeletonScreen.dart';
+
 import '../../components/PageLoding/PageLoding.dart';
 import '../HomeBarTabs/Cart/provider/cartStore.dart';
 import '../GoodsDetailsInfo/components/DetailsBottom.dart';
@@ -57,7 +59,8 @@ class _GoodsDetailsInfoState extends State<GoodsDetailsInfo>
               ],
             );
           }
-          return PageLoading();
+          // return PageLoading();
+          return SkeletonScreen(isShow: false);
         },
       ),
     );

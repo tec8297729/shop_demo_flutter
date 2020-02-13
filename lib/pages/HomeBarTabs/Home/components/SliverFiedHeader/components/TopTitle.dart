@@ -73,6 +73,7 @@ class _TopTitleState extends State<TopTitle> {
   Widget build(BuildContext context) {
     homeStore = Provider.of<HomeStore>(context);
     topHeight = homeStore.getTopHeight();
+
     return Row(
       key: topTitleKey,
       children: <Widget>[
@@ -118,6 +119,7 @@ class _TopTitleState extends State<TopTitle> {
         icon: compreSortIcon,
       ),
       onTap: () {
+        // topHeight = homeStore.getTopHeight();
         // 滚动位置
         homeStore.getHomeController.jumpTo(topHeight);
 

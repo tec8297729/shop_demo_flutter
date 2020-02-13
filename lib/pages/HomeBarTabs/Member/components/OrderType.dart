@@ -1,3 +1,4 @@
+import 'package:baixing/routes/routerName.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,24 +16,26 @@ class OrderType extends StatelessWidget {
           orderTypeItem('待付款', Icons.query_builder),
           orderTypeItem('待发货', Icons.party_mode),
           orderTypeItem('待收货', Icons.directions_car),
-          orderTypeItem('待评价', Icons.content_paste),
+          orderTypeItem('提现管理', Icons.monetization_on, onTap: () {
+            Navigator.of(context).pushNamed(RouterName.passwordPage);
+          }),
         ],
       ),
     );
   }
 
   // 横向列表item栏
-  Widget orderTypeItem(String text, IconData iconData) {
-    return Container(
-      width: ScreenUtil().setWidth(187),
-      child: Column(
-        children: <Widget>[
-          Icon(
-            iconData,
-            size: 30,
-          ),
-          Text(text),
-        ],
+  Widget orderTypeItem(String text, IconData iconData, {Function onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: ScreenUtil().setWidth(187),
+        child: Column(
+          children: <Widget>[
+            Icon(iconData, size: 30),
+            Text(text),
+          ],
+        ),
       ),
     );
   }

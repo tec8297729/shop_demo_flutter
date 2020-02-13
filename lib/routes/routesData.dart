@@ -1,4 +1,4 @@
-import '../pages/CityPage/CityPage.dart';
+import '../pages/LoginPage/LoginPage.dart';
 import '../pages/PasswordPage/PasswordPage.dart';
 import '../pages/SpeakPage/SpeakPage.dart';
 import '../pages/SplashPage/SplashPage.dart';
@@ -29,5 +29,5 @@ final Map<String, WidgetBuilder> routesData = {
   RouterName.flowLayout: (BuildContext context, {params}) => FlowLayout(),
   RouterName.speakPage: (BuildContext context, {params}) => SpeakPage(),
   RouterName.passwordPage: (BuildContext context, {params}) => PasswordPage(),
-  RouterName.cityPage: (BuildContext context, {params}) => CityPage(),
+  RouterName.loginPage: (BuildContext context, {params}) => LoginPage(),
 };
