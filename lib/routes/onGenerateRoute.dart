@@ -15,7 +15,6 @@ Function onGenerateRoute = (RouteSettings settings) {
 
   // 没有指定路由配置时
   if (pageContentBuilder == null) {
-    print('ERROR===>ROUTER WAS NOT FONUND!!!');
     return MaterialPageRoute(
       builder: (BuildContext context) => ErrorPage(params: args ?? null),
       settings: settingsData,

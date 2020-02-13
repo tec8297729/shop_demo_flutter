@@ -3,6 +3,8 @@ class AppConfig {
   /// 是否直接跳过闪屏页面，
   static const notSplash = false;
 
+  static const printFlag = true; // 是否允许打印print
+
   /// dio请求前缀
   static String host = '/';
 

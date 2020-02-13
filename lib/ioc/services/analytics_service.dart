@@ -1,3 +1,4 @@
+import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:synchronized/synchronized.dart';
 import 'package:flutter_umplus/flutter_umplus.dart';
@@ -14,14 +15,13 @@ class AnalyticsService {
       String newRouteName = newRoute?.settings?.name;
       String oldRouteName = oldRoute?.settings?.name;
       // 获取路由的名字
-      print('push进入页面 = ${newRoute?.settings?.name}');
-      print('上一页面 = ${oldRoute?.settings?.name}');
-      // print('测试${newRouteName == null}');
+      LogUtil.d('push进入页面 = ${newRoute?.settings?.name}');
+      LogUtil.d('上一页面 = ${oldRoute?.settings?.name}');
 
       if (newRouteName == null ||
           oldRouteName == null ||
           newRouteName == oldRouteName) {
-        print('阻止');
+        LogUtil.d('阻止');
         return;
       }
       // 开始统计
@@ -38,7 +38,6 @@ class AnalyticsService {
     await _buriedPrint(newRoute, oldRoute);
     newRouteConfig = newRoute;
     oldRouteConfig = oldRoute;
-    print('保存路由参数 = ${newRoute?.settings}');
   }
 
   // app后台状态统计
