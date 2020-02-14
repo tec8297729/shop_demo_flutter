@@ -57,32 +57,30 @@
     <!-- Permissions options for the `sensors` group -->
     <uses-permission android:name="android.permission.BODY_SENSORS" />
 
-    <application android:name="io.flutter.app.FlutterApplication" android:label="百姓" android:icon="@mipmap/ic_launcher">
+    <application android:name="io.flutter.app.FlutterApplication" android:label="百兴" android:icon="@mipmap/ic_launcher">
         <activity android:name=".MainActivity" android:launchMode="singleTop" android:theme="@style/LaunchTheme" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode" android:hardwareAccelerated="true" android:windowSoftInputMode="adjustResize">
-            <!-- 解决启动中间的黑屏，Flutter的启动阶段会有黑屏 -->
-            <!-- <meta-data android:name="io.flutter.app.android.SplashScreenUntilFirstFrame" android:value="true" /> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <!-- 扫码插件 -->
         <activity android:name="com.djgeo.majascan.g_scanner.QrCodeScannerActivity"/>
-        <!-- ota_update更新APP插件 -->
-        <provider android:name="sk.fourq.otaupdate.OtaUpdateFileProvider" android:authorities="${applicationId}.ota_update_provider" android:exported="false" android:grantUriPermissions="true">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/filepaths" />
-        </provider>
 
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data android:name="flutterEmbedding" android:value="2" />
+
+        <!-- ota_update更新APP插件 -->
+        <provider android:name="sk.fourq.otaupdate.OtaUpdateFileProvider" android:authorities="${applicationId}.ota_update_provider" android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/filepaths" />
+        </provider>
         <!-- 适配全面屏，定义最大支持范围，计算公式19.5/9（长宽比）=2.133 -->
         <!-- google默认定义的范围是1.333到1.86之间 -->
         <meta-data android:name="android.max_aspect" android:value="2.3" />
 
         <!-- 高德地图key -->
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="1c2f3c4f7d0bcf35c20da3b0d4e53958"/>
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="d0739f38b5ccfbc22b274a00734b90af"/>
 
         <!-- 百度语音key -->
         <meta-data android:name="com.baidu.speech.18226409" android:value="9788136" />

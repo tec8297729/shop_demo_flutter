@@ -6,7 +6,7 @@
     "watch": "flutter packages pub run build_runner watch",
     "watch:fix": "flutter packages pub run build_runner watch --delete-conflicting-outputs",
     "build": "npm run build:apk && npm run build:ios",
-    "build:apk": "flutter build apk",
+    "build:apk": "flutter build apk --release",
     "build:ios": "flutter build ios",
     "build:web": "flutter build web",
     "upsdk": "flutter upgrade --force"

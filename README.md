@@ -4,7 +4,7 @@
 
 开发环境
 ```
-Flutter 1.12.13+hotfix.7
+Flutter 1.12.13+hotfix.8
 Dart 2.7.0
 ```
 
