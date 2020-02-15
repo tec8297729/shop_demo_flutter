@@ -1,6 +1,7 @@
 import 'package:provider/provider.dart';
 
 // 局部状态
+import 'pages/AccountPage/provider/accountPage.p.dart';
 import 'pages/HomeBarTabs/Cart/provider/cartStore.dart';
 import 'pages/HomeBarTabs/Category/provider/category_goodsList_store.dart';
 import 'pages/HomeBarTabs/Category/provider/category_store.dart';
@@ -24,4 +25,5 @@ List<ChangeNotifierProvider> providersConfig = [
       value: GoodsDetailsInfoStore()),
   // 商品数据
   ChangeNotifierProvider<CartStore>.value(value: CartStore()),
+  ChangeNotifierProvider<AccountPageStore>.value(value: AccountPageStore()),
 ];

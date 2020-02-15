@@ -32,4 +32,7 @@ class RouterName {
 
   /// 登陆页面
   static String loginPage = '/loginPage';
+
+  /// 帐号资料页面
+  static String accountPage = '/accountPage';
 }

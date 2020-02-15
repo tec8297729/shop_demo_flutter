@@ -1,8 +1,10 @@
 import 'package:baixing/components/NumAnimation/NumAnimation.dart';
+import 'package:baixing/pages/AccountPage/provider/accountPage.p.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_umplus/flutter_umplus.dart';
+import 'package:provider/provider.dart';
 import './components/RightDrawer.dart';
 import './components/WebView.dart';
 import './components/OrderType.dart';
@@ -83,17 +85,7 @@ class _MemberState extends State<Member> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           // 头像
-          Container(
-            width: ScreenUtil().setWidth(180),
-            height: ScreenUtil().setHeight(180),
-            child: CircleAvatar(
-              foregroundColor: Colors.cyan,
-              radius: 30, // 圆的直径
-              backgroundColor: Colors.transparent, // 背景颜色
-              backgroundImage: ImageUtils.getNetWorkImage(
-                  'https://i.keaitupian.net/up/fe/98/d9/884ada56623a11f6a0f38ab29fd998fe.jpg'),
-            ),
-          ),
+          _avaWidget(),
 
           // 文字区域
           Shimmer.fromColors(
@@ -122,6 +114,26 @@ class _MemberState extends State<Member> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _avaWidget() {
+    return Consumer<AccountPageStore>(
+      builder: (_, store, __) {
+        return Container(
+          width: ScreenUtil().setWidth(180),
+          height: ScreenUtil().setHeight(180),
+          child: CircleAvatar(
+            foregroundColor: Colors.cyan,
+            radius: 30, // 圆的直径
+            backgroundColor: Colors.transparent, // 背景颜色
+            backgroundImage: store.avatarImg == null
+                ? ImageUtils.getNetWorkImage(
+                    'https://i.keaitupian.net/up/fe/98/d9/884ada56623a11f6a0f38ab29fd998fe.jpg')
+                : FileImage(store.avatarImg),
+          ),
+        );
+      },
     );
   }
 

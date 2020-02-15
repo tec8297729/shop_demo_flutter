@@ -141,6 +141,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.3"
+  date_format:
+    dependency: "direct main"
+    description:
+      name: date_format
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.8"
   dio:
     dependency: "direct main"
     description:
@@ -328,7 +335,7 @@ packages:
       name: jh_debug
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.2"
+    version: "0.3.3"
   jpush_flutter:
     dependency: "direct main"
     description:
@@ -450,6 +457,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.4.0"
+  photo:
+    dependency: "direct main"
+    description:
+      name: photo
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.4.8"
+  photo_manager:
+    dependency: transitive
+    description:
+      name: photo_manager
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.4.8"
   platform:
     dependency: transitive
     description:
@@ -527,6 +548,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.1"
+  simple_gesture_detector:
+    dependency: transitive
+    description:
+      name: simple_gesture_detector
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.4"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -574,6 +602,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.0"
+  table_calendar:
+    dependency: "direct main"
+    description:
+      name: table_calendar
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.2.2"
   term_glyph:
     dependency: transitive
     description:

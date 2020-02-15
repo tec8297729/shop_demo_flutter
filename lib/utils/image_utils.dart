@@ -45,4 +45,9 @@ class ImageUtils {
       enableRefresh: true,
     );
   }
+
+  /// 本地图片
+  static ImageProvider getAssetImage(String path) {
+    return AssetImage(path);
+  }
 }

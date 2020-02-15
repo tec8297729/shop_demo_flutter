@@ -13,7 +13,9 @@ class OrderType extends StatelessWidget {
       color: Colors.white,
       child: Row(
         children: <Widget>[
-          orderTypeItem('待付款', Icons.query_builder),
+          orderTypeItem('个人资料', Icons.person_pin, onTap: () {
+            Navigator.of(context).pushNamed(RouterName.accountPage);
+          }),
           orderTypeItem('待发货', Icons.party_mode),
           orderTypeItem('待收货', Icons.directions_car),
           orderTypeItem('提现管理', Icons.monetization_on, onTap: () {

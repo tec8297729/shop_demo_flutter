@@ -11,8 +11,8 @@ import 'providers_config.dart';
 import 'routes/analyticsObserver.dart';
 
 void main() {
-  initPub();
   setupLocator();
+  initPub();
   jhDebugMain(
     appChild: MultiProvider(
       providers: providersConfig,

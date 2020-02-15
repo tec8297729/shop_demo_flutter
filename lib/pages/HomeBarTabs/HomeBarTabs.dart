@@ -27,7 +27,7 @@ class HomeBarTabs extends StatefulWidget {
 }
 
 class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
-  int currentIndex = 0; // 接收bar当前点击索引
+  int currentIndex = 3; // 接收bar当前点击索引
   PageController pageController;
   AnalyticsService analyticsService;
 

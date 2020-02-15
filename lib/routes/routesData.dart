@@ -1,3 +1,5 @@
+import '../pages/AccountPage/AccountPage.dart';
+
 import '../pages/LoginPage/LoginPage.dart';
 import '../pages/PasswordPage/PasswordPage.dart';
 import '../pages/SpeakPage/SpeakPage.dart';
@@ -30,4 +32,5 @@ final Map<String, WidgetBuilder> routesData = {
   RouterName.speakPage: (BuildContext context, {params}) => SpeakPage(),
   RouterName.passwordPage: (BuildContext context, {params}) => PasswordPage(),
   RouterName.loginPage: (BuildContext context, {params}) => LoginPage(),
+  RouterName.accountPage: (BuildContext context, {params}) => AccountPage(),
 };

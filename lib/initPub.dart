@@ -4,7 +4,7 @@ import 'package:flutter_umplus/flutter_umplus.dart';
 /// 初始化第三方插件
 Future<void> initPub() async {
   // 友盟统计
-  await FlutterUmplus.init(
+  FlutterUmplus.init(
     '5e1efe324ca357f674000796',
     channel: '',
     reportCrash: false,
@@ -12,5 +12,5 @@ Future<void> initPub() async {
     encrypt: true,
   );
 
-  await AmapCore.init('3c3a88134c8307656276aa78e8e1a747'); // 高德定位插件
+  AmapCore.init('3c3a88134c8307656276aa78e8e1a747'); // 高德定位插件
 }
