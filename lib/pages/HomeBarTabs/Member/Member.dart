@@ -2,6 +2,7 @@ import 'package:baixing/components/NumAnimation/NumAnimation.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_umplus/flutter_umplus.dart';
 import './components/RightDrawer.dart';
 import './components/WebView.dart';
 import './components/OrderType.dart';
@@ -39,6 +40,8 @@ class _MemberState extends State<Member> {
             builder: (context) => IconButton(
               icon: Icon(Icons.settings),
               onPressed: () {
+                print('广告');
+                FlutterUmplus.event('233', label: '广告');
                 Scaffold.of(context).openEndDrawer();
               },
             ),

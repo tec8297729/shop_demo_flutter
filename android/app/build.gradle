@@ -70,15 +70,13 @@ android {
             keyPassword keystoreProperties['keyPassword']
             storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
             storePassword keystoreProperties['storePassword']
-            // v1SigningEnabled true
-            // v2SigningEnabled true
         }
-        debug {
-            keyAlias "androiddebugkey"
-            keyPassword "111111"
-            storeFile file('../debug.keystore')
-            storePassword "111111"
-        }
+        // debug {
+        //     keyAlias "androiddebugkey"
+        //     keyPassword "111111"
+        //     storeFile file('../debug.keystore')
+        //     storePassword "111111"
+        // }
     }
 
     buildTypes {
@@ -90,9 +88,9 @@ android {
 
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        debug {
-            signingConfig signingConfigs.debug
-        }
+        // debug {
+        //     signingConfig signingConfigs.debug
+        // }
     }
 
 //    packagingOptions {

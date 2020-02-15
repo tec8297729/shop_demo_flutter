@@ -4,13 +4,10 @@ import 'package:baixing/routes/routerName.dart';
 import 'package:baixing/utils/util.dart' show Util;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_umplus/flutter_umplus.dart';
 import 'package:jpush_flutter/jpush_flutter.dart';
 import 'package:majascan/majascan.dart';
 import 'package:flutter/material.dart';
 import 'package:jh_debug/jh_debug.dart';
-import 'package:baixing/components/UpdateAppVersion/UpdateAppVersion.dart'
-    show getNewAppVer;
 
 // 坚向的列表
 class ActionList extends StatefulWidget {
@@ -68,10 +65,7 @@ class _ActionListState extends State<ActionList> {
           myListTitle('地图调用', onTap: () {
             Navigator.of(context).pushNamed(RouterName.amapPage);
           }),
-          myListTitle('测试', onTap: () async {
-            print('自定义事件2');
-            FlutterUmplus.event('233', label: '广告222222');
-          }),
+          myListTitle('测试', onTap: () async {}),
           myListTitle('扫一扫', onTap: () async {
             String qrResult = await MajaScan.startScan(
               title: 'QRcode scanner',

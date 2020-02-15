@@ -24,7 +24,9 @@ class _MyAppBarState extends State<MyAppBar>
   @override
   void initState() {
     super.initState();
-    getMyAddress();
+    WidgetsBinding.instance.addPostFrameCallback((v) {
+      getMyAddress();
+    });
   }
 
   // 获取自己当前位置
