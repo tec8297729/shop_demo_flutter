@@ -1,5 +1,5 @@
+import 'package:baixing/utils/log_util.dart';
 import 'package:flutter/material.dart';
-
 import 'components/AnimatedMic.dart';
 
 /// 语音识别页面
@@ -45,19 +45,20 @@ class _SpeakPageState extends State<SpeakPage>
 
   /// 语音开始事件
   speakStart() {
-    print('start');
+    LogUtil.d('开始识别');
     controller.forward();
     setState(() {
       tipsText = '- 识别中 -';
     });
-    // AsrManager.start().then((text){});
+    // AsrManager.start();
   }
 
   /// 语音停止事件
-  speakStop() {
+  speakStop() async {
     controller.reset(); // 恢复动画原位置
     controller.stop(); // 停止动画,不然未停止
-    // AsrManager.stop();
+    // String res = await AsrManager.stop();
+    LogUtil.d('停止识别');
     setState(() {
       tipsText = '- 长按说话 -';
     });

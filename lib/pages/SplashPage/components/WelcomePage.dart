@@ -38,13 +38,6 @@ class _WelcomePageState extends State<WelcomePage> {
         child: Icon(Icons.navigate_next),
         onPressed: () {
           Navigator.of(context).pushReplacementNamed(RouterName.home);
-          // showDialog(
-          //   context: context,
-          //   child: Dialog(
-          //     backgroundColor: Colors.transparent, // 背景颜色
-          //     child: UpdateAppVersion(),
-          //   ),
-          // );
         },
       ),
     );

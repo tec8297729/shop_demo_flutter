@@ -98,7 +98,7 @@ class _MyAppBarState extends State<MyAppBar>
 
   /// 显示省市区选择
   showCityModel() async {
-    Result result2 = await CityPickers.showCitiesSelector(
+    Result result = await CityPickers.showCitiesSelector(
       context: context,
       hotCities: [
         HotCity(name: '上海市', id: 310100),
@@ -106,7 +106,9 @@ class _MyAppBarState extends State<MyAppBar>
       ],
     );
     setState(() {
-      myAddress = result2.cityName;
+      if (result != null) {
+        myAddress = result.cityName;
+      }
     });
   }
 }

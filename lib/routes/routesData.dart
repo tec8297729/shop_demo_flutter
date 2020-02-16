@@ -1,10 +1,5 @@
-import '../pages/AccountPage/AccountPage.dart';
-
-import '../pages/LoginPage/LoginPage.dart';
-import '../pages/PasswordPage/PasswordPage.dart';
-import '../pages/SpeakPage/SpeakPage.dart';
-import '../pages/SplashPage/SplashPage.dart';
 import 'package:flutter/material.dart';
+import 'routerName.dart';
 import '../pages/HomeBarTabs/HomeBarTabs.dart';
 import '../pages/GoodsDetailsInfo/GoodsDetailsInfo.dart';
 import '../pages/SearchPage/SearchPage.dart';
@@ -12,7 +7,12 @@ import '../pages/AmapPage/AmapPage.dart';
 import '../pages/AmapPage/components/SearchGeocodePage.dart';
 import '../pages/ErrorPage/ErrorPage.dart';
 import '../pages/FlowLayout/FlowLayout.dart';
-import 'routerName.dart';
+import '../pages/AdH5View/AdH5View.dart';
+import '../pages/AccountPage/AccountPage.dart';
+import '../pages/LoginPage/LoginPage.dart';
+import '../pages/PasswordPage/PasswordPage.dart';
+import '../pages/SpeakPage/SpeakPage.dart';
+import '../pages/SplashPage/SplashPage.dart';
 
 final String initialRoute = RouterName.splashPage; // 初始默认显示的路由
 
@@ -33,4 +33,6 @@ final Map<String, WidgetBuilder> routesData = {
   RouterName.passwordPage: (BuildContext context, {params}) => PasswordPage(),
   RouterName.loginPage: (BuildContext context, {params}) => LoginPage(),
   RouterName.accountPage: (BuildContext context, {params}) => AccountPage(),
+  RouterName.adH5View: (BuildContext context, {params}) =>
+      AdH5View(params: params),
 };

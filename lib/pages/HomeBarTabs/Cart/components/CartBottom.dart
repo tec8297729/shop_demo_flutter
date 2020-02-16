@@ -103,7 +103,6 @@ class CartBottom extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           print('结算按钮');
-          // Util.getNewAppVer(context);
         },
         child: Container(
           alignment: Alignment.center,

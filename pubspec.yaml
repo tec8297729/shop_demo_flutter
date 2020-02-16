@@ -63,6 +63,8 @@ dependencies:
   table_calendar: ^2.2.2 # 日历组件
   date_format: ^1.0.8 # 时间格式化
   provider: ^4.0.2
+  video_player: ^0.10.7
+  chewie: ^0.9.8+1
   jh_debug: ^0.3.3
   # jh_debug: 
     # path: '../jh_debug'
@@ -84,6 +86,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - asset/images/
+   - asset/ad/
    - asset/images/updateVersion/header/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

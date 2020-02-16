@@ -65,7 +65,7 @@ class _ActionListState extends State<ActionList> {
           myListTitle('地图调用', onTap: () {
             Navigator.of(context).pushNamed(RouterName.amapPage);
           }),
-          myListTitle('测试', onTap: () async {}),
+          // myListTitle('测试', onTap: () async {}),
           myListTitle('扫一扫', onTap: () async {
             String qrResult = await MajaScan.startScan(
               title: 'QRcode scanner',

@@ -12,7 +12,6 @@ import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
 import './provider/homeBarTabsStore.p.dart';
 import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
-// import '../../plugin/asr_manager.dart';
 
 class HomeBarTabs extends StatefulWidget {
   final params;

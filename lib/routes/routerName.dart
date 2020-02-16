@@ -35,4 +35,7 @@ class RouterName {
 
   /// 帐号资料页面
   static String accountPage = '/accountPage';
+
+  /// 广告h5页面
+  static String adH5View = '/adH5View';
 }

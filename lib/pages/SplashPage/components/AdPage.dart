@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:video_player/video_player.dart';
 
 /// APP入口全屏广告页面
 class AdPage extends StatefulWidget {
@@ -13,28 +14,61 @@ class _AdPageState extends State<AdPage> {
   String _info = '';
   Timer _timer;
   int timeCount;
+  String adPageKey = 'adPageKey';
+  VideoPlayerController _videoPlayerController; // 视频控制器
+  DateTime newTime = DateTime.now();
 
   @override
   void initState() {
     super.initState();
-    timeCount = 3; // 倒计时总时间
+    timeCount = 5; // 倒计时总时间
     _initSplash();
+
+    WidgetsBinding.instance.addPostFrameCallback((v) {
+      String oldTimeStr = SpUtil.getData<String>(
+        adPageKey,
+        defValue: newTime.add(Duration(seconds: -10)).toString(),
+      );
+      Duration diffTime = newTime.difference(DateTime.parse(oldTimeStr));
+
+      // 一小时内广告页面只触发一次
+      if (diffTime.inSeconds < (3600)) {
+        SpUtil.setData(adPageKey, newTime.toString()); // 更新缓存
+        _pushHome();
+        return;
+      }
+      setState(() {
+        _videoPlayerController?.play(); // 播放
+      });
+    });
   }
 
   @override
   void dispose() {
+    LogUtil.d('销毁ad');
+    _videoPlayerController?.dispose();
     _timer?.cancel();
     _timer = null;
     super.dispose();
   }
 
+  /// 处理广告业务
+  void handleAd() async {
+    // 读取视频地址
+    _videoPlayerController = VideoPlayerController.asset('asset/ad/9900.mp4');
+    _videoPlayerController.setVolume(0);
+    // 进入视频初始化，
+    await _videoPlayerController.initialize();
+  }
+
   /// App广告页逻辑。
-  void _initSplash() {
+  void _initSplash() async {
     const timeDur = Duration(seconds: 1); // 1秒
+    handleAd();
 
     _timer = Timer.periodic(timeDur, (Timer t) {
       if (timeCount <= 0) {
-        Navigator.of(context).pushReplacementNamed(RouterName.home);
+        _pushHome();
         return;
       }
       setState(() {
@@ -44,18 +78,45 @@ class _AdPageState extends State<AdPage> {
     });
   }
 
+  /// 跳转首页
+  _pushHome() {
+    Navigator.of(context).pushReplacementNamed(RouterName.home);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
+      overflow: Overflow.visible,
       children: <Widget>[
-        Center(
-          child: Text("$_info"),
-        ),
+        // Center(
+        //   child: Text("$_info"),
+        // ),
+        _adViode(),
         flotSkipWidget(),
       ],
     );
   }
 
+  /// 广告内容组件
+  Widget _adViode() {
+    return GestureDetector(
+      onTap: () {
+        _pushHome();
+        // H5广告页面
+        Navigator.pushNamed(context, RouterName.adH5View, arguments: {
+          'url':
+              'https://pro.m.jd.com/mall/active/3WdVHR8UbbjrYC6FCzjahQXT5SfG/index.html'
+        });
+      },
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: VideoPlayer(_videoPlayerController),
+      ),
+    );
+  }
+
+  /// 右上角跳过组件
   flotSkipWidget() {
     return Positioned(
       top: MediaQuery.of(context).padding.top + 20,
@@ -66,8 +127,7 @@ class _AdPageState extends State<AdPage> {
         },
         child: Container(
           alignment: Alignment.center,
-          width: ScreenUtil().setWidth(130),
-          height: ScreenUtil().setHeight(60),
+          padding: EdgeInsets.fromLTRB(12, 6, 12, 6),
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
@@ -77,7 +137,10 @@ class _AdPageState extends State<AdPage> {
               ),
             ],
           ),
-          child: Text('跳过', style: TextStyle(color: Colors.white)),
+          child: Text(
+            '$timeCount  |  跳过',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
       ),
     );

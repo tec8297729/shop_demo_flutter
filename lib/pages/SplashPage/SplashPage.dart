@@ -81,6 +81,7 @@ class _SplashPageState extends State<SplashPage> {
       onWillPop: () async => false,
       child: Scaffold(
         body: child,
+        resizeToAvoidBottomInset: false,
       ),
     );
   }
