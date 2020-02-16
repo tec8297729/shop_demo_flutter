@@ -24,5 +24,5 @@ Dart 2.7.0
 国内分发下载APK体验:
 密码:1111
 <div style="display:flex;">
-<img src="https://github.com/tec8297729/shop_demo_flutter/blob/master/asset/QRCode.png?raw=true">
+<img src="https://github.com/tec8297729/shop_demo_flutter/blob/master/asset/QRCode.png?raw=true" width="300px" height="300px">
 </div>
