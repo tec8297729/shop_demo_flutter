@@ -1,5 +1,6 @@
 import 'package:baixing/ioc/locator.dart';
 import 'package:baixing/utils/util.dart' show PermUtils;
+import 'package:jh_debug/jh_debug.dart';
 import 'Home/Home.dart';
 import 'Cart/Cart.dart';
 import 'Category/Category.dart';
@@ -28,7 +29,7 @@ class HomeBarTabs extends StatefulWidget {
 class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
   int currentIndex = 0; // 接收bar当前点击索引
   PageController pageController;
-  AnalyticsService analyticsService;
+  AnalyticsService analyticsService; // 统计埋点
 
   // 导航菜单渲染数据源
   List<Map<String, dynamic>> barData = [
@@ -57,19 +58,11 @@ class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    handleCurrentIndex();
     WidgetsBinding.instance.addObserver(this);
-    // 初始化tab内容区域参数
-    pageController = PageController(
-      initialPage: currentIndex, // 默认显示哪个widget组件
-      keepPage: true, // 是否开启缓存，即回退也会在当时的滚动位置
-    );
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      PermUtils.initPermissions(); // 手机权限申请
-      getNewAppVer(); // app更新检查
-    });
-    analyticsService = locator.get<AnalyticsService>();
+    handleCurrentIndex();
+    _initUtils();
+    _widgetsBinding();
   }
 
   @override
@@ -96,12 +89,43 @@ class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
 
   /// 初始化tabs默认显示索引页
   handleCurrentIndex() {
+    // 初始化tab内容区域参数
+    pageController = PageController(
+      initialPage: currentIndex, // 默认显示哪个widget组件
+      keepPage: true, // 是否开启缓存，即回退也会在当时的滚动位置
+    );
     if (widget.params != null) {
       // 默认加载页面
       currentIndex = widget.params['pageId'] >= (barData.length)
           ? (barData.length - 1)
           : widget.params['pageId'];
     }
+  }
+
+  /// 初始化插件工具
+  _initUtils() {
+    jhDebug.init(
+      context: context,
+      btnTap1: () {
+        print('btn1>>>');
+      },
+      btnTitle1: '测试',
+      btnTap2: () {
+        print('更新');
+      },
+    );
+
+    /// 获取IOC容器方法,埋点服务
+    analyticsService = locator.get<AnalyticsService>();
+  }
+
+  /// 构建第一帧处理
+  _widgetsBinding() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      PermUtils.initPermissions(); // 手机权限申请
+      getNewAppVer(); // app更新检查
+      jhDebug.showDebugBtn(); // 显示jhDebug调试按钮
+    });
   }
 
   @override

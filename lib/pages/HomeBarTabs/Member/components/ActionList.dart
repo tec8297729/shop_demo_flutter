@@ -104,7 +104,7 @@ class _ActionListState extends State<ActionList> {
     return Stack(
       children: <Widget>[
         DebugBtn(
-          child: myListTitle('调试入口管理'),
+          child: myListTitle('调试入口>密令双击长按上下移'),
           success: () {
             jhDebug.showDebugBtn();
           },

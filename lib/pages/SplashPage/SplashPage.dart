@@ -53,29 +53,10 @@ class _SplashPageState extends State<SplashPage> {
     }
   }
 
-  /// 初始化工具
-  _initUtils() {
-    jhDebug.init(
-      context: context,
-      btnTap1: () {
-        print('btn1>>>');
-      },
-      btnTitle1: '测试',
-      btnTap2: () {
-        print('更新');
-      },
-    );
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      jhDebug.showDebugBtn();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // 初始化设计稿尺寸
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
-    _initUtils();
     // initPlatformState();
     return WillPopScope(
       onWillPop: () async => false,
