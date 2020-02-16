@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:baixing/components/DebugBtn/DebugBtn.dart';
+import 'package:baixing/components/UpdateAppVersion/UpdateAppVersion.dart';
 import 'package:baixing/routes/routerName.dart';
 import 'package:baixing/utils/util.dart' show Util;
 import 'package:flutter/cupertino.dart';
@@ -93,6 +94,9 @@ class _ActionListState extends State<ActionList> {
               jPush.sendLocalNotification(_localNotification);
             },
           ),
+          myListTitle('更新APP', onTap: () async {
+            getNewAppVer(forceUpdate: true); // app更新检查
+          }),
           debugBtnStack(),
         ],
       ),

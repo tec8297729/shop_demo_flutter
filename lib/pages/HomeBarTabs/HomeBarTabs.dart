@@ -27,7 +27,7 @@ class HomeBarTabs extends StatefulWidget {
 }
 
 class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
-  int currentIndex = 0; // 接收bar当前点击索引
+  int currentIndex = 3; // 接收bar当前点击索引
   PageController pageController;
   AnalyticsService analyticsService; // 统计埋点
 
@@ -74,7 +74,6 @@ class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-
     switch (state) {
       case AppLifecycleState.resumed: // 应用程序可见，前台
         analyticsService.appPaused();
@@ -89,17 +88,18 @@ class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
 
   /// 初始化tabs默认显示索引页
   handleCurrentIndex() {
-    // 初始化tab内容区域参数
-    pageController = PageController(
-      initialPage: currentIndex, // 默认显示哪个widget组件
-      keepPage: true, // 是否开启缓存，即回退也会在当时的滚动位置
-    );
     if (widget.params != null) {
       // 默认加载页面
       currentIndex = widget.params['pageId'] >= (barData.length)
           ? (barData.length - 1)
           : widget.params['pageId'];
     }
+
+    // 初始化tab内容区域参数
+    pageController = PageController(
+      initialPage: currentIndex, // 默认显示哪个widget组件
+      keepPage: true, // 是否开启缓存，即回退也会在当时的滚动位置
+    );
   }
 
   /// 初始化插件工具

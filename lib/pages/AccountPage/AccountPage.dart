@@ -1,3 +1,4 @@
+import 'package:baixing/routes/routerName.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class _AccountPageState extends State<AccountPage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            AvatarWidget(),
+            AvatarWidget(), // 用户头像item
             AccountListItem(
               title: 'UUID',
               trailing: Text(uuid),
@@ -37,30 +38,46 @@ class _AccountPageState extends State<AccountPage> {
                 Util.toastTips('UUID号已复制到粘贴板');
               },
             ),
-            AccountListItem(
-              title: '出生年月日',
-              trailing: Consumer<AccountPageStore>(
-                builder: (context, store, __) {
-                  String _formatMydate = '';
-                  if (store.selectDate != null) {
-                    _formatMydate =
-                        formatDate(store.selectDate, [yyyy, '-', mm, '-', dd]);
-                  }
-                  return Text(_formatMydate);
-                },
-              ),
-              onTap: () async {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return BirthdayWidget();
-                  },
-                );
-              },
-            ),
+            birthItemWidget(),
+            logoutItem(),
           ],
         ),
       ),
+    );
+  }
+
+  /// 生日组件item
+  birthItemWidget() {
+    return AccountListItem(
+      title: '出生年月日',
+      trailing: Consumer<AccountPageStore>(
+        builder: (context, store, __) {
+          String _formatMydate = '';
+          if (store.selectDate != null) {
+            _formatMydate =
+                formatDate(store.selectDate, [yyyy, '-', mm, '-', dd]);
+          }
+          return Text(_formatMydate);
+        },
+      ),
+      onTap: () async {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return BirthdayWidget();
+          },
+        );
+      },
+    );
+  }
+
+  /// 注销登出
+  Widget logoutItem() {
+    return AccountListItem(
+      title: '注销登出',
+      onTap: () async {
+        Navigator.pushNamed(context, RouterName.loginPage);
+      },
     );
   }
 }

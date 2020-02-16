@@ -24,6 +24,7 @@ class AnalyticsService {
         LogUtil.d('阻止');
         return;
       }
+
       // 开始统计
       FlutterUmplus.beginPageView(newRouteName);
       if (oldRouteName != null) {
@@ -35,7 +36,7 @@ class AnalyticsService {
 
   /// 统计页面正常跳转
   appPush(Route newRoute, Route oldRoute) async {
-    await _buriedPrint(newRoute, oldRoute);
+    _buriedPrint(newRoute, oldRoute);
     newRouteConfig = newRoute;
     oldRouteConfig = oldRoute;
   }
