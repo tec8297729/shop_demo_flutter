@@ -45,7 +45,6 @@ class _AdPageState extends State<AdPage> {
 
   @override
   void dispose() {
-    LogUtil.d('销毁ad');
     _videoPlayerController?.dispose();
     _timer?.cancel();
     _timer = null;

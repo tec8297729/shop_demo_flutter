@@ -31,8 +31,8 @@ final Map<String, WidgetBuilder> routesData = {
   RouterName.flowLayout: (BuildContext context, {params}) => FlowLayout(),
   RouterName.speakPage: (BuildContext context, {params}) => SpeakPage(),
   RouterName.passwordPage: (BuildContext context, {params}) => PasswordPage(),
-  RouterName.loginPage: (BuildContext context, {params}) => LoginPage(),
   RouterName.accountPage: (BuildContext context, {params}) => AccountPage(),
   RouterName.adH5View: (BuildContext context, {params}) =>
       AdH5View(params: params),
+  RouterName.loginPage: (BuildContext context, {params}) => LoginPage(),
 };
