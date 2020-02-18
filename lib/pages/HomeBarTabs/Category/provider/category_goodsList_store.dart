@@ -33,7 +33,6 @@ class CategoryGoodsListStore with ChangeNotifier {
       isAddData ? goodsList.addAll(resData) : goodsList = resData;
     } else {
       noMoreText = (resData == null) ? '没有更多了' : '';
-      print('没有更多了');
       Fluttertoast.showToast(
         msg: '没有更多商品了',
         toastLength: Toast.LENGTH_SHORT, // 提示大小，short短提示
@@ -45,7 +44,6 @@ class CategoryGoodsListStore with ChangeNotifier {
     }
 
     notifyListeners();
-
     return resData;
   }
 

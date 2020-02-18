@@ -27,7 +27,7 @@ class HomeBarTabs extends StatefulWidget {
 }
 
 class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
-  int currentIndex = 3; // 接收bar当前点击索引
+  int currentIndex = 0; // 接收bar当前点击索引
   PageController pageController;
   AnalyticsService analyticsService; // 统计埋点
 
@@ -110,9 +110,6 @@ class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
         print('btn1>>>');
       },
       btnTitle1: '测试',
-      btnTap2: () {
-        print('更新');
-      },
     );
 
     /// 获取IOC容器方法,埋点服务

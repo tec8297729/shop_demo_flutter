@@ -26,7 +26,6 @@ class _RightCatgegoryGoodsListState extends State<RightCatgegoryGoodsList> {
     super.initState();
     // 在build完后的第一帧后回调
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      // 此回调中，所有在build函数中实例的对象都已经完成，可以正常调用到
       categoryGoodsListStore.getGoodsList();
     });
   }

@@ -43,23 +43,20 @@ class _CategoryState extends State<Category>
   }
 
   Widget _skeContext() {
-    return SkeletonScreen(
-      isShow: Provider.of<CategoryStore>(context).isShow,
-      child: Container(
-        child: Row(
-          children: <Widget>[
-            LeftCatgegoryNav(),
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: <Widget>[
-                  RightCatgegoryNav(),
-                  RightCatgegoryGoodsList(),
-                ],
-              ),
+    return Container(
+      child: Row(
+        children: <Widget>[
+          LeftCatgegoryNav(),
+          Expanded(
+            flex: 1,
+            child: Column(
+              children: <Widget>[
+                RightCatgegoryNav(),
+                RightCatgegoryGoodsList(),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

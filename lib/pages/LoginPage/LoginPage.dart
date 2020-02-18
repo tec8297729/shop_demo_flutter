@@ -28,7 +28,10 @@ class _LoginPageState extends State<LoginPage> {
   loginCaptcha() {
     if (userController.text.length > 6 && pwdController.text.length > 6) {
       SpUtil.setData(cacheKey, userController.text);
-      Navigator.pushReplacementNamed(context, RouterName.home);
+      Navigator.pushNamedAndRemoveUntil(context, RouterName.home, (router) {
+        print(router);
+        return false;
+      });
       return;
     }
     Util.toastTips('帐号密码不正确或不足六位');

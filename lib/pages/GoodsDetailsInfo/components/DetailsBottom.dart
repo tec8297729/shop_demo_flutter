@@ -13,7 +13,6 @@ class DetailsBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: ScreenUtil().setWidth(750),
       color: Colors.white,
       height: ScreenUtil().setHeight(80),
       child: Row(
@@ -120,13 +119,13 @@ class DetailsBottom extends StatelessWidget {
   Widget buyShopWidget(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
+        Navigator.pushAndRemoveUntil(
+          context,
           RoutsAnimation(
-            child: HomeBarTabs(
-              params: {'pageId': 2},
-            ),
+            child: HomeBarTabs(params: {'pageId': 2}),
             settings: RouteSettings(name: RouterName.home),
           ),
+          (Route<dynamic> route) => false,
         );
       },
       child: Container(
