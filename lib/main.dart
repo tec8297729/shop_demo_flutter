@@ -12,7 +12,7 @@ import 'routes/analyticsObserver.dart';
 
 void main() {
   setupLocator();
-  initPub();
+
   jhDebugMain(
     appChild: MultiProvider(
       providers: providersConfig,
@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     jhDebug.setGlobalKey = locator.get<CommonService>().getGlobalKey;
+    initPub();
 
     return Consumer<ThemeStore>(
       builder: (_, themeStore, child) {

@@ -70,6 +70,7 @@ class _GoodsDetailsInfoState extends State<GoodsDetailsInfo>
   Widget contextWidget() {
     return Container(
       child: ListView(
+        shrinkWrap: true,
         children: <Widget>[
           DetailsTopArea(),
           DetailsExplanin(),

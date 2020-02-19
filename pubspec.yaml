@@ -35,7 +35,7 @@ dependencies:
   flutter_widget_from_html: ^0.3.2+1 # 解析html成组件,并且支持视频
   shared_preferences: ^0.5.6
   characters: ^0.5.0 # 字符串表情处理
-  webview_flutter: ^0.3.19+5 # 显示web页面
+  webview_flutter: ^0.3.19+7 # 显示web页面
   flutter_webview_plugin: ^0.3.10
   permission_handler: ^4.2.0 # 权限检查及申请
   amap_map_fluttify: ^0.17.11+69360c9 # 高德地图插件

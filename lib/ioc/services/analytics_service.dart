@@ -7,6 +7,7 @@ import 'package:flutter_umplus/flutter_umplus.dart';
 class AnalyticsService {
   Route newRouteConfig;
   Route oldRouteConfig;
+  bool initFlag = false;
   Lock lock = new Lock();
 
   // 处理数据埋点上报
@@ -15,8 +16,8 @@ class AnalyticsService {
       String newRouteName = newRoute?.settings?.name;
       String oldRouteName = oldRoute?.settings?.name;
       // 获取路由的名字
-      LogUtil.d('push进入页面 = ${newRoute?.settings?.name}');
-      LogUtil.d('上一页面 = ${oldRoute?.settings?.name}');
+      LogUtil.d('push进入页面 = ${newRouteName}');
+      LogUtil.d('上一页面 = ${oldRouteName}');
 
       if (newRouteName == null ||
           oldRouteName == null ||
@@ -25,18 +26,21 @@ class AnalyticsService {
         return;
       }
 
+      // if (initFlag && oldRouteName != '/') {
+      //   // 结束统计
+      //   FlutterUmplus.endPageView(oldRouteName);
+      //   initFlag = true;
+      //   LogUtil.d('初始结束');
+      // }
       // 开始统计
       FlutterUmplus.beginPageView(newRouteName);
-      if (oldRouteName != null) {
-        // 结束统计
-        FlutterUmplus.endPageView(oldRouteName);
-      }
+      FlutterUmplus.endPageView(newRouteName);
     });
   }
 
   /// 统计页面正常跳转
   appPush(Route newRoute, Route oldRoute) async {
-    _buriedPrint(newRoute, oldRoute);
+    await _buriedPrint(newRoute, oldRoute);
     newRouteConfig = newRoute;
     oldRouteConfig = oldRoute;
   }
