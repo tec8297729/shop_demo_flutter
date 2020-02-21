@@ -42,10 +42,10 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   void initState() {
     super.initState();
     _getHotGoods();
+    getHomeData();
     scrollControll.addListener(_onScroll);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      getHomeData();
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    // });
   }
 
   @override

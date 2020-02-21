@@ -94,8 +94,8 @@ class _TopHeaderState extends State<TopHeader> {
     return Consumer<AccountPageStore>(
       builder: (_, store, __) {
         return Container(
-          width: ScreenUtil().setWidth(180),
-          height: ScreenUtil().setHeight(180),
+          width: 100,
+          height: 100,
           child: CircleAvatar(
             foregroundColor: Colors.cyan,
             radius: 30, // 圆的直径

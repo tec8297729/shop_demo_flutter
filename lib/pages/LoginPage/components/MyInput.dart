@@ -1,6 +1,9 @@
+import 'package:baixing/utils/log_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import '../provider/loginPage.p.dart';
 
 /// 输入框组件
 class MyInput extends StatefulWidget {
@@ -54,6 +57,7 @@ class _MyInputState extends State<MyInput> {
   bool showPwd = false;
   bool isShowClose = false;
   final FocusNode _focusNode = FocusNode(); // 获取输入框焦点
+  LoginPageStore loginPageStore;
 
   @override
   void initState() {
@@ -74,6 +78,8 @@ class _MyInputState extends State<MyInput> {
 
   @override
   Widget build(BuildContext context) {
+    loginPageStore = Provider.of<LoginPageStore>(context);
+
     return Container(
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(

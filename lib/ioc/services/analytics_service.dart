@@ -16,26 +16,31 @@ class AnalyticsService {
       String oldRouteName = oldRoute?.settings?.name;
       // 获取路由的名字
       LogUtil.d('push进入页面 = ${newRouteName}');
-      LogUtil.d('上一页面 = ${oldRoute}');
+      LogUtil.d('上一页面 = ${oldRouteName}');
       LogUtil.d('参数 = ${newRoute?.settings.arguments}');
 
-      String commonReg = "null|/home";
       bool newRouteReg =
-          RegExp(r"(" + commonReg + "|/)").hasMatch(newRouteName ?? "null");
+          RegExp(r"^(null|/|/home)$").hasMatch(newRouteName ?? "null");
       bool oldRouteReg =
-          RegExp(r"(" + commonReg + ")").hasMatch(oldRouteName ?? "null");
+          RegExp(r"^(null|/|/home)$").hasMatch(oldRouteName ?? "null");
 
-      if (newRouteReg || oldRouteReg || newRouteName == oldRouteName) {
+      LogUtil.d('newRouteReg>>>${newRouteReg}');
+      // LogUtil.d('oldRouteReg>>>${oldRouteReg}');
+      if (newRouteName == null ||
+          oldRouteName == null ||
+          newRouteName == oldRouteName) {
         LogUtil.d('阻止');
         return;
       }
 
-      if (oldRouteName != '/') {
+      if (!oldRouteReg) {
         // 结束统计
         ViewUtils.endPageView(oldRouteName);
       }
-      // 开始统计
-      ViewUtils.beginPageView(newRouteName);
+      if (!newRouteReg) {
+        // 开始统计
+        ViewUtils.beginPageView(newRouteName);
+      }
     });
   }
 

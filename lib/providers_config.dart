@@ -1,4 +1,5 @@
 import 'package:provider/provider.dart';
+import 'provider/themeStore.dart';
 
 // 局部状态
 import 'pages/AccountPage/provider/accountPage.p.dart';
@@ -8,7 +9,7 @@ import 'pages/HomeBarTabs/Category/provider/category_store.dart';
 import 'pages/HomeBarTabs/Home/provider/homeStroe.p.dart';
 import 'pages/HomeBarTabs/provider/homeBarTabsStore.p.dart';
 import 'pages/GoodsDetailsInfo/provider/goodsDetailsInfo_stroe.dart';
-import 'provider/themeStore.dart';
+import 'pages/LoginPage/provider/loginPage.p.dart';
 
 // 状态管理配置
 List<ChangeNotifierProvider> providersConfig = [
@@ -26,4 +27,5 @@ List<ChangeNotifierProvider> providersConfig = [
   // 商品数据
   ChangeNotifierProvider<CartStore>.value(value: CartStore()),
   ChangeNotifierProvider<AccountPageStore>.value(value: AccountPageStore()),
+  ChangeNotifierProvider<LoginPageStore>.value(value: LoginPageStore()),
 ];

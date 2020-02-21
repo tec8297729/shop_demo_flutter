@@ -4,7 +4,9 @@ import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'components/FadeAnimation.dart';
+import 'provider/loginPage.p.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -14,9 +16,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController userController = TextEditingController();
   TextEditingController pwdController = TextEditingController();
+  double bottomMargin;
   String cacheKey = "loginUser";
-  bool userFlag = false;
-  bool pwdFlag = false;
 
   @override
   void initState() {
@@ -29,7 +30,6 @@ class _LoginPageState extends State<LoginPage> {
     if (userController.text.length > 6 && pwdController.text.length > 6) {
       SpUtil.setData(cacheKey, userController.text);
       Navigator.pushNamedAndRemoveUntil(context, RouteName.home, (router) {
-        print(router);
         return false;
       });
       return;
@@ -39,9 +39,15 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    LoginPageStore loginPageStore = Provider.of<LoginPageStore>(context);
+    bottomMargin = MediaQuery.of(context).viewInsets.bottom;
+    loginPageStore.setBottomMargin = bottomMargin;
+    loginPageStore.scrollJumpTo();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
+        controller: loginPageStore.pageScrollContr,
         child: Column(
           children: <Widget>[
             _headerBg(),
@@ -67,26 +73,16 @@ class _LoginPageState extends State<LoginPage> {
       ),
       child: Stack(
         children: <Widget>[
+          _lightWidget(delay: 1, left: 30, height: 400, imgName: 'light-1.png'),
           _lightWidget(
-            delay: 1,
-            left: 30,
-            height: 400,
-            imgName: 'light-1.png',
-          ),
+              delay: 1.3, left: 160, height: 300, imgName: 'light-2.png'),
           _lightWidget(
-            delay: 1.3,
-            left: 160,
-            height: 300,
-            imgName: 'light-2.png',
-          ),
-          _lightWidget(
-            delay: 1.5,
-            rihgt: 40,
-            top: 70,
-            width: 130,
-            height: 130,
-            imgName: 'clock.png',
-          ),
+              delay: 1.5,
+              rihgt: 40,
+              top: 70,
+              width: 130,
+              height: 130,
+              imgName: 'clock.png'),
           _title(), // 标题
         ],
       ),
@@ -217,7 +213,7 @@ class _LoginPageState extends State<LoginPage> {
   /// 底部忘记密码
   Widget _forgotPassword() {
     return Container(
-      margin: EdgeInsets.only(bottom: 40),
+      margin: EdgeInsets.only(bottom: bottomMargin + 40),
       child: GestureDetector(
         onTap: () {
           Util.toastTips('嘿嘿！别闹~密码随意输入');
