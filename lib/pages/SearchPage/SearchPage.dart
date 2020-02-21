@@ -1,4 +1,4 @@
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../models/search_model.dart';
 import 'package:flutter/material.dart';
@@ -109,13 +109,13 @@ class _SearchPageState extends State<SearchPage> {
                 widget?.params != null ? widget.params['hideLeft'] : false,
             defaultText: widget.keyword, // 输入框默认文字
             hint: widget.hint, // 默认提示文字,未输入文字时
-            onChanged: Util().debounce(_onTextChange, 1000), // 防抖处理
+            onChanged: Util.debounce(_onTextChange, 1000), // 防抖处理
             leftButtonClick: () => Navigator.pop(context),
             rightButtonClick: _onSearchFn,
             keyEnterFn: _onSearchFn,
             // 语音搜索事件
             speakClick: () {
-              Navigator.pushNamed(context, RouterName.speakPage);
+              Navigator.pushNamed(context, RouteName.speakPage);
             },
           ),
         ),

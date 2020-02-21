@@ -1,4 +1,4 @@
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,12 +14,12 @@ class OrderType extends StatelessWidget {
       child: Row(
         children: <Widget>[
           orderTypeItem('个人资料', Icons.person_pin, onTap: () {
-            Navigator.of(context).pushNamed(RouterName.accountPage);
+            Navigator.of(context).pushNamed(RouteName.accountPage);
           }),
           orderTypeItem('待发货', Icons.party_mode),
           orderTypeItem('待收货', Icons.directions_car),
           orderTypeItem('提现管理', Icons.monetization_on, onTap: () {
-            Navigator.of(context).pushNamed(RouterName.passwordPage);
+            Navigator.of(context).pushNamed(RouteName.passwordPage);
           }),
         ],
       ),

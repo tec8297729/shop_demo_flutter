@@ -44,7 +44,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     _getHotGoods();
     scrollControll.addListener(_onScroll);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      // 此回调中，所有在build函数中实例的对象都已经完成，可以正常调用到
       getHomeData();
     });
   }
@@ -88,11 +87,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     });
   }
 
-  // FutureBuilder组件请求数据
-  _fetchData() async {
-    return homeData;
-  }
-
   @override
   Widget build(BuildContext context) {
     super.build(context); // 使用缓存组件调用
@@ -106,7 +100,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         context: context,
         removeTop: true,
         child: FutureBuilder(
-          future: _fetchData(),
+          future: () async {
+            return homeData;
+          }(),
           builder: (context, snap) {
             if (snap.hasData) {
               return homeContextWidget(snap);

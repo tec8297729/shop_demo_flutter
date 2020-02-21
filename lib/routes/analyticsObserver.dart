@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:baixing/ioc/locator.dart' show AnalyticsService, locator;
 
@@ -25,7 +27,6 @@ class AnalyticsObserver extends NavigatorObserver {
   @override
   void didRemove(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didRemove(route, previousRoute);
-    analytics(route, previousRoute);
   }
 
   /// 路由被替换时触发

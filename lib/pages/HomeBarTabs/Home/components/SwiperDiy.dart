@@ -1,4 +1,4 @@
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +32,7 @@ class SwiperDiy extends StatelessWidget {
         },
         // 轮播点击事件
         onTap: (index) {
-          Navigator.pushNamed(context, RouterName.goodsDetailsInfo, arguments: {
+          Navigator.pushNamed(context, RouteName.goodsDetailsInfo, arguments: {
             'goodsId': swiperDataList[index]['goodsId'],
           });
         },

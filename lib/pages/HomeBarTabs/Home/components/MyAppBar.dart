@@ -1,7 +1,7 @@
 import 'package:amap_location_fluttify/amap_location_fluttify.dart';
 import 'package:amap_search_fluttify/amap_search_fluttify.dart';
 import 'package:baixing/components/SearchBar/SearchBar.dart';
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,13 +19,14 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _MyAppBarState extends State<MyAppBar>
-    with AmapSearchDisposeMixin, AmapLocationDisposeMixin {
+// with AmapSearchDisposeMixin, AmapLocationDisposeMixin
+{
   String myAddress;
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((v) {
-      getMyAddress();
+      // getMyAddress();
     });
   }
 
@@ -47,7 +48,7 @@ class _MyAppBarState extends State<MyAppBar>
 
   // 跳转搜索页面
   goSearchPage() {
-    Navigator.pushNamed(context, RouterName.searchPage);
+    Navigator.pushNamed(context, RouteName.searchPage);
   }
 
   @override

@@ -1,5 +1,5 @@
 import 'package:baixing/pages/LoginPage/components/MyInput.dart';
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   loginCaptcha() {
     if (userController.text.length > 6 && pwdController.text.length > 6) {
       SpUtil.setData(cacheKey, userController.text);
-      Navigator.pushNamedAndRemoveUntil(context, RouterName.home, (router) {
+      Navigator.pushNamedAndRemoveUntil(context, RouteName.home, (router) {
         print(router);
         return false;
       });

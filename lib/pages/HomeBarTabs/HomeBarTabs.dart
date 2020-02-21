@@ -1,5 +1,6 @@
 import 'package:baixing/ioc/locator.dart';
-import 'package:baixing/utils/util.dart' show PermUtils;
+import 'package:baixing/routes/routesData.dart';
+import 'package:baixing/utils/util.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'Home/Home.dart';
 import 'Cart/Cart.dart';
@@ -26,7 +27,7 @@ class HomeBarTabs extends StatefulWidget {
   _HomeBarTabsState createState() => _HomeBarTabsState();
 }
 
-class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
+class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
   int currentIndex = 0; // 接收bar当前点击索引
   PageController pageController;
   AnalyticsService analyticsService; // 统计埋点
@@ -55,11 +56,15 @@ class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
     },
   ];
 
+  double oldPage;
+  double cacheIndex = 0;
+  String newPageName;
+  Map<double, String> pageNameData = Map();
+  bool initAnalyzeFlag = false; // 记录埋点动作
+
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
-
     handleCurrentIndex();
     _initUtils();
     _widgetsBinding();
@@ -68,22 +73,70 @@ class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
   @override
   void dispose() {
     pageController?.dispose();
+    routeObserver.unsubscribe(this);
     super.dispose();
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    super.didChangeAppLifecycleState(state);
-    switch (state) {
-      case AppLifecycleState.resumed: // 应用程序可见，前台
-        analyticsService.appPaused();
-        break;
-      case AppLifecycleState.paused: // 应用程序不可见，后台
-        analyticsService.appPaused();
-        break;
-      default:
-        break;
-    }
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    routeObserver.subscribe(this, ModalRoute.of(context));
+  }
+
+  /// 回退
+  @override
+  void didPopNext() {
+    super.didPopNext();
+    LogUtil.d('didPopNext>>>${pageController.page}');
+    _popAnalyze();
+  }
+
+  @override
+  void didPop() {
+    super.didPop();
+    LogUtil.d('didPop》》》${pageController.page}');
+    _popAnalyze();
+  }
+
+  /// 回退统计
+  _popAnalyze() {
+    WidgetsBinding.instance.addPostFrameCallback((v) {
+      LogUtil.d('_popAnalyze  ${pageController.page}');
+      oldPage = pageController.page;
+      String pageName = pageNameData[oldPage];
+      ViewUtils.beginPageView(pageName);
+    });
+  }
+
+  /// 跳转页面统计
+  _pushAnalyze([d]) {
+    WidgetsBinding.instance.addPostFrameCallback((v) {
+      if (initAnalyzeFlag) return;
+      initAnalyzeFlag = true;
+      LogUtil.d('_pushAnalyze  ${pageController.page}');
+      ViewUtils.beginPageView(pageNameData[pageController.page]);
+      if (oldPage != null) {
+        // 结束统计
+        ViewUtils.endPageView(pageNameData[oldPage]);
+      }
+      oldPage = pageController.page;
+    });
+  }
+
+  /// 跳转当前页面,替换路由
+  @override
+  void didPush() {
+    _pushAnalyze();
+    super.didPush();
+  }
+
+  /// 跳转其它页面，单纯push
+  void didPushNext() {
+    LogUtil.d('didPushNext');
+    // 结束统计
+    ViewUtils.endPageView(pageNameData[oldPage]);
+    initAnalyzeFlag = false;
+    super.didPushNext();
   }
 
   /// 初始化tabs默认显示索引页
@@ -95,11 +148,33 @@ class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
           : widget.params['pageId'];
     }
 
+    for (var i = 0; i < barData.length; i++) {
+      pageNameData[i.toDouble()] = barData[i]['title'];
+    }
+
     // 初始化tab内容区域参数
     pageController = PageController(
       initialPage: currentIndex, // 默认显示哪个widget组件
       keepPage: true, // 是否开启缓存，即回退也会在当时的滚动位置
     );
+    pageController.addListener(tabContrListen);
+  }
+
+  /// tab监听事件
+  tabContrListen() {
+    cacheIndex = pageController.page;
+    newPageName = pageNameData[cacheIndex];
+    if (newPageName != null && cacheIndex != oldPage) {
+      LogUtil.d(pageNameData[pageController.page]);
+      if (oldPage != null) {
+        // 结束统计
+        ViewUtils.endPageView(pageNameData[oldPage]);
+      }
+
+      // 开始统计
+      ViewUtils.beginPageView(newPageName);
+      oldPage = cacheIndex;
+    }
   }
 
   /// 初始化插件工具
@@ -107,7 +182,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> with WidgetsBindingObserver {
     jhDebug.init(
       context: context,
       btnTap1: () {
-        print('btn1>>>');
+        LogUtil.d('btn1>>>');
       },
       btnTitle1: '测试',
     );

@@ -1,4 +1,4 @@
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:baixing/utils/util.dart';
 
 import '../../Category/provider/category_goodsList_store.dart';
@@ -130,7 +130,7 @@ class _RightCatgegoryGoodsListState extends State<RightCatgegoryGoodsList> {
       // 商品点击事件
       onTap: () {
         // print('商品点击》》${_goodsList[index]['goodsId']}');
-        Navigator.pushNamed(context, RouterName.goodsDetailsInfo, arguments: {
+        Navigator.pushNamed(context, RouteName.goodsDetailsInfo, arguments: {
           'goodsId': _goodsList[index]['goodsId'],
         });
       },

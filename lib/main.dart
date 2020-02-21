@@ -1,6 +1,9 @@
 import 'package:baixing/initPub.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_page_tracker/flutter_page_tracker.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
 import 'ioc/locator.dart' show setupLocator, locator, CommonService;
@@ -20,13 +23,13 @@ void main() {
     ),
     debugMode: DebugMode.inConsole,
   );
+  initPub();
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     jhDebug.setGlobalKey = locator.get<CommonService>().getGlobalKey;
-    initPub();
 
     return Consumer<ThemeStore>(
       builder: (_, themeStore, child) {
@@ -45,7 +48,11 @@ class MyApp extends StatelessWidget {
           initialRoute: initialRoute,
           onGenerateRoute: onGenerateRoute,
           debugShowCheckedModeBanner: false,
-          navigatorObservers: [AnalyticsObserver()],
+          navigatorObservers: [
+            AnalyticsObserver(),
+            routeObserver,
+            FirebaseAnalyticsObserver(analytics: FirebaseAnalytics()),
+          ],
         );
       },
     );

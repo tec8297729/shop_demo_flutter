@@ -1,4 +1,4 @@
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import '../../HomeBarTabs/HomeBarTabs.dart';
 import '../../HomeBarTabs/provider/homeBarTabsStore.p.dart';
 import '../../../components/RoutsAnimation/RoutsAnimation.dart';
@@ -36,7 +36,7 @@ class DetailsBottom extends StatelessWidget {
         GestureDetector(
           onTap: () {
             // 跳转路由缓存
-            Navigator.popUntil(context, ModalRoute.withName(RouterName.home));
+            Navigator.popUntil(context, ModalRoute.withName(RouteName.home));
             homeTabsController.jumpToPage(2);
           },
           child: Container(
@@ -123,7 +123,7 @@ class DetailsBottom extends StatelessWidget {
           context,
           RoutsAnimation(
             child: HomeBarTabs(params: {'pageId': 2}),
-            settings: RouteSettings(name: RouterName.home),
+            settings: RouteSettings(name: RouteName.home),
           ),
           (Route<dynamic> route) => false,
         );

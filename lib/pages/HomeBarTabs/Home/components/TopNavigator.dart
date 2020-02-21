@@ -55,7 +55,6 @@ class TopNavigator extends StatelessWidget {
     return GestureDetector(
       // 图标点击事件
       onTap: () {
-        print(item['mallCategoryId']);
         _categoryStore.setLeftSelect(item); // 存选中左侧菜单
         _barTabsStore.getBarTabsCont.jumpToPage(1);
       },
@@ -70,11 +69,6 @@ class TopNavigator extends StatelessWidget {
                 fallbackImage: FadeInImageNetwork.kTransparentImage,
               ),
             ),
-            //  CachedNetworkImage(
-            //   imageUrl: '${item['image']}',
-            //   // 图片读取失败显示的weiget组件
-            //   errorWidget: (context, url, error) => new Icon(Icons.error),
-            // ),
           ),
           Text(item['mallCategoryName']),
         ],

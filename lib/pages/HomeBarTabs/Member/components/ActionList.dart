@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:baixing/components/DebugBtn/DebugBtn.dart';
 import 'package:baixing/components/UpdateAppVersion/UpdateAppVersion.dart';
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:baixing/utils/util.dart' show Util;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -39,7 +39,7 @@ class _ActionListState extends State<ActionList> {
         },
         // 点击通知回调方法。
         onOpenNotification: (Map<String, dynamic> message) async {
-          Navigator.pushNamed(context, RouterName.goodsDetailsInfo, arguments: {
+          Navigator.pushNamed(context, RouteName.goodsDetailsInfo, arguments: {
             'goodsId': pushParams['goodsId'],
           });
         },
@@ -64,7 +64,7 @@ class _ActionListState extends State<ActionList> {
       child: Column(
         children: <Widget>[
           myListTitle('地图调用', onTap: () {
-            Navigator.of(context).pushNamed(RouterName.amapPage);
+            Navigator.of(context).pushNamed(RouteName.amapPage);
           }),
           // myListTitle('测试', onTap: () async {}),
           myListTitle('扫一扫', onTap: () async {

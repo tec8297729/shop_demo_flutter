@@ -1,4 +1,4 @@
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:baixing/utils/util.dart';
 
 import '../../Cart/provider/cartStore.dart';
@@ -60,7 +60,7 @@ class CartItem extends StatelessWidget {
   Widget cartImage(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, RouterName.goodsDetailsInfo, arguments: {
+        Navigator.pushNamed(context, RouteName.goodsDetailsInfo, arguments: {
           'goodsId': itemData['goodsId'],
         });
       },
@@ -86,7 +86,7 @@ class CartItem extends StatelessWidget {
         children: <Widget>[
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, RouterName.goodsDetailsInfo,
+              Navigator.pushNamed(context, RouteName.goodsDetailsInfo,
                   arguments: {
                     'goodsId': itemData['goodsId'],
                   });

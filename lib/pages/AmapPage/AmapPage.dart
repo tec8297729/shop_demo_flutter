@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:amap_map_fluttify/amap_map_fluttify.dart';
 import 'package:amap_search_fluttify/amap_search_fluttify.dart';
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -138,7 +138,7 @@ class _AmapPageState extends State<AmapPage> {
     // );
     // print('object>>>${reGeocodeList.formatAddress}');
 
-    Navigator.pushNamed(context, RouterName.searchGeocodePage);
+    Navigator.pushNamed(context, RouteName.searchGeocodePage);
   }
 
   /// 高德地图组件

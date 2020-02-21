@@ -1,4 +1,4 @@
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +76,7 @@ class _AccountPageState extends State<AccountPage> {
     return AccountListItem(
       title: '注销登出',
       onTap: () async {
-        Navigator.pushNamed(context, RouterName.loginPage);
+        Navigator.pushNamed(context, RouteName.loginPage);
       },
     );
   }

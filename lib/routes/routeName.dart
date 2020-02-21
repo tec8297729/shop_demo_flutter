@@ -1,5 +1,5 @@
 /// 路由页面名称
-class RouterName {
+class RouteName {
   /// 闪屏广告页
   static String splashPage = '/';
 

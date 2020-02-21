@@ -1,4 +1,4 @@
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -51,7 +51,7 @@ class _HotGoodsState extends State<HotGoods> {
         return GestureDetector(
           // 商品点击事件
           onTap: () {
-            Navigator.pushNamed(context, RouterName.goodsDetailsInfo,
+            Navigator.pushNamed(context, RouteName.goodsDetailsInfo,
                 arguments: {
                   'goodsId': val['goodsId'],
                 });

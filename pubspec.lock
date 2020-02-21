@@ -155,6 +155,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.8"
+  firebase_analytics:
+    dependency: "direct main"
+    description:
+      name: firebase_analytics
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "5.0.11"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -200,6 +207,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.3"
+  flutter_page_tracker:
+    dependency: "direct main"
+    description:
+      name: flutter_page_tracker
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.1.1"
   flutter_screenutil:
     dependency: "direct main"
     description:

@@ -1,4 +1,4 @@
-import 'package:baixing/routes/routerName.dart';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -55,7 +55,7 @@ class Recommend extends StatelessWidget {
     return GestureDetector(
       // 商品点击事件
       onTap: () {
-        Navigator.pushNamed(_context, RouterName.goodsDetailsInfo, arguments: {
+        Navigator.pushNamed(_context, RouteName.goodsDetailsInfo, arguments: {
           'goodsId': itemData['goodsId'],
         });
       },

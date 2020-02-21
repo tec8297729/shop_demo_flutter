@@ -66,6 +66,8 @@ dependencies:
   video_player: ^0.10.7
   chewie: ^0.9.8+1
   simple_animations: ^1.3.6
+  firebase_analytics: ^5.0.11
+  flutter_page_tracker: ^2.1.1
   jh_debug: ^0.3.3
   # jh_debug: 
     # path: '../jh_debug'

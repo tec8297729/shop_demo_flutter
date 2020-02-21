@@ -1,5 +1,6 @@
 import 'dart:async';
-import 'package:baixing/routes/routerName.dart';
+import 'dart:ui';
+import 'package:baixing/routes/RouteName.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -79,8 +80,11 @@ class _AdPageState extends State<AdPage> {
 
   /// 跳转首页
   _pushHome() {
-    Navigator.of(context).pushReplacementNamed(RouterName.home);
+    Navigator.of(context).pushReplacementNamed(RouteName.home);
+    Function d = window.onLocaleChanged;
   }
+
+  _text() {}
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +106,7 @@ class _AdPageState extends State<AdPage> {
       onTap: () {
         _pushHome();
         // H5广告页面
-        Navigator.pushNamed(context, RouterName.adH5View, arguments: {
+        Navigator.pushNamed(context, RouteName.adH5View, arguments: {
           'url':
               'https://pro.m.jd.com/mall/active/3WdVHR8UbbjrYC6FCzjahQXT5SfG/index.html'
         });
@@ -122,7 +126,7 @@ class _AdPageState extends State<AdPage> {
       right: 20,
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushReplacementNamed(RouterName.home);
+          Navigator.of(context).pushReplacementNamed(RouteName.home);
         },
         child: Container(
           alignment: Alignment.center,

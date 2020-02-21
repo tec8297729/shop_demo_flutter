@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'routerName.dart';
+import 'RouteName.dart';
 import '../pages/HomeBarTabs/HomeBarTabs.dart';
 import '../pages/GoodsDetailsInfo/GoodsDetailsInfo.dart';
 import '../pages/SearchPage/SearchPage.dart';
@@ -14,25 +14,27 @@ import '../pages/PasswordPage/PasswordPage.dart';
 import '../pages/SpeakPage/SpeakPage.dart';
 import '../pages/SplashPage/SplashPage.dart';
 
-final String initialRoute = RouterName.splashPage; // 初始默认显示的路由
+// 全局的路由监听者，可在需要的widget中添加，应该放到一个全局定义的文件中
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+final String initialRoute = RouteName.splashPage; // 初始默认显示的路由
 
 final Map<String, WidgetBuilder> routesData = {
-  RouterName.splashPage: (BuildContext context, {params}) => SplashPage(),
-  RouterName.home: (BuildContext context, {params}) =>
+  RouteName.splashPage: (BuildContext context, {params}) => SplashPage(),
+  RouteName.home: (BuildContext context, {params}) =>
       HomeBarTabs(params: params),
-  RouterName.error: (BuildContext context, {params}) =>
+  RouteName.error: (BuildContext context, {params}) =>
       ErrorPage(params: params),
-  RouterName.goodsDetailsInfo: (BuildContext context, {params}) =>
+  RouteName.goodsDetailsInfo: (BuildContext context, {params}) =>
       GoodsDetailsInfo(params: params),
-  RouterName.amapPage: (BuildContext context) => AmapPage(),
-  RouterName.searchGeocodePage: (BuildContext context) => SearchGeocodePage(),
-  RouterName.searchPage: (BuildContext context, {params}) =>
+  RouteName.amapPage: (BuildContext context) => AmapPage(),
+  RouteName.searchGeocodePage: (BuildContext context) => SearchGeocodePage(),
+  RouteName.searchPage: (BuildContext context, {params}) =>
       SearchPage(params: params),
-  RouterName.flowLayout: (BuildContext context, {params}) => FlowLayout(),
-  RouterName.speakPage: (BuildContext context, {params}) => SpeakPage(),
-  RouterName.passwordPage: (BuildContext context, {params}) => PasswordPage(),
-  RouterName.accountPage: (BuildContext context, {params}) => AccountPage(),
-  RouterName.adH5View: (BuildContext context, {params}) =>
+  RouteName.flowLayout: (BuildContext context, {params}) => FlowLayout(),
+  RouteName.speakPage: (BuildContext context, {params}) => SpeakPage(),
+  RouteName.passwordPage: (BuildContext context, {params}) => PasswordPage(),
+  RouteName.accountPage: (BuildContext context, {params}) => AccountPage(),
+  RouteName.adH5View: (BuildContext context, {params}) =>
       AdH5View(params: params),
-  RouterName.loginPage: (BuildContext context, {params}) => LoginPage(),
+  RouteName.loginPage: (BuildContext context, {params}) => LoginPage(),
 };

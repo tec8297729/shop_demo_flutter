@@ -1,7 +1,6 @@
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:synchronized/synchronized.dart';
-import 'package:flutter_umplus/flutter_umplus.dart';
 
 // 埋点统计
 class AnalyticsService {
@@ -10,31 +9,33 @@ class AnalyticsService {
   bool initFlag = false;
   Lock lock = new Lock();
 
-  // 处理数据埋点上报
+  // 处理数据埋点上报,过渡home及广告闪屏页
   _buriedPrint(Route newRoute, Route oldRoute) async {
     await lock.synchronized(() {
       String newRouteName = newRoute?.settings?.name;
       String oldRouteName = oldRoute?.settings?.name;
       // 获取路由的名字
       LogUtil.d('push进入页面 = ${newRouteName}');
-      LogUtil.d('上一页面 = ${oldRouteName}');
+      LogUtil.d('上一页面 = ${oldRoute}');
+      LogUtil.d('参数 = ${newRoute?.settings.arguments}');
 
-      if (newRouteName == null ||
-          oldRouteName == null ||
-          newRouteName == oldRouteName) {
+      String commonReg = "null|/home";
+      bool newRouteReg =
+          RegExp(r"(" + commonReg + "|/)").hasMatch(newRouteName ?? "null");
+      bool oldRouteReg =
+          RegExp(r"(" + commonReg + ")").hasMatch(oldRouteName ?? "null");
+
+      if (newRouteReg || oldRouteReg || newRouteName == oldRouteName) {
         LogUtil.d('阻止');
         return;
       }
 
-      // if (initFlag && oldRouteName != '/') {
-      //   // 结束统计
-      //   FlutterUmplus.endPageView(oldRouteName);
-      //   initFlag = true;
-      //   LogUtil.d('初始结束');
-      // }
+      if (oldRouteName != '/') {
+        // 结束统计
+        ViewUtils.endPageView(oldRouteName);
+      }
       // 开始统计
-      FlutterUmplus.beginPageView(newRouteName);
-      FlutterUmplus.endPageView(newRouteName);
+      ViewUtils.beginPageView(newRouteName);
     });
   }
 
