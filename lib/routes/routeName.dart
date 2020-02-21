@@ -38,4 +38,7 @@ class RouteName {
 
   /// 广告h5页面
   static String adH5View = '/adH5View';
+
+  /// 活动页面
+  static String activityPage = '/activityPage';
 }

@@ -54,8 +54,7 @@ class _TopTitleState extends State<TopTitle> {
   ];
   String compreSortSelectTitle;
   // 菜单弹层定位
-  RelativeRect boxPosition =
-      RelativeRect.fromLTRB(0, ScreenUtil().setHeight(314), 0, 0);
+  RelativeRect boxPosition = RelativeRect.fromLTRB(0, 180, 0, 0);
 
   @override
   void initState() {

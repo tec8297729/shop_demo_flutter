@@ -16,6 +16,7 @@ class _BottomTagsState extends State<BottomTags> {
     return Container(
       margin: EdgeInsets.only(top: 17),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           for (var i = 0; i < btnData.length; i++) tagBtn(btnData[i], index: i),
         ],
@@ -33,7 +34,7 @@ class _BottomTagsState extends State<BottomTags> {
       },
       child: Container(
         alignment: Alignment.center,
-        width: ScreenUtil().setWidth(150),
+        width: ScreenUtil().setWidth(140),
         height: ScreenUtil().setHeight(50),
         margin: EdgeInsets.only(right: index != 3 ? 13 : 0), // 最后一个没边距
         color: clickIndex[index] ? Color(0xFFE7F8FF) : Colors.black12,

@@ -1,3 +1,4 @@
+import 'package:baixing/pages/ActivityPage/ActivityPage.dart';
 import 'package:flutter/material.dart';
 import 'RouteName.dart';
 import '../pages/HomeBarTabs/HomeBarTabs.dart';
@@ -37,4 +38,5 @@ final Map<String, WidgetBuilder> routesData = {
   RouteName.adH5View: (BuildContext context, {params}) =>
       AdH5View(params: params),
   RouteName.loginPage: (BuildContext context, {params}) => LoginPage(),
+  RouteName.activityPage: (BuildContext context, {params}) => ActivityPage(),
 };

@@ -1,5 +1,6 @@
 import 'package:baixing/components/PageLoding/PageLoding.dart';
 import 'package:baixing/components/SkeletonScreen/SkeletonScreen.dart';
+import 'package:baixing/pages/HomeBarTabs/Home/components/FloatAd.dart';
 import 'package:provider/provider.dart';
 import 'components/SliverFiedHeader/SliverFiedHeader.dart';
 import 'package:baixing/services/service_method.dart';
@@ -196,35 +197,41 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
 
   // 上拉加载组件配置
   Widget _easyRefresh({@required Widget child}) {
-    return EasyRefresh(
-      scrollController: scrollControll, // 滚动控制器
-      header: ClassicalHeader(
-        noMoreText: '', // 不显示 没有更多 文字
-        showInfo: true, // 显示当前刷新时间
-        infoText: '上次刷新时间: %T',
-        refreshText: '下拉加载...',
-        refreshReadyText: '下拉加载刷新',
-        refreshingText: '加载中...',
-        refreshedText: '加载完成',
-        refreshFailedText: '加载失败',
-      ),
-      footer: ClassicalFooter(
-        // enableInfiniteLoad: false, // 加载完成后隐藏底部
-        bgColor: Colors.white,
-        textColor: Colors.pink,
-        noMoreText: '', // 不显示 没有更多 文字
-        showInfo: true, // 显示当前刷新时间
-        infoText: '上次刷新时间: %T',
-        loadReadyText: '上拉加载...',
-        loadingText: '加载中...',
-        loadedText: '加载完成',
-        loadFailedText: '加载失败',
-      ),
-      // 上拉加载
-      onLoad: () async {
-        _getHotGoods();
-      },
-      child: child,
+    return Stack(
+      children: <Widget>[
+        EasyRefresh(
+          scrollController: scrollControll, // 滚动控制器
+          header: ClassicalHeader(
+            noMoreText: '', // 不显示 没有更多 文字
+            showInfo: true, // 显示当前刷新时间
+            infoText: '上次刷新时间: %T',
+            refreshText: '下拉加载...',
+            refreshReadyText: '下拉加载刷新',
+            refreshingText: '加载中...',
+            refreshedText: '加载完成',
+            refreshFailedText: '加载失败',
+          ),
+          footer: ClassicalFooter(
+            // enableInfiniteLoad: false, // 加载完成后隐藏底部
+            bgColor: Colors.white,
+            textColor: Colors.pink,
+            noMoreText: '', // 不显示 没有更多 文字
+            showInfo: true, // 显示当前刷新时间
+            infoText: '上次刷新时间: %T',
+            loadReadyText: '上拉加载...',
+            loadingText: '加载中...',
+            loadedText: '加载完成',
+            loadFailedText: '加载失败',
+          ),
+          // 上拉加载
+          onLoad: () async {
+            _getHotGoods();
+          },
+          child: child,
+        ),
+        // 固定浮层ad
+        FloatAd(),
+      ],
     );
   }
 }
