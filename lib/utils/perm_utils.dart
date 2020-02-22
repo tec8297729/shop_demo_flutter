@@ -35,7 +35,7 @@ class PermUtils {
     return true;
   }
 
-  /// 权限GPS
+  /// 定位权限GPS
   static Future<bool> locationPerm() async {
     PermissionStatus permission = await PermissionHandler()
         .checkPermissionStatus(PermissionGroup.location);

@@ -1,7 +1,7 @@
 package-lock.json
 .flutter-plugins-dependencies
 .flutter-plugins
-
+mock/
 # Miscellaneous
 *.class
 *.log

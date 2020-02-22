@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'StackedAreaLineChart.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -179,6 +178,7 @@ class _TopTitleScreeningMenuState extends State<TopTitleScreeningMenu> {
     return Container(
       width: double.infinity,
       height: ScreenUtil().setHeight(300),
+      margin: EdgeInsets.only(bottom: 80),
       child: Stack(
         children: <Widget>[
           // 图表

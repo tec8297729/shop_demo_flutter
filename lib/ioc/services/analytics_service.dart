@@ -6,7 +6,6 @@ import 'package:synchronized/synchronized.dart';
 class AnalyticsService {
   Route newRouteConfig;
   Route oldRouteConfig;
-  bool initFlag = false;
   Lock lock = new Lock();
 
   // 处理数据埋点上报,过渡home及广告闪屏页

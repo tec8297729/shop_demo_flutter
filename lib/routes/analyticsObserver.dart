@@ -1,9 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:baixing/ioc/locator.dart' show AnalyticsService, locator;
 
-/// 监听路由, 友盟数据埋点
+/// 监听路由
 class AnalyticsObserver extends NavigatorObserver {
   analytics(Route route, Route previousRoute) {
     locator.get<AnalyticsService>().appPush(route, previousRoute);

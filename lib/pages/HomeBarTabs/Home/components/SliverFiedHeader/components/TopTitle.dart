@@ -8,6 +8,7 @@ import 'TopTitleScreeningMenu.dart';
 const _textColor = Color(0xFF58A1BB);
 
 class TopTitle extends StatefulWidget {
+  TopTitle();
   @override
   _TopTitleState createState() => _TopTitleState();
 }
@@ -54,7 +55,7 @@ class _TopTitleState extends State<TopTitle> {
   ];
   String compreSortSelectTitle;
   // 菜单弹层定位
-  RelativeRect boxPosition = RelativeRect.fromLTRB(0, 180, 0, 0);
+  RelativeRect boxPosition = RelativeRect.fromLTRB(0, 0, 0, 0);
 
   @override
   void initState() {
@@ -72,7 +73,7 @@ class _TopTitleState extends State<TopTitle> {
   Widget build(BuildContext context) {
     homeStore = Provider.of<HomeStore>(context);
     topHeight = homeStore.getTopHeight();
-
+    boxPosition = RelativeRect.fromLTRB(0, homeStore.showTopTItleHeight, 0, 0);
     return Row(
       key: topTitleKey,
       children: <Widget>[

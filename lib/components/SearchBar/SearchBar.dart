@@ -128,6 +128,7 @@ class _SearchBarState extends State<SearchBar> {
   /// 首页搜索组件
   Widget _genHomeSearch() {
     return Container(
+      alignment: Alignment.center,
       child: Row(
         children: <Widget>[
           // 左侧区域

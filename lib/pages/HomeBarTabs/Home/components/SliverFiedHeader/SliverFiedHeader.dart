@@ -1,5 +1,7 @@
+import 'package:baixing/pages/HomeBarTabs/Home/provider/homeStroe.p.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'components/SliverAppBarDelegate.dart';
 import 'components/BottomTags.dart';
 import 'components/TopTitle.dart';
@@ -10,8 +12,24 @@ class SliverFiedHeader extends StatefulWidget {
 }
 
 class _SliverFiedHeaderState extends State<SliverFiedHeader> {
+  GlobalKey _header = GlobalKey();
+  double headerHeight = 0;
+  HomeStore homeStore;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((v) {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    homeStore = Provider.of<HomeStore>(context);
+    RenderObject renderObject = _header.currentContext?.findRenderObject();
+    // 获取组件高
+    headerHeight = renderObject?.semanticBounds?.size?.height ?? 0;
+    homeStore?.saveTopTitleHeight(headerHeight);
+
     return SliverPersistentHeader(
       pinned: true,
       floating: true,
@@ -19,8 +37,8 @@ class _SliverFiedHeaderState extends State<SliverFiedHeader> {
         minHeight: ScreenUtil().setHeight(170),
         maxHeight: ScreenUtil().setHeight(170),
         child: Container(
+          key: _header,
           width: double.infinity,
-          // height: ScreenUtil().setHeight(170),
           padding: EdgeInsets.only(top: 10, left: 20, right: 20),
           color: Colors.white,
           child: Column(

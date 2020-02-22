@@ -29,7 +29,7 @@ class _DetailsWebState extends State<DetailsWeb> {
         if (store.selectTab == 0) {
           return Container(
             padding: EdgeInsets.only(bottom: 100, left: 10, right: 10),
-            constraints: BoxConstraints(minHeight: 120, maxHeight: 2200),
+            constraints: BoxConstraints(minHeight: 120, maxHeight: 2600),
             child: WebView(
               initialUrl: 'data:text/html;$contentBase64',
               javascriptMode: JavascriptMode.unrestricted,

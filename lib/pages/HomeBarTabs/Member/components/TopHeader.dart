@@ -46,16 +46,6 @@ class _TopHeaderState extends State<TopHeader> {
   ]);
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return ControlledAnimation(
       playback: Playback.MIRROR, // 动画模式效果
@@ -94,8 +84,8 @@ class _TopHeaderState extends State<TopHeader> {
     return Consumer<AccountPageStore>(
       builder: (_, store, __) {
         return Container(
-          width: 100,
-          height: 100,
+          width: ScreenUtil().setWidth(170),
+          height: ScreenUtil().setWidth(170),
           child: CircleAvatar(
             foregroundColor: Colors.cyan,
             radius: 30, // 圆的直径

@@ -1,10 +1,12 @@
 import 'package:amap_location_fluttify/amap_location_fluttify.dart';
 import 'package:amap_search_fluttify/amap_search_fluttify.dart';
 import 'package:baixing/components/SearchBar/SearchBar.dart';
+import 'package:baixing/pages/HomeBarTabs/Home/provider/homeStroe.p.dart';
 import 'package:baixing/routes/RouteName.dart';
 import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   MyAppBar({this.appBarAlpha});
@@ -19,14 +21,14 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _MyAppBarState extends State<MyAppBar>
-// with AmapSearchDisposeMixin, AmapLocationDisposeMixin
-{
+    with AmapSearchDisposeMixin, AmapLocationDisposeMixin {
   String myAddress;
+  GlobalKey _key = GlobalKey();
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((v) {
-      // getMyAddress();
+      getMyAddress();
     });
   }
 
@@ -53,10 +55,16 @@ class _MyAppBarState extends State<MyAppBar>
 
   @override
   Widget build(BuildContext context) {
+    HomeStore homeStore = Provider.of<HomeStore>(context);
+    double _appHeight =
+        _key.currentContext?.findRenderObject()?.semanticBounds?.bottom ?? 0;
+    // 存当前组件高度
+    homeStore?.saveMyAppBarHeight(_appHeight);
+
     return MediaQuery.removePadding(
       context: context,
-      child: headerWidget(),
       removeBottom: true,
+      child: headerWidget(),
     );
   }
 
@@ -76,6 +84,7 @@ class _MyAppBarState extends State<MyAppBar>
 
     // 搜索整体组件
     Widget searWrap = Container(
+      key: _key,
       decoration: BoxDecoration(
         color: Color(0xFFD1222A),
         // 阴影
@@ -85,7 +94,8 @@ class _MyAppBarState extends State<MyAppBar>
       ),
       child: Container(
         height: ScreenUtil().setHeight(160),
-        padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+        padding:
+            EdgeInsets.fromLTRB(0, MediaQuery.of(context).padding.top, 0, 0),
         decoration: BoxDecoration(
           // 动态改变盒子的背景色--透明度，滑动
           color:
