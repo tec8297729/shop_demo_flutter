@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
-import 'package:baixing/routes/RouteName.dart';
+import 'package:baixing/routes/routeName.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';

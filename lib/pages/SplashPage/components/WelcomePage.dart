@@ -1,4 +1,4 @@
-import 'package:baixing/routes/RouteName.dart';
+import 'package:baixing/routes/routeName.dart';
 import 'package:flutter/material.dart';
 
 /// 指引页面

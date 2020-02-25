@@ -1,4 +1,5 @@
 import 'package:provider/provider.dart';
+import 'pages/nCoVPage/provider/nCoVPage.p.dart';
 import 'provider/themeStore.dart';
 
 // 局部状态
@@ -28,4 +29,5 @@ List<ChangeNotifierProvider> providersConfig = [
   ChangeNotifierProvider<CartStore>.value(value: CartStore()),
   ChangeNotifierProvider<AccountPageStore>.value(value: AccountPageStore()),
   ChangeNotifierProvider<LoginPageStore>.value(value: LoginPageStore()),
+  ChangeNotifierProvider<NCoVPageStore>.value(value: NCoVPageStore()),
 ];

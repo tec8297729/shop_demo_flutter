@@ -7,21 +7,14 @@ packages:
       name: amap_core_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.5.3+356f11c"
-  amap_location_fluttify:
-    dependency: "direct main"
-    description:
-      name: amap_location_fluttify
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.8.6+356f11c"
+    version: "0.5.5+008cc2f"
   amap_map_fluttify:
     dependency: "direct main"
     description:
       name: amap_map_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.17.13+767ea66"
+    version: "0.17.14+46ae416"
   amap_search_fluttify:
     dependency: "direct main"
     description:
@@ -58,7 +51,7 @@ packages:
     source: hosted
     version: "1.0.5"
   cached_network_image:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: cached_network_image
       url: "https://pub.flutter-io.cn"
@@ -155,13 +148,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.8"
-  firebase_analytics:
-    dependency: "direct main"
+  equatable:
+    dependency: transitive
     description:
-      name: firebase_analytics
+      name: equatable
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.0.11"
+    version: "1.1.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -207,13 +200,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.3"
-  flutter_page_tracker:
-    dependency: "direct main"
+  flutter_plugin_android_lifecycle:
+    dependency: transitive
     description:
-      name: flutter_page_tracker
+      name: flutter_plugin_android_lifecycle
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.1"
+    version: "1.0.6"
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -300,7 +293,14 @@ packages:
       name: foundation_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.4.6"
+    version: "0.4.8"
+  geolocator:
+    dependency: "direct main"
+    description:
+      name: geolocator
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "5.3.0"
   get_it:
     dependency: "direct main"
     description:
@@ -308,6 +308,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.1.0"
+  google_api_availability:
+    dependency: transitive
+    description:
+      name: google_api_availability
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.2"
   html:
     dependency: transitive
     description:
@@ -336,6 +343,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.4"
+  image_picker:
+    dependency: "direct main"
+    description:
+      name: image_picker
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.6.3+4"
   intl:
     dependency: transitive
     description:
@@ -359,6 +373,13 @@ packages:
       url: "git://github.com/jpush/jpush-flutter-plugin.git"
     source: git
     version: "0.5.2"
+  location_permissions:
+    dependency: transitive
+    description:
+      name: location_permissions
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.4+1"
   logging:
     dependency: transitive
     description:
@@ -664,7 +685,7 @@ packages:
       name: url_launcher
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.4.1"
+    version: "5.4.2"
   url_launcher_macos:
     dependency: transitive
     description:

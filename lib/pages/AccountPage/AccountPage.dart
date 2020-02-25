@@ -1,4 +1,4 @@
-import 'package:baixing/routes/RouteName.dart';
+import 'package:baixing/routes/routeName.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';

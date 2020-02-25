@@ -13,7 +13,6 @@ class DetailsWeb extends StatefulWidget {
 
 class _DetailsWebState extends State<DetailsWeb> {
   WebViewController webViewController;
-  GlobalKey _globalKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {

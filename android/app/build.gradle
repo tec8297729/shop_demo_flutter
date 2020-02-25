@@ -22,7 +22,6 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 def keystoreProperties = new Properties()
@@ -53,9 +52,10 @@ android {
 
         // 选择要添加的对应 cpu 类型的 .so 库。
         ndk {
-            // abiFilters "arm64-v8a", "x86_64", "x86" 
-            abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'x86_64', 'mips', 'mips64', 'arm64-v8a'
+            // abiFilters "arm64-v8a", "x86_64", "x86"
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86_64', 'mips', 'mips64'
         }
+        
         // 极光推送配置
         manifestPlaceholders = [
             JPUSH_PKGNAME : applicationId,
@@ -83,15 +83,18 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            // 开启混淆/压缩
-            minifyEnabled true
+            shrinkResources true // 启动资源压缩,删除无用资源
+            minifyEnabled true // 开启混淆/压缩
             useProguard true
 
+            // zipAlignEnabled true
+            // debuggable true
+            
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        // debug {
-        //     signingConfig signingConfigs.debug
-        // }
+    //    debug {
+    //        signingConfig signingConfigs.release
+    //    }
     }
 
 //    packagingOptions {
@@ -113,5 +116,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     // amap_location插件依赖
     implementation 'com.amap.api:location:latest.integration'
-    implementation 'com.google.firebase:firebase-analytics:17.2.2'
 }

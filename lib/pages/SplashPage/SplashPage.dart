@@ -1,7 +1,7 @@
 import 'package:baixing/config/app_config.dart';
 import 'package:baixing/pages/SplashPage/components/AdPage.dart';
 import 'package:baixing/pages/SplashPage/components/WelcomePage.dart';
-import 'package:baixing/routes/RouteName.dart';
+import 'package:baixing/routes/routeName.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

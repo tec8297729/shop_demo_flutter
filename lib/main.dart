@@ -1,9 +1,6 @@
 import 'package:baixing/initPub.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_page_tracker/flutter_page_tracker.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
 import 'ioc/locator.dart' show setupLocator, locator, CommonService;
@@ -11,7 +8,6 @@ import 'routes/onGenerateRoute.dart';
 import 'routes/routesData.dart'; // 路由配置
 import 'provider/themeStore.dart'; // 全局主题
 import 'providers_config.dart';
-import 'routes/analyticsObserver.dart';
 
 void main() {
   setupLocator();
@@ -49,9 +45,8 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: onGenerateRoute,
           debugShowCheckedModeBanner: false,
           navigatorObservers: [
-            AnalyticsObserver(),
+            // AnalyticsObserver(),
             routeObserver,
-            FirebaseAnalyticsObserver(analytics: FirebaseAnalytics()),
           ],
         );
       },

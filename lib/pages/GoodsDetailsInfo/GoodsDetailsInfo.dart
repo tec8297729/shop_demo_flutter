@@ -1,5 +1,4 @@
 import 'package:baixing/components/SkeletonScreen/SkeletonScreen.dart';
-import '../../components/PageLoding/PageLoding.dart';
 import '../HomeBarTabs/Cart/provider/cartStore.dart';
 import '../GoodsDetailsInfo/components/DetailsBottom.dart';
 import '../GoodsDetailsInfo/components/DetailsWeb.dart';

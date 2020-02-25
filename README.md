@@ -20,11 +20,14 @@ Dart 2.7.0
 <img src="https://github.com/tec8297729/shop_demo_flutter/blob/master/demo/demo6.png?raw=true" width="33%">
 <img src="https://github.com/tec8297729/shop_demo_flutter/blob/master/demo/demo7.png?raw=true" width="33%">
 <img src="https://github.com/tec8297729/shop_demo_flutter/blob/master/demo/demo8.png?raw=true" width="33%">
+<img src="https://github.com/tec8297729/shop_demo_flutter/blob/master/demo/demo9.png?raw=true" width="33%">
 
 </div>
 
 整合学习到的知识点融合在实战项目中，这是中阶进阶技术项目，整体项目技术点含的比较多！
 从flutter的动画使用，灵活使用组件技巧，优化项目手段，IOC的理念等
+
+临时加入疫情报表页面，接口实时获取最新数据！！
 
 PS: 接口使用的是mock数据,可能会有不稳定的情况,另外加入统计功能firebase(研究性科目),建议本地跑服务安装插件时还需要有翻墙能力才行
 

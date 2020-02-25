@@ -36,6 +36,5 @@ class AccountListItem extends StatelessWidget {
         onTap: onTap,
       ),
     );
-    ;
   }
 }

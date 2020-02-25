@@ -1,27 +1,29 @@
-import 'package:amap_location_fluttify/amap_location_fluttify.dart';
+// import 'package:amap_location_fluttify/amap_location_fluttify.dart';
 import 'package:amap_search_fluttify/amap_search_fluttify.dart';
 import 'package:baixing/components/SearchBar/SearchBar.dart';
+import 'package:baixing/config/app_config.dart';
 import 'package:baixing/pages/HomeBarTabs/Home/provider/homeStroe.p.dart';
-import 'package:baixing/routes/RouteName.dart';
+import 'package:baixing/routes/routeName.dart';
 import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
+import 'package:baixing/utils/util.dart';
 
-class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
-  MyAppBar({this.appBarAlpha});
+class MyHomeAppBar extends StatefulWidget implements PreferredSizeWidget {
+  MyHomeAppBar({this.appBarAlpha});
 
   final double appBarAlpha;
   @override
-  _MyAppBarState createState() => _MyAppBarState();
+  _MyHomeAppBarState createState() => _MyHomeAppBarState();
 
   @override
   // Size get preferredSize => Size.fromHeight(kToolbarHeight + (0.0));
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
 
-class _MyAppBarState extends State<MyAppBar>
-    with AmapSearchDisposeMixin, AmapLocationDisposeMixin {
+class _MyHomeAppBarState extends State<MyHomeAppBar> {
   String myAddress;
   GlobalKey _key = GlobalKey();
   @override
@@ -34,18 +36,18 @@ class _MyAppBarState extends State<MyAppBar>
 
   // 获取自己当前位置
   Future getMyAddress() async {
-    try {
-      Location location = await AmapLocation.fetchLocation();
-      LatLng myLatLng = await location.latLng;
+    if (AppConfig.location) {
+      LatLng myLatLng = await Util.getMyLatLng();
       ReGeocode reGeocodeList = await AmapSearch.searchReGeocode(
-        myLatLng, // 坐标
-        radius: 300.0, // 最大可找半径
+        myLatLng, // 坐标 LatLng(38.98014190079781, 116.09168241501091)
+        radius: 200.0, // 最大可找半径
       );
       myAddress = await reGeocodeList.cityName; // 获取地址
-    } catch (e) {}
+    }
     if (myAddress?.isEmpty ?? false) {
       myAddress = '上海';
     }
+    setState(() {});
   }
 
   // 跳转搜索页面

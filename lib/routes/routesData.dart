@@ -1,6 +1,7 @@
 import 'package:baixing/pages/ActivityPage/ActivityPage.dart';
+import 'package:baixing/pages/nCoVPage/nCoVPage.dart';
 import 'package:flutter/material.dart';
-import 'RouteName.dart';
+import 'routeName.dart';
 import '../pages/HomeBarTabs/HomeBarTabs.dart';
 import '../pages/GoodsDetailsInfo/GoodsDetailsInfo.dart';
 import '../pages/SearchPage/SearchPage.dart';
@@ -39,4 +40,5 @@ final Map<String, WidgetBuilder> routesData = {
       AdH5View(params: params),
   RouteName.loginPage: (BuildContext context, {params}) => LoginPage(),
   RouteName.activityPage: (BuildContext context, {params}) => ActivityPage(),
+  RouteName.nCoVPage: (BuildContext context, {params}) => NCoVPage(),
 };

@@ -10,7 +10,7 @@ import 'components/FloorContent.dart';
 import 'components/FloorTitle.dart';
 import 'components/HotGoods.dart';
 import 'components/LeaderPhone.dart';
-import 'components/MyAppBar.dart';
+import 'components/MyHomeAppBar.dart';
 import 'components/Recommend.dart';
 import 'components/SwiperDiy.dart';
 import 'components/TopNavigator.dart';
@@ -96,7 +96,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     _homeStroe.setSliverListTopKey(_sliverListTopKey);
 
     return Scaffold(
-      appBar: MyAppBar(appBarAlpha: appBarAlpha), // 顶部区域
+      appBar: MyHomeAppBar(appBarAlpha: appBarAlpha), // 顶部区域
       body: MediaQuery.removePadding(
         context: context,
         removeTop: true,

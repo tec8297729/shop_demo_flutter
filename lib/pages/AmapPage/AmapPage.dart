@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:amap_map_fluttify/amap_map_fluttify.dart';
 import 'package:amap_search_fluttify/amap_search_fluttify.dart';
-import 'package:baixing/routes/RouteName.dart';
+import 'package:baixing/routes/routeName.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -57,9 +57,8 @@ class _AmapPageState extends State<AmapPage> {
   initMap() async {
     await AmapService.init(
       iosKey: '7a04506d15fdb7585707f7091d715ef4',
-      androidKey: '1c2f3c4f7d0bcf35c20da3b0d4e53958',
+      androidKey: 'd0739f38b5ccfbc22b274a00734b90af',
     );
-    await AmapCore.init('7a04506d15fdb7585707f7091d715ef4');
     // 如果你觉得引擎的日志太多, 可以关闭Fluttify引擎的日志
     await enableFluttifyLog(false); // 关闭log
   }
@@ -77,9 +76,9 @@ class _AmapPageState extends State<AmapPage> {
 
           ///获取当前经纬度
           ListTile(
-            title: Center(child: Text('获取当前位置经纬度')),
+            title: Center(child: Text('调试经纬度')),
             onTap: () {
-              test();
+              Navigator.pushNamed(context, RouteName.searchGeocodePage);
             },
           ),
 
@@ -124,23 +123,6 @@ class _AmapPageState extends State<AmapPage> {
     );
   }
 
-  test() async {
-    // final latLng = await _controller?.getLocation(); // 获取当前位置
-    // print('当前经纬度: ${latLng.toString()}');
-
-    /// 逆地理编码（坐标转地址）
-    // final reGeocodeList = await AmapSearch.searchReGeocode(
-    //   LatLng(
-    //     28.640259509271925,
-    //     115.88055770043346,
-    //   ),
-    //   radius: 200.0,
-    // );
-    // print('object>>>${reGeocodeList.formatAddress}');
-
-    Navigator.pushNamed(context, RouteName.searchGeocodePage);
-  }
-
   /// 高德地图组件
   Widget mapWidget() {
     return AmapView(
@@ -173,7 +155,8 @@ class _AmapPageState extends State<AmapPage> {
       onMapCreated: (controller) async {
         _controller = controller;
         if (await requestPermission()) {
-          await controller.showMyLocation(true);
+          print('有权限，定位my中心点');
+          await controller.showMyLocation(true); // 显示自己当前GPS位置为中心点
         }
       },
     );

@@ -9,7 +9,7 @@
     "type": "dart",
     // "console": "terminal", // cmd终端输出打印
   }, {
-    "name": "Flutter 签名模式release",
+    "name": "签名模式release",
     "request": "launch",
     "type": "dart",
     // 附加参数，不可有空格，要多个参数,间隔开

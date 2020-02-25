@@ -81,7 +81,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Stack(
               alignment: Alignment.centerLeft,
               children: <Widget>[
-                titleWidget(),
+                titleWidget(context),
                 leftW(context),
                 rightW(context),
               ],
@@ -93,7 +93,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   /// 标题内容
-  Widget titleWidget() {
+  Widget titleWidget(BuildContext context) {
     return Container(
       alignment: centerTitle ? Alignment.center : Alignment.centerLeft,
       width: double.infinity,
@@ -101,6 +101,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         title,
         style: TextStyle(
           fontSize: 18,
+          color: Theme.of(context).primaryIconTheme.color,
         ),
       ),
       margin: const EdgeInsets.symmetric(horizontal: 48.0),

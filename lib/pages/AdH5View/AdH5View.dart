@@ -11,7 +11,7 @@ class AdH5View extends StatefulWidget {
 }
 
 class _AdH5ViewState extends State<AdH5View> {
-  WebViewController _webController;
+  // WebViewController _webController;
   String title = '网页浏览';
 
   @override
@@ -23,9 +23,7 @@ class _AdH5ViewState extends State<AdH5View> {
         //JS执行模式 unrestricted不限制使用js，disabled禁用js脚本
         javascriptMode: JavascriptMode.unrestricted,
         // webview 创建时调用此函数
-        onWebViewCreated: (WebViewController web) {
-          _webController = web;
-        },
+        onWebViewCreated: (WebViewController web) {},
         gestureRecognizers: Set()
           ..add(
             Factory<VerticalDragGestureRecognizer>(

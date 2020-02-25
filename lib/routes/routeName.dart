@@ -41,4 +41,7 @@ class RouteName {
 
   /// 活动页面
   static String activityPage = '/activityPage';
+
+  /// 疫情信息页面
+  static String nCoVPage = '/nCoVPage';
 }

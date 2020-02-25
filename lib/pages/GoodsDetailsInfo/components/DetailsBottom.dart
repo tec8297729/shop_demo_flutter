@@ -1,4 +1,4 @@
-import 'package:baixing/routes/RouteName.dart';
+import 'package:baixing/routes/routeName.dart';
 import '../../HomeBarTabs/HomeBarTabs.dart';
 import '../../HomeBarTabs/provider/homeBarTabsStore.p.dart';
 import '../../../components/RoutsAnimation/RoutsAnimation.dart';

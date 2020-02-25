@@ -1,4 +1,4 @@
-import 'package:baixing/routes/RouteName.dart';
+import 'package:baixing/routes/routeName.dart';
 import 'package:baixing/utils/util.dart';
 
 import '../../Cart/provider/cartStore.dart';

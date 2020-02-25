@@ -1,4 +1,4 @@
-import 'package:baixing/routes/RouteName.dart';
+import 'package:baixing/routes/routeName.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -6,8 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // 火爆专区商品布局
 class HotGoods extends StatefulWidget {
-  List<Map> hotGoodsList;
   HotGoods({Key key, @required this.hotGoodsList});
+  final List<Map> hotGoodsList;
 
   @override
   _HotGoodsState createState() => _HotGoodsState();

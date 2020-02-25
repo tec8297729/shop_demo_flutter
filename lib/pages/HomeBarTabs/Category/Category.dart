@@ -1,13 +1,9 @@
-import 'package:baixing/components/SkeletonScreen/SkeletonScreen.dart';
-
 import '../Category/components/LeftCatgegoryNav.dart';
 import '../Category/components/RightCatgegoryGoodsList.dart';
 import '../Category/components/RightCatgegoryNav.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'provider/category_goodsList_store.dart';
-import 'provider/category_store.dart';
 
 class Category extends StatefulWidget {
   Category({Key key, this.params}) : super(key: key);
