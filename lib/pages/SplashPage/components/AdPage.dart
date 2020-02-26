@@ -34,11 +34,11 @@ class _AdPageState extends State<AdPage> {
 
       // 一小时内广告页面只触发一次
       if (diffTime.inSeconds < (3600)) {
-        SpUtil.setData(adPageKey, newTime.toString()); // 更新缓存
         _pushHome();
         return;
       }
       setState(() {
+        SpUtil.setData(adPageKey, newTime.toString()); // 更新缓存时间
         _videoPlayerController?.play(); // 播放
       });
     });
