@@ -41,3 +41,11 @@ PS: 接口使用的是mock数据,可能会有不稳定的情况,另外加入统�
 <div style="display:flex;">
 <img src="https://github.com/tec8297729/shop_demo_flutter/blob/master/asset/QRCode_258.png?raw=true" width="300px" height="300px">
 </div>
+
+部份技术要点方向整理：
+
+1、扩展原生UI组件功能，如PopupMenuButton菜单按钮，现在原生UI基础上改造出另一套自由的下拉菜单按钮，具体功能在首页中，筛选按钮。
+
+2、灵活玩会flutter动画组件，以及自定义flutter动画组件玩法，包括页面，组件，3D效果动画等。
+
+3、

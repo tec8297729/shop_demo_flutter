@@ -1,15 +1,11 @@
-// import 'package:amap_location_fluttify/amap_location_fluttify.dart';
-import 'package:amap_search_fluttify/amap_search_fluttify.dart';
 import 'package:baixing/components/SearchBar/SearchBar.dart';
-import 'package:baixing/config/app_config.dart';
 import 'package:baixing/pages/HomeBarTabs/Home/provider/homeStroe.p.dart';
+import 'package:baixing/provider/locatingStore.dart';
 import 'package:baixing/routes/routeName.dart';
 import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
-import 'package:baixing/utils/util.dart';
 
 class MyHomeAppBar extends StatefulWidget implements PreferredSizeWidget {
   MyHomeAppBar({this.appBarAlpha});
@@ -19,35 +15,26 @@ class MyHomeAppBar extends StatefulWidget implements PreferredSizeWidget {
   _MyHomeAppBarState createState() => _MyHomeAppBarState();
 
   @override
-  // Size get preferredSize => Size.fromHeight(kToolbarHeight + (0.0));
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
 
 class _MyHomeAppBarState extends State<MyHomeAppBar> {
-  String myAddress;
+  String myCityName;
   GlobalKey _key = GlobalKey();
+  LocatingStore locatingStore;
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((v) {
-      getMyAddress();
+      initMyAddress();
     });
   }
 
-  // 获取自己当前位置
-  Future getMyAddress() async {
-    if (AppConfig.location) {
-      LatLng myLatLng = await Util.getMyLatLng();
-      ReGeocode reGeocodeList = await AmapSearch.searchReGeocode(
-        myLatLng, // 坐标 LatLng(38.98014190079781, 116.09168241501091)
-        radius: 200.0, // 最大可找半径
-      );
-      myAddress = await reGeocodeList.cityName; // 获取地址
-    }
-    if (myAddress?.isEmpty ?? false) {
-      myAddress = '上海';
-    }
-    setState(() {});
+  /// 更新定位信息
+  initMyAddress() async {
+    await locatingStore?.getMyAddress(); // 获取定位信息
+    locatingStore?.locatingNotifyListeners();
+    myCityName = locatingStore?.myCityName;
   }
 
   // 跳转搜索页面
@@ -58,6 +45,8 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
   @override
   Widget build(BuildContext context) {
     HomeStore homeStore = Provider.of<HomeStore>(context);
+    locatingStore = Provider.of<LocatingStore>(context);
+
     double _appHeight =
         _key.currentContext?.findRenderObject()?.semanticBounds?.bottom ?? 0;
     // 存当前组件高度
@@ -72,20 +61,7 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
 
   // 顶部栏组件
   Widget headerWidget() {
-    Widget searchWidget = SearchBar(
-      searchBarType: widget.appBarAlpha > 0.2
-          ? SearchBarType.homeLight // 大于二分之一时，高亮显示
-          : SearchBarType.home,
-      defaultText: '网红热门打卡 美食、景点、酒店',
-      leftTitle: myAddress, // 默认显示上海
-      leftButtonClick: () => showCityModel(),
-      speakClick: () => goSearchPage(),
-      inputBoxClick: () => goSearchPage(),
-      rightButtonClick: () => goSearchPage(),
-    );
-
-    // 搜索整体组件
-    Widget searWrap = Container(
+    return Container(
       key: _key,
       decoration: BoxDecoration(
         color: Color(0xFFD1222A),
@@ -103,10 +79,22 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
           color:
               Color.fromARGB((widget.appBarAlpha * 255).toInt(), 255, 255, 255),
         ),
-        child: searchWidget,
+        child: Consumer<LocatingStore>(builder: (_, store, child) {
+          myCityName = store?.myCityName;
+          return SearchBar(
+            searchBarType: widget.appBarAlpha > 0.2
+                ? SearchBarType.homeLight // 大于二分之一时，高亮显示
+                : SearchBarType.home,
+            defaultText: '网红热门打卡 美食、景点、酒店',
+            leftTitle: myCityName, // 默认显示上海
+            leftButtonClick: () => showCityModel(),
+            speakClick: () => goSearchPage(),
+            inputBoxClick: () => goSearchPage(),
+            rightButtonClick: () => goSearchPage(),
+          );
+        }),
       ),
     );
-    return searWrap;
   }
 
   /// 显示省市区选择
@@ -120,7 +108,7 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
     );
     setState(() {
       if (result != null) {
-        myAddress = result.cityName;
+        myCityName = result.cityName;
       }
     });
   }

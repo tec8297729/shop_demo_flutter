@@ -1,14 +1,14 @@
 class MyCityModel {
-  List<Results> results;
+  List<MyCityResults> results;
   bool success;
 
   MyCityModel({this.results, this.success});
 
   MyCityModel.fromJson(Map<String, dynamic> json) {
     if (json['results'] != null) {
-      results = new List<Results>();
+      results = new List<MyCityResults>();
       json['results'].forEach((v) {
-        results.add(new Results.fromJson(v));
+        results.add(new MyCityResults.fromJson(v));
       });
     }
     success = json['success'];
@@ -24,7 +24,7 @@ class MyCityModel {
   }
 }
 
-class Results {
+class MyCityResults {
   int locationId;
   String continentName;
   String continentEnglishName;
@@ -42,7 +42,7 @@ class Results {
   String comment;
   int updateTime;
 
-  Results(
+  MyCityResults(
       {this.locationId,
       this.continentName,
       this.continentEnglishName,
@@ -60,7 +60,7 @@ class Results {
       this.comment,
       this.updateTime});
 
-  Results.fromJson(Map<String, dynamic> json) {
+  MyCityResults.fromJson(Map<String, dynamic> json) {
     locationId = json['locationId'];
     continentName = json['continentName'];
     continentEnglishName = json['continentEnglishName'];

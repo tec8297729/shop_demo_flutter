@@ -1,12 +1,11 @@
-// import 'package:amap_location_fluttify/amap_location_fluttify.dart';
-import 'package:amap_search_fluttify/amap_search_fluttify.dart';
-import 'package:baixing/config/app_config.dart';
 import 'package:baixing/pages/nCoVPage/components/NCTItle.dart';
 import 'package:baixing/pages/nCoVPage/model/myCity_model.dart';
+import 'package:baixing/pages/nCoVPage/provider/nCoVPage.p.dart';
+import 'package:baixing/provider/locatingStore.dart';
 import 'package:baixing/services/service_method.dart';
-import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 // 个人关注疫情信息
 class MyAttention extends StatefulWidget {
@@ -15,54 +14,35 @@ class MyAttention extends StatefulWidget {
 }
 
 class _MyAttentionState extends State<MyAttention> {
+  LocatingStore locatingStore;
   Color _textColor = Color(0xFF9E9E9E);
   List<Map> _tagsItemData = [
     {'name': '本地'}
   ];
   int selectTagIndex = 0; // 点击选中tag
-  String myAddress = '湖北省';
-  String cityName = '武汉市';
-  Results myCityResults; // 数据结果
+  NCoVPageStore nCoVPageStore;
 
   @override
   void initState() {
     super.initState();
-    getMyCityData();
-  }
-
-  // 获取自己当前位置
-  Future getMyAddress() async {
-    if (AppConfig.location) {
-      try {
-        await PermUtils.locationPerm(); // 申请权限
-        LatLng myLatLng = await Util.getMyLatLng();
-        ReGeocode reGeocodeList = await AmapSearch.searchReGeocode(
-          myLatLng, // 坐标
-          radius: 200.0, // 最大可找半径
-        );
-        myAddress = await reGeocodeList.provinceName; // 获取地址
-        cityName = await reGeocodeList.cityName;
-      } catch (e) {}
-    }
-    if (myAddress?.isEmpty ?? false) {
-      myAddress = '湖北省';
-    }
-    if (cityName?.isEmpty ?? false) {
-      cityName = '武汉市';
-    }
-  }
-
-  /// 获取自己城市数据信息
-  getMyCityData() async {
-    await getMyAddress();
-    MyCityModel resData = await getArea(city: myAddress);
-    setState(() {
-      myCityResults = resData.results[0] ?? null;
+    WidgetsBinding.instance.addPostFrameCallback((v) {
+      getData();
     });
+  }
+
+  /// 获取详情数据
+  getData() async {
+    await locatingStore.getMyAddress();
+    await Future.delayed(Duration(seconds: 1)); // 间隔1秒，接口有限制
+    await nCoVPageStore.getMyCityData(locatingStore?.myProvinceName);
+    print('获取当前城市>>>${locatingStore?.myProvinceName}');
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
+    locatingStore = Provider.of<LocatingStore>(context); // 状态管理,定位相关
+    nCoVPageStore = Provider.of<NCoVPageStore>(context);
     return Container(
       margin: EdgeInsets.only(bottom: 20),
       child: Column(
@@ -138,30 +118,33 @@ class _MyAttentionState extends State<MyAttention> {
 
   /// 详细地区疫情信息
   Widget _tagAreaMsg() {
-    List<Cities> _cities = myCityResults?.cities ?? [];
-    return Container(
-      margin: EdgeInsets.only(top: 10),
-      decoration: BoxDecoration(
-        color: Color(0xFFF8F8F8),
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-      child: Column(
-        children: <Widget>[
-          /// 本地省数据
-          _tagAreaMsgItem(cityName: myCityResults?.provinceName, data: [
-            myCityResults?.confirmedCount, // 累计确诊人数
-            myCityResults?.deadCount, // 死亡人数
-            myCityResults?.curedCount, // 治愈人数
-          ]),
-          for (var i = 0; i < _cities.length; i++)
-            _tagAreaMsgItem(cityName: _cities[i].cityName, data: [
-              _cities[i].confirmedCount, // 累计确诊人数
-              _cities[i].deadCount, // 死亡人数
-              _cities[i].curedCount, // 治愈人数
+    return Consumer<NCoVPageStore>(builder: (_, store, child) {
+      List<Cities> _cities = store.myCityResults?.cities ?? [];
+      MyCityResults myCityResults = store.myCityResults;
+      return Container(
+        margin: EdgeInsets.only(top: 10),
+        decoration: BoxDecoration(
+          color: Color(0xFFF8F8F8),
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        child: Column(
+          children: <Widget>[
+            /// 本地省数据
+            _tagAreaMsgItem(cityName: myCityResults?.provinceName ?? '', data: [
+              myCityResults?.confirmedCount ?? 0, // 累计确诊人数
+              myCityResults?.deadCount ?? 0, // 死亡人数
+              myCityResults?.curedCount ?? 0, // 治愈人数
             ]),
-        ],
-      ),
-    );
+            for (var i = 0; i < _cities.length; i++)
+              _tagAreaMsgItem(cityName: _cities[i].cityName, data: [
+                _cities[i].confirmedCount, // 累计确诊人数
+                _cities[i].deadCount, // 死亡人数
+                _cities[i].curedCount, // 治愈人数
+              ]),
+          ],
+        ),
+      );
+    });
   }
 
   /// 单个城市数据
@@ -240,7 +223,7 @@ class _MyAttentionState extends State<MyAttention> {
     Color _textColor = Color(0xFF02875A);
     return GestureDetector(
       onTap: () async {
-        getMyCityData();
+        getData();
       },
       child: Container(
         alignment: Alignment.center,
@@ -252,11 +235,13 @@ class _MyAttentionState extends State<MyAttention> {
               size: ScreenUtil().setSp(32),
             ),
             SizedBox(width: ScreenUtil().setWidth(5)),
-            Text(
-              '您在${cityName}',
-              style: TextStyle(
-                  color: _textColor, fontSize: ScreenUtil().setSp(24)),
-            ),
+            Consumer<LocatingStore>(builder: (_, store, __) {
+              return Text(
+                '您在${store.myCityName}',
+                style: TextStyle(
+                    color: _textColor, fontSize: ScreenUtil().setSp(24)),
+              );
+            }),
           ],
         ),
       ),

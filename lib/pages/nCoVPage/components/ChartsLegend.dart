@@ -156,7 +156,7 @@ class _ChartsLegendState extends State<ChartsLegend> {
                 // Optionally provide a measure formatter to format the measure value.
                 // If none is specified the value is formatted as a decimal.
                 measureFormatter: (num value) {
-                  return value == null ? '-' : '${value}人';
+                  return value == null ? '-' : '${value.toInt()}人';
                 },
               ),
             ],

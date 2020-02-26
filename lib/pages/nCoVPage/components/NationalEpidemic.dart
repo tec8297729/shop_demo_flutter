@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:baixing/pages/nCoVPage/provider/nCoVPage.p.dart';
+import 'package:baixing/provider/locatingStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,7 @@ class _NationalEpidemicState extends State<NationalEpidemic>
   Animation<double> animation;
   bool getFlag = true; // 是否可请求
   NCoVPageStore nCoVPageStore;
+  LocatingStore locatingStore;
 
   @override
   void initState() {
@@ -31,8 +33,12 @@ class _NationalEpidemicState extends State<NationalEpidemic>
       ..addStatusListener(animatListener);
 
     WidgetsBinding.instance.addPostFrameCallback((v) {
-      nCoVPageStore?.initNcvOverall();
+      initData();
     });
+  }
+
+  initData() async {
+    await nCoVPageStore?.initNcvOverall();
   }
 
   @override
@@ -57,7 +63,11 @@ class _NationalEpidemicState extends State<NationalEpidemic>
     if (!getFlag) return;
     getFlag = false;
     controller.forward(from: 0);
+    await locatingStore.getMyAddress();
     await nCoVPageStore.initNcvOverall();
+    // 获取省内每个市疫情信息
+    await Future.delayed(Duration(seconds: 1));
+    await nCoVPageStore.getMyCityData(locatingStore?.myProvinceName);
     setState(() {
       getFlag = true;
       controller.stop();
@@ -67,6 +77,7 @@ class _NationalEpidemicState extends State<NationalEpidemic>
   @override
   Widget build(BuildContext context) {
     nCoVPageStore = Provider.of<NCoVPageStore>(context);
+    locatingStore = Provider.of<LocatingStore>(context); // 状态管理,定位相关
     return Container(
       padding: EdgeInsets.only(left: 15, right: 15),
       decoration: BoxDecoration(

@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'package:amap_map_fluttify/amap_map_fluttify.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:geolocator/geolocator.dart';
 export 'sp_util.dart' show SpUtil;
 export 'perm_utils.dart' show PermUtils;
 export 'image_utils.dart' show ImageUtils;
@@ -30,13 +28,5 @@ class Util {
       // gravity: ToastGravity.CENTER, // 提示位置
       fontSize: 18, // 提示文字大小
     );
-  }
-
-  /// 获取当前位置，返回Latlng类
-  static Future<LatLng> getMyLatLng() async {
-    Geolocator geolocator = Geolocator()..forceAndroidLocationManager = true;
-    await geolocator.checkGeolocationPermissionStatus();
-    Position position = await Geolocator().getCurrentPosition();
-    return LatLng(position.latitude, position.longitude);
   }
 }
