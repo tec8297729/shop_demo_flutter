@@ -35,7 +35,6 @@ class _MoneyCartState extends State<MoneyCart>
 
   @override
   Widget build(BuildContext context) {
-    print(animation.value);
     return AnimatedBuilder(
       animation: animation, // 定义动画效果
       child: GestureDetector(

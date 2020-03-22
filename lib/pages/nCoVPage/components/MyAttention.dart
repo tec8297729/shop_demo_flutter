@@ -3,6 +3,7 @@ import 'package:baixing/pages/nCoVPage/model/myCity_model.dart';
 import 'package:baixing/pages/nCoVPage/provider/nCoVPage.p.dart';
 import 'package:baixing/provider/locatingStore.dart';
 import 'package:baixing/services/service_method.dart';
+import 'package:baixing/utils/log_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +36,7 @@ class _MyAttentionState extends State<MyAttention> {
     await locatingStore.getMyAddress();
     await Future.delayed(Duration(seconds: 1)); // 间隔1秒，接口有限制
     await nCoVPageStore.getMyCityData(locatingStore?.myProvinceName);
-    print('获取当前城市>>>${locatingStore?.myProvinceName}');
+    LogUtil.p('获取当前城市>>>${locatingStore?.myProvinceName}');
     setState(() {});
   }
 

@@ -45,7 +45,7 @@ class _SpeakPageState extends State<SpeakPage>
 
   /// 语音开始事件
   speakStart() {
-    LogUtil.d('开始识别');
+    LogUtil.p('开始识别');
     controller.forward();
     setState(() {
       tipsText = '- 识别中 -';
@@ -58,7 +58,7 @@ class _SpeakPageState extends State<SpeakPage>
     controller.reset(); // 恢复动画原位置
     controller.stop(); // 停止动画,不然未停止
     // String res = await AsrManager.stop();
-    LogUtil.d('停止识别');
+    LogUtil.p('停止识别');
     setState(() {
       tipsText = '- 长按说话 -';
     });

@@ -87,13 +87,24 @@ class DetailsTopArea extends StatelessWidget {
   // 商品名称
   Widget _goodsName(name) {
     return _paddingWrap(
-      child: Text(
-        name,
-        style: TextStyle(
-          fontSize: ScreenUtil().setSp(34),
-          fontWeight: FontWeight.w600,
+      child: ShaderMask(
+        // 着色器回调
+        shaderCallback: (rect) => RadialGradient(
+          center: Alignment.topLeft,
+          radius: 1,
+          colors: [Colors.yellow, Colors.deepOrange], // 颜色
+          tileMode: TileMode.mirror, // 渐变模式
+          transform: GradientRotation(22),
+        ).createShader(rect),
+        child: Text(
+          name,
+          style: TextStyle(
+            fontSize: ScreenUtil().setSp(34),
+            fontWeight: FontWeight.w600,
+            color: Colors.white, // 渐变一定要把文字设置白色，黑色是无效果的
+          ),
+          // overflow: TextOverflow.ellipsis, // 超出隐藏
         ),
-        overflow: TextOverflow.ellipsis, // 超出隐藏
       ),
     );
   }

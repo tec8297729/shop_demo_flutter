@@ -14,6 +14,7 @@ import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
 import './provider/homeBarTabsStore.p.dart';
 import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
+import '../../services/servcie_url.dart';
 
 class HomeBarTabs extends StatefulWidget {
   final params;
@@ -87,21 +88,21 @@ class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
   @override
   void didPopNext() {
     super.didPopNext();
-    LogUtil.d('didPopNext>>>${pageController.page}');
+    LogUtil.p('didPopNext>>>${pageController.page}');
     _popAnalyze();
   }
 
   @override
   void didPop() {
     super.didPop();
-    LogUtil.d('didPop》》》${pageController.page}');
+    LogUtil.p('didPop》》》${pageController.page}');
     _popAnalyze();
   }
 
   /// 回退统计
   _popAnalyze() {
     WidgetsBinding.instance.addPostFrameCallback((v) {
-      LogUtil.d('_popAnalyze  ${pageController.page}');
+      LogUtil.p('_popAnalyze  ${pageController.page}');
       oldPage = pageController.page;
       String pageName = pageNameData[oldPage];
       ViewUtils.beginPageView(pageName);
@@ -113,7 +114,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
     WidgetsBinding.instance.addPostFrameCallback((v) {
       if (initAnalyzeFlag) return;
       initAnalyzeFlag = true;
-      LogUtil.d('_pushAnalyze  ${pageController.page}');
+      LogUtil.p('_pushAnalyze  ${pageController.page}');
       ViewUtils.beginPageView(pageNameData[pageController.page]);
       if (oldPage != null) {
         // 结束统计
@@ -132,7 +133,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
 
   /// 跳转其它页面，单纯push
   void didPushNext() {
-    LogUtil.d('didPushNext');
+    LogUtil.p('didPushNext');
     // 结束统计
     ViewUtils.endPageView(pageNameData[oldPage]);
     initAnalyzeFlag = false;
@@ -165,7 +166,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
     cacheIndex = pageController.page;
     newPageName = pageNameData[cacheIndex];
     if (newPageName != null && cacheIndex != oldPage) {
-      LogUtil.d(pageNameData[pageController.page]);
+      LogUtil.p(pageNameData[pageController.page]);
       if (oldPage != null) {
         // 结束统计
         ViewUtils.endPageView(pageNameData[oldPage]);
@@ -181,10 +182,16 @@ class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
   _initUtils() {
     jhDebug.init(
       context: context,
+      btnTitle1: '疫情1',
       btnTap1: () {
-        LogUtil.d('btn1>>>');
+        LogUtil.p('切换成mock数据接口');
+        nCoVUrl = nCoVUrl2;
       },
-      btnTitle1: '测试',
+      btnTitle2: '疫情2',
+      btnTap2: () {
+        LogUtil.p('切换成api公用接口');
+        nCoVUrl = nCoVUrl3;
+      },
     );
 
     /// 获取IOC容器方法,埋点服务

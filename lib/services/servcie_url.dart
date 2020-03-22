@@ -1,8 +1,14 @@
 // const serviceUrl = 'http://v.jspang.com:8088/baixing/';
-const serviceUrl =
+var serviceUrl =
     'https://www.fastmock.site/mock/4fa6906a0c87f7c2513e85cb98eb4bdb/shop/';
-const nCoVUrl = 'https://lab.isaaclin.cn/nCoV/api/';
-const servicePath = {
+var nCoVUrl = 'https://lab.isaaclin.cn/nCoV/api/';
+// mock接口
+const nCoVUrl2 =
+    'https://www.fastmock.site/mock/4fa6906a0c87f7c2513e85cb98eb4bdb/shop/nCoV/api/';
+// 公开api接口，第三方git提供
+const nCoVUrl3 = 'https://lab.isaaclin.cn/nCoV/api/';
+
+var servicePath = {
   'homePageContent': '${serviceUrl}wxmini/homePageContent', //商店首页信息
   'homePageBelowConten': '${serviceUrl}wxmini/homePageBelowConten', //商城首页热卖商品
   'getCategory': '${serviceUrl}wxmini/getCategory', //商品类别信息

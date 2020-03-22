@@ -16,7 +16,7 @@ Future getNewAppVer({int seconds = 60 * 12, bool forceUpdate = false}) async {
   try {
     if (_showFlag) return;
     _showFlag = true;
-    LogUtil.d('检查APP更新开始');
+    LogUtil.p('检查APP更新开始');
 
     CommonService _commonIoc = locator.get<CommonService>();
     const String spKey = 'checkAppVerTime'; // 缓存key
@@ -38,7 +38,7 @@ Future getNewAppVer({int seconds = 60 * 12, bool forceUpdate = false}) async {
 
     // TODO:获取最新APP版本, 自定义getNewVersion接口获取
     Map resData = await getNewVersion();
-    LogUtil.d(resData.toString());
+    LogUtil.p(resData.toString());
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     // APP版本号对比检查

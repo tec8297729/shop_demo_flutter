@@ -44,9 +44,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     super.initState();
     _getHotGoods();
     scrollControll.addListener(_onScroll);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      getHomeData();
-    });
+    getHomeData();
+    // Future.delayed(new Duration(seconds: 0), () => print('Mission_0'));
+    // Future.delayed(new Duration(seconds: 1), () => print('Mission_1'));
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    // });
   }
 
   @override
@@ -82,7 +84,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
 
   // 获取首页数据
   Future getHomeData() async {
+    // print('异步getHomeData');
     Map newHomeData = await getHomePageContent();
+    // print('异步getHomeData2');
     setState(() {
       homeData = newHomeData;
     });

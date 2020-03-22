@@ -2,6 +2,10 @@ package-lock.json
 .flutter-plugins-dependencies
 .flutter-plugins
 mock/
+# test
+build.yaml
+**/lib/build
+
 # Miscellaneous
 *.class
 *.log

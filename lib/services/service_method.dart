@@ -163,26 +163,3 @@ Future getNcvNews({String newNum, String city}) async {
 
   return data;
 }
-
-/// 疫情有关的谣言以及丁香园的辟谣
-/* 
-示例
-1. /nCoV/api/rumors?num=all
-返回所有谣言以及辟谣内容。
-
-变量名	注释
-id	谣言编号
-title	谣言标题
-mainSummary	辟谣内容概述
-body	辟谣内容全文
-sourceUrl	来源链接
- */
-Future getNcvRumors({String newNum, String city}) async {
-  String _newNum = newNum != null ? newNum : "all";
-  String _city = city.isEmpty ? "" : "&province=$city";
-  final data = await safeRequest(
-    servicePath['ncvRumors'] + "?num=$_newNum$_city",
-  );
-
-  return data;
-}
