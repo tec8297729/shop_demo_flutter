@@ -496,7 +496,7 @@ packages:
       name: jh_debug
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.7"
+    version: "0.3.8"
   jpush_flutter:
     dependency: "direct main"
     description:
