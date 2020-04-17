@@ -15,11 +15,6 @@ class HotGoods extends StatefulWidget {
 
 class _HotGoodsState extends State<HotGoods> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[

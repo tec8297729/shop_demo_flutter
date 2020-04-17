@@ -68,9 +68,9 @@ dependencies:
   chewie: ^0.9.8+1
   simple_animations: ^1.3.6
   bubble_showcase: ^0.2.0+2
-  jh_debug: ^0.3.8
-  # jh_debug: 
-  #   path: '../jh_debug'
+  # jh_debug: ^0.3.8
+  jh_debug: 
+    path: '../jh_debug'
 
 dev_dependencies:
   flutter_test:

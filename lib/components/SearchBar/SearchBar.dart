@@ -65,9 +65,10 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar> {
   bool showClear = false; // 是否显示清除按钮
   final TextEditingController _controller = TextEditingController();
+
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     // 初始化输入框内容
     if (widget.defaultText != null) {
       setState(() {

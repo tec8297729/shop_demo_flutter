@@ -21,11 +21,6 @@ class _MemberState extends State<Member> {
   String title = '会员中心';
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

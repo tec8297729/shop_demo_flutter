@@ -19,11 +19,6 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   CartStore cartStore;
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   // 查询当前商品数据
   Future<List<Map>> getCartInfo() async {
     return await cartStore.getCartInfo();

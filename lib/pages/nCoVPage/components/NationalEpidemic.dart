@@ -31,10 +31,12 @@ class _NationalEpidemicState extends State<NationalEpidemic>
 
     animation = Tween<double>(begin: 0, end: 2 * pi).animate(controller)
       ..addStatusListener(animatListener);
+  }
 
-    WidgetsBinding.instance.addPostFrameCallback((v) {
-      initData();
-    });
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    initData();
   }
 
   initData() async {

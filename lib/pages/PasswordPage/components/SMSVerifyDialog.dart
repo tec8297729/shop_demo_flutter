@@ -20,11 +20,6 @@ class _SMSVerifyDialogState extends State<SMSVerifyDialog> {
   TextEditingController _controller = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   void dispose() {
     _timer?.cancel();
     super.dispose();

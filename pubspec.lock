@@ -493,10 +493,10 @@ packages:
   jh_debug:
     dependency: "direct main"
     description:
-      name: jh_debug
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.3.8"
+      path: "..\\jh_debug"
+      relative: true
+    source: path
+    version: "0.3.9"
   jpush_flutter:
     dependency: "direct main"
     description:

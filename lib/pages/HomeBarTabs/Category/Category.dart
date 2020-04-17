@@ -20,11 +20,6 @@ class _CategoryState extends State<Category>
   CategoryGoodsListStore categoryGoodsListStore;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     super.build(context);
     categoryGoodsListStore = Provider.of<CategoryGoodsListStore>(context);

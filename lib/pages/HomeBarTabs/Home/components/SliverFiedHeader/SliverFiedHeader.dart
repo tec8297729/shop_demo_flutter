@@ -17,12 +17,6 @@ class _SliverFiedHeaderState extends State<SliverFiedHeader> {
   HomeStore homeStore;
 
   @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((v) {});
-  }
-
-  @override
   Widget build(BuildContext context) {
     homeStore = Provider.of<HomeStore>(context);
     RenderObject renderObject = _header.currentContext?.findRenderObject();

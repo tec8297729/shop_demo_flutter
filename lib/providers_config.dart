@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'pages/nCoVPage/provider/nCoVPage.p.dart';
 import 'provider/locatingStore.dart';
@@ -33,3 +34,8 @@ List<ChangeNotifierProvider> providersConfig = [
   ChangeNotifierProvider<NCoVPageStore>.value(value: NCoVPageStore()),
   ChangeNotifierProvider<LocatingStore>.value(value: LocatingStore()),
 ];
+
+/// 添加到全局provider状态管理中
+void addProvider<T extends ChangeNotifier>({@required T value}) {
+  providersConfig.add(ChangeNotifierProvider<T>.value(value: value));
+}

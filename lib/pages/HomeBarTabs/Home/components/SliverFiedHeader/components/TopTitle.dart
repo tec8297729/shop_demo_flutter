@@ -57,11 +57,6 @@ class _TopTitleState extends State<TopTitle> {
   // 菜单弹层定位
   RelativeRect boxPosition = RelativeRect.fromLTRB(0, 0, 0, 0);
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   /// 当前标题点击高亮 1、综合排序  2、距离  3销量  4筛选
   handleSelectIndex(int index) {
     setState(() {

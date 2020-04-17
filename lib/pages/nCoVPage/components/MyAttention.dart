@@ -24,11 +24,9 @@ class _MyAttentionState extends State<MyAttention> {
   NCoVPageStore nCoVPageStore;
 
   @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((v) {
-      getData();
-    });
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    getData();
   }
 
   /// 获取详情数据

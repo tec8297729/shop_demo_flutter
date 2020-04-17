@@ -32,9 +32,11 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
 
   /// 更新定位信息
   initMyAddress() async {
-    await locatingStore?.getMyAddress(); // 获取定位信息
-    locatingStore?.locatingNotifyListeners();
-    myCityName = locatingStore?.myCityName;
+    try {
+      await locatingStore?.getMyAddress(); // 获取定位信息
+      locatingStore?.locatingNotifyListeners();
+      myCityName = locatingStore?.myCityName;
+    } catch (e) {}
   }
 
   // 跳转搜索页面

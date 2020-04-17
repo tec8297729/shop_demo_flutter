@@ -11,8 +11,8 @@ class _WelcomePageState extends State<WelcomePage> {
   String _info = '';
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     _initBanner();
   }
 

@@ -11,11 +11,6 @@ class ErrorPage extends StatefulWidget {
 
 class _ErrorPageState extends State<ErrorPage> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
