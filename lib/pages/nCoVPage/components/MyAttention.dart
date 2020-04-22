@@ -1,3 +1,4 @@
+import 'package:amap_search_fluttify/amap_search_fluttify.dart';
 import 'package:baixing/pages/nCoVPage/components/NCTItle.dart';
 import 'package:baixing/pages/nCoVPage/model/myCity_model.dart';
 import 'package:baixing/pages/nCoVPage/provider/nCoVPage.p.dart';
@@ -14,7 +15,7 @@ class MyAttention extends StatefulWidget {
   _MyAttentionState createState() => _MyAttentionState();
 }
 
-class _MyAttentionState extends State<MyAttention> {
+class _MyAttentionState extends State<MyAttention> with AmapSearchDisposeMixin {
   LocatingStore locatingStore;
   Color _textColor = Color(0xFF9E9E9E);
   List<Map> _tagsItemData = [
@@ -24,9 +25,16 @@ class _MyAttentionState extends State<MyAttention> {
   NCoVPageStore nCoVPageStore;
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((v) {
+      getData();
+    });
+  }
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    getData();
   }
 
   /// 获取详情数据

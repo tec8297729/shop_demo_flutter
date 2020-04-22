@@ -1,4 +1,3 @@
-import 'package:baixing/routes/AnalyticsPage.dart';
 import 'package:baixing/routes/routeName.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,9 +19,7 @@ class OrderType extends StatelessWidget {
           orderTypeItem('疫情信息', Icons.party_mode, onTap: () {
             Navigator.of(context).pushNamed(RouteName.nCoVPage);
           }),
-          orderTypeItem('待收货', Icons.directions_car, onTap: () {
-            AnalyticsPage().init();
-          }),
+          orderTypeItem('待收货', Icons.directions_car, onTap: () {}),
           orderTypeItem('提现管理', Icons.monetization_on, onTap: () {
             Navigator.of(context).pushNamed(RouteName.passwordPage);
           }),

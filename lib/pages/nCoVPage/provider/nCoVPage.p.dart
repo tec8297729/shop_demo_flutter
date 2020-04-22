@@ -40,12 +40,13 @@ class NCoVPageStore extends ChangeNotifier {
   String newUpTime; // 最新数据时间
   String newDay = '1.2'; // 当前日期时间
   String oldDay = '1.1'; // 昨天日期时间
-  bool loadFlag = true;
+  bool loadFlag = false;
   MyCityResults myCityResults; // 当前城市数据
 
   /// 获取全国疫情数据
   Future initNcvOverall() async {
     loadFlag = true;
+    notifyListeners();
     try {
       NcvOverallModel res = await getNcvOverall();
       Results resultsData = res?.results[0] ?? null;
@@ -85,7 +86,6 @@ class NCoVPageStore extends ChangeNotifier {
   getMyCityData(String myCityName) async {
     try {
       MyCityModel resData = await getArea(city: myCityName ?? '湖北省');
-      print('2434>>>${resData.results[0]}');
       myCityResults = resData.results[0] ?? null;
     } catch (e) {}
     notifyListeners();

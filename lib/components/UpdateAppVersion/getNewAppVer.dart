@@ -15,7 +15,6 @@ bool _showFlag = false;
 Future getNewAppVer({int seconds = 60 * 12, bool forceUpdate = false}) async {
   try {
     if (_showFlag) return;
-    _showFlag = true;
     LogUtil.p('检查APP更新开始');
 
     CommonService _commonIoc = locator.get<CommonService>();
@@ -43,7 +42,7 @@ Future getNewAppVer({int seconds = 60 * 12, bool forceUpdate = false}) async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     // APP版本号对比检查
     if (resData['version'] == packageInfo.version && !forceUpdate) return;
-
+    _showFlag = true;
     // 弹层更新
     showGeneralDialog(
       context: _commonIoc.getGlobalContext,

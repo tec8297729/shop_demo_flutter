@@ -1,7 +1,6 @@
 import 'package:baixing/components/FadeInImageNetwork/FadeInImageNetwork.dart';
 import 'package:baixing/pages/HomeBarTabs/provider/homeBarTabsStore.p.dart';
 import 'package:baixing/utils/util.dart';
-import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';

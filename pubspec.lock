@@ -14,21 +14,28 @@ packages:
       name: amap_core_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.5.5+008cc2f"
+    version: "0.6.0+b2681d9"
   amap_map_fluttify:
     dependency: "direct main"
     description:
       name: amap_map_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.17.14+46ae416"
+    version: "0.19.1+b2681d9"
   amap_search_fluttify:
     dependency: "direct main"
     description:
       name: amap_search_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.7.4+356f11c"
+    version: "0.8.2+1"
+  ana_page_loop:
+    dependency: "direct main"
+    description:
+      name: ana_page_loop
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.1"
   analyzer:
     dependency: transitive
     description:
@@ -398,7 +405,7 @@ packages:
       name: foundation_fluttify
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.4.8"
+    version: "0.5.1"
   geolocator:
     dependency: "direct main"
     description:
@@ -493,9 +500,9 @@ packages:
   jh_debug:
     dependency: "direct main"
     description:
-      path: "..\\jh_debug"
-      relative: true
-    source: path
+      name: jh_debug
+      url: "https://pub.flutter-io.cn"
+    source: hosted
     version: "0.3.9"
   jpush_flutter:
     dependency: "direct main"

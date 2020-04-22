@@ -1,4 +1,4 @@
-import 'package:baixing/components/PageLoding/PageLoding.dart';
+// import 'package:baixing/components/PageLoding/PageLoding.dart';
 import 'package:baixing/components/SkeletonScreen/SkeletonScreen.dart';
 import 'package:baixing/pages/HomeBarTabs/Home/components/FloatAd.dart';
 import 'package:provider/provider.dart';
@@ -124,8 +124,8 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     // print('首页返回数据>>${snap.data}');
     assert(snap.data['data'] != null);
     var data = snap.data['data'];
-    List<Map> swiperList = (data['slides'] as List).cast();
-    List<Map> navigatorList = (data['category'] as List).cast();
+    List<Map> swiperList = (data['slides'] as List).cast<Map>();
+    List<Map> navigatorList = (data['category'] as List).cast<Map>();
     // 广告AD字段
     String adPicture = data['advertesPicture']['PICTURE_ADDRESS'];
     Map leaderData = data['shopInfo']; // 店长相关字段
@@ -135,9 +135,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     String floor1Title = data['floor1Pic']['PICTURE_ADDRESS'];
     String floor2Title = data['floor2Pic']['PICTURE_ADDRESS'];
     String floor3Title = data['floor3Pic']['PICTURE_ADDRESS'];
-    List<Map> floor1 = (data['floor1'] as List).cast();
-    List<Map> floor2 = (data['floor2'] as List).cast();
-    List<Map> floor3 = (data['floor3'] as List).cast();
+    List<Map> floor1 = (data['floor1'] as List).cast<Map>();
+    List<Map> floor2 = (data['floor2'] as List).cast<Map>();
+    List<Map> floor3 = (data['floor3'] as List).cast<Map>();
 
     return _easyRefresh(
       child: CustomScrollView(

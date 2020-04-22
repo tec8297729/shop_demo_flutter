@@ -1,4 +1,4 @@
-import 'package:baixing/initPub.dart';
+import 'package:ana_page_loop/ana_page_loop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:jh_debug/jh_debug.dart';
@@ -8,6 +8,7 @@ import 'routes/onGenerateRoute.dart';
 import 'routes/routesData.dart'; // 路由配置
 import 'provider/themeStore.dart'; // 全局主题
 import 'providers_config.dart';
+import 'utils/myAppInit/index.dart' show myyAppInit;
 
 void main() {
   setupLocator();
@@ -19,13 +20,13 @@ void main() {
     ),
     debugMode: DebugMode.inConsole,
   );
-  initPub();
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     jhDebug.setGlobalKey = locator.get<CommonService>().getGlobalKey;
+    myyAppInit();
 
     return Consumer<ThemeStore>(
       builder: (_, themeStore, child) {
@@ -46,7 +47,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           navigatorObservers: [
             // AnalyticsObserver(),
-            routeObserver,
+            // routeObserver,
+            ...anaAllObs(),
           ],
         );
       },

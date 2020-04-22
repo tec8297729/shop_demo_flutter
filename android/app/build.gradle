@@ -59,7 +59,7 @@ android {
         // 极光推送配置
         manifestPlaceholders = [
             JPUSH_PKGNAME : applicationId,
-            JPUSH_APPKEY : "d2a93e6b6822a25d1215f504", // NOTE: JPush 上注册的包名对应的 Appkey.
+            JPUSH_APPKEY : "5e88bd04b0975595a2f9b5bd", // NOTE: JPush 上注册的包名对应的 Appkey.
             JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
             AMAP_KEY : "1c2f3c4f7d0bcf35c20da3b0d4e53958", /// 高德地图key
         ]

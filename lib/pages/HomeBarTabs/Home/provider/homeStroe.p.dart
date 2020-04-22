@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeStore extends ChangeNotifier {
   ScrollController homeScrollControll;
@@ -16,7 +15,7 @@ class HomeStore extends ChangeNotifier {
   saveTopTitleHeight(double height) => _topTitleHeight = height;
 
   /// topTitle组件中的弹层定位top位置
-  get showTopTItleHeight  => _myAppBarHeight + _topTitleHeight;
+  get showTopTItleHeight => _myAppBarHeight + _topTitleHeight;
 
   // 隐藏骨架屏, true隐藏
   void setSkeWidget([bool flag = true]) {

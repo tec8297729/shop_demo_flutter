@@ -156,7 +156,8 @@ class _AmapPageState extends State<AmapPage> {
         _controller = controller;
         if (await requestPermission()) {
           print('有权限，定位my中心点');
-          await controller.showMyLocation(true); // 显示自己当前GPS位置为中心点
+          await controller
+              .showMyLocation(MyLocationOption(show: true)); // 显示自己当前GPS位置为中心点
         }
       },
     );

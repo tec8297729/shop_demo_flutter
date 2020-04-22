@@ -1,7 +1,7 @@
 // const serviceUrl = 'http://v.jspang.com:8088/baixing/';
 var serviceUrl =
     'https://www.fastmock.site/mock/4fa6906a0c87f7c2513e85cb98eb4bdb/shop/';
-var nCoVUrl = 'https://lab.isaaclin.cn/nCoV/api/';
+var nCoVUrl = nCoVUrl3;
 // mock接口
 const nCoVUrl2 =
     'https://www.fastmock.site/mock/4fa6906a0c87f7c2513e85cb98eb4bdb/shop/nCoV/api/';
