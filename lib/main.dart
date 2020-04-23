@@ -8,7 +8,7 @@ import 'routes/onGenerateRoute.dart';
 import 'routes/routesData.dart'; // 路由配置
 import 'provider/themeStore.dart'; // 全局主题
 import 'providers_config.dart';
-import 'utils/myAppInit/index.dart' show myyAppInit;
+import 'utils/myAppSetup/index.dart' show myAppSetup;
 
 void main() {
   setupLocator();
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     jhDebug.setGlobalKey = locator.get<CommonService>().getGlobalKey;
-    myyAppInit();
+    myAppSetup();
 
     return Consumer<ThemeStore>(
       builder: (_, themeStore, child) {

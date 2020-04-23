@@ -1,10 +1,10 @@
-import 'package:ana_page_loop/ana_page_loop.dart' show anaPageLoop, anaAllObs;
+import 'package:ana_page_loop/ana_page_loop.dart' show anaPageLoop;
 import 'package:baixing/utils/util.dart';
 // import 'package:amap_location_fluttify/amap_location_fluttify.dart';
 import 'package:flutter_umplus/flutter_umplus.dart';
 
 /// 初始化app需要的插件等功能
-void myyAppInit() {
+void myAppSetup() {
   _umplusInit();
   _anaPageLoopInit();
 }
@@ -18,7 +18,7 @@ void _anaPageLoopInit() {
     endPageFn: (name) {
       ViewUtils.endPageView(name);
     },
-    routeRegExp: ['/home', '/accountPage'], // 过滤路由
+    routeRegExp: ['/home'], // 过滤路由  /accountPage
     debug: true,
   );
 }
