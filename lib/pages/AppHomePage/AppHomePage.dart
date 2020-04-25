@@ -1,5 +1,5 @@
-import 'package:baixing/ioc/locator.dart';
-import 'package:baixing/routes/routesData.dart';
+import 'dart:developer';
+import 'package:ana_page_loop/ana_page_loop.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'Home/Home.dart';
@@ -11,28 +11,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
-import './provider/homeBarTabsStore.p.dart';
+import './provider/appHomePageStore.p.dart';
 import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
 import '../../services/servcie_url.dart';
-import 'package:baixing/routes/AnalyticsPage.dart' show analyticsPage;
 
-class HomeBarTabs extends StatefulWidget {
+class AppHomePage extends StatefulWidget {
   final params;
 
-  HomeBarTabs({
+  AppHomePage({
     Key key,
     this.params,
   }) : super(key: key);
 
   @override
-  _HomeBarTabsState createState() => _HomeBarTabsState();
+  _AppHomePageState createState() => _AppHomePageState();
 }
 
-class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
+class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
   int currentIndex = 0; // 接收bar当前点击索引
   PageController pageController;
-  AnalyticsService analyticsService; // 统计埋点
+  AppHomePageStore appHomePageStore;
 
   // 导航菜单渲染数据源
   List<Map<String, dynamic>> barData = [
@@ -58,12 +57,6 @@ class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
     },
   ];
 
-  double oldPage;
-  double cacheIndex = 0;
-  String newPageName;
-  Map<double, String> pageNameData = Map();
-  bool initAnalyzeFlag = false; // 记录埋点动作
-
   @override
   void initState() {
     super.initState();
@@ -73,76 +66,36 @@ class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
   }
 
   @override
+  PageViewMixinData initPageViewListener() {
+    return PageViewMixinData(
+      controller: pageController,
+      tabsData: ['首页', '分类', '购物车', '我的中心'],
+    );
+  }
+
+  @override
   void dispose() {
     pageController?.dispose();
-    routeObserver.unsubscribe(this);
     super.dispose();
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    routeObserver.subscribe(this, ModalRoute.of(context));
-  }
-
-  /// 回退
-  @override
   void didPopNext() {
     super.didPopNext();
-    LogUtil.p('didPopNext>>>${pageController.page}');
-    _popAnalyze();
   }
 
   @override
   void didPop() {
     super.didPop();
-    LogUtil.p('didPop》》》${pageController.page}');
-    _popAnalyze();
   }
 
-  /// 回退统计
-  _popAnalyze() {
-    WidgetsBinding.instance.addPostFrameCallback((v) {
-      LogUtil.p('_popAnalyze  ${pageController.page}');
-      oldPage = pageController.page;
-      String pageName = pageNameData[oldPage];
-      // ViewUtils.beginPageView(pageName);
-      analyticsPage.beginPageView(pageName);
-    });
-  }
-
-  /// 跳转页面统计
-  _pushAnalyze([d]) {
-    WidgetsBinding.instance.addPostFrameCallback((v) {
-      if (initAnalyzeFlag) return;
-      initAnalyzeFlag = true;
-      LogUtil.p('_pushAnalyze  ${pageController.page}');
-      analyticsPage.beginPageView(pageNameData[pageController.page]);
-      // ViewUtils.beginPageView(pageNameData[pageController.page]);
-      if (oldPage != null) {
-        // 结束统计
-        analyticsPage.endPageView(pageNameData[oldPage]);
-        // ViewUtils.endPageView(pageNameData[oldPage]);
-      }
-      oldPage = pageController.page;
-    });
-  }
-
-  /// 跳转当前页面,替换路由
   @override
   void didPush() {
-    _pushAnalyze();
     super.didPush();
   }
 
-  /// 跳转其它页面，单纯push
   @override
   void didPushNext() {
-    LogUtil.p('didPushNext');
-    // 结束统计
-    // ViewUtils.endPageView(pageNameData[oldPage]);
-    analyticsPage.endPageView(pageNameData[oldPage]);
-    initAnalyzeFlag = false;
     super.didPushNext();
   }
 
@@ -154,36 +107,11 @@ class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
           ? (barData.length - 1)
           : widget.params['pageId'];
     }
-
-    for (var i = 0; i < barData.length; i++) {
-      pageNameData[i.toDouble()] = barData[i]['title'];
-    }
-
     // 初始化tab内容区域参数
     pageController = PageController(
       initialPage: currentIndex, // 默认显示哪个widget组件
       keepPage: true, // 是否开启缓存，即回退也会在当时的滚动位置
     );
-    pageController.addListener(tabContrListen);
-  }
-
-  /// tab监听事件
-  tabContrListen() {
-    cacheIndex = pageController.page;
-    newPageName = pageNameData[cacheIndex];
-    if (newPageName != null && cacheIndex != oldPage) {
-      LogUtil.p(pageNameData[pageController.page]);
-      if (oldPage != null) {
-        // 结束统计
-        // ViewUtils.endPageView(pageNameData[oldPage]);
-        analyticsPage.endPageView(pageNameData[oldPage]);
-      }
-
-      // 开始统计
-      // ViewUtils.beginPageView(newPageName);
-      analyticsPage.beginPageView(newPageName);
-      oldPage = cacheIndex;
-    }
   }
 
   /// 初始化插件工具
@@ -201,9 +129,6 @@ class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
         nCoVUrl = nCoVUrl3;
       },
     );
-
-    /// 获取IOC容器方法,埋点服务
-    analyticsService = locator.get<AnalyticsService>();
   }
 
   /// 构建第一帧处理
@@ -212,6 +137,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
       PermUtils.initPermissions(); // 手机权限申请
       getNewAppVer(); // app更新检查
       jhDebug.showDebugBtn(); // 显示jhDebug调试按钮
+      appHomePageStore.saveController(pageController); // 存页面pageController控制器
     });
   }
 
@@ -219,14 +145,25 @@ class _HomeBarTabsState extends State<HomeBarTabs> with RouteAware {
   Widget build(BuildContext context) {
     // 初始化设计稿尺寸
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
-    Provider.of<HomeBarTabsStore>(context).saveController(pageController);
+    appHomePageStore = Provider.of<AppHomePageStore>(context);
 
+    return ColorFiltered(
+      colorFilter: ColorFilter.mode(
+        appHomePageStore.getGrayTheme ? Color(0xff757575) : Colors.transparent,
+        BlendMode.color,
+      ),
+      child: _scaffoldBody(),
+    );
+    // return _scaffoldBody();
+  }
+
+  /// 页面Scaffold层组件
+  Widget _scaffoldBody() {
     return Scaffold(
       body: PageView(
         controller: pageController, // 控制器
-        children: <Widget>[
-          ...bodyWidget(),
-        ],
+        children: bodyWidget(),
+        pageSnapping: false, // 设置为false可禁用页面捕捉
         // 监听当前滑动到的页数
         onPageChanged: (index) {
           setState(() {

@@ -2,7 +2,7 @@ import 'package:baixing/pages/ActivityPage/ActivityPage.dart';
 import 'package:baixing/pages/nCoVPage/nCoVPage.dart';
 import 'package:flutter/material.dart';
 import 'routeName.dart';
-import '../pages/HomeBarTabs/HomeBarTabs.dart';
+import '../pages/AppHomePage/AppHomePage.dart';
 import '../pages/GoodsDetailsInfo/GoodsDetailsInfo.dart';
 import '../pages/SearchPage/SearchPage.dart';
 import '../pages/AmapPage/AmapPage.dart';
@@ -23,7 +23,7 @@ final String initialRoute = RouteName.splashPage; // 初始默认显示的路由
 final Map<String, WidgetBuilder> routesData = {
   RouteName.splashPage: (BuildContext context, {params}) => SplashPage(),
   RouteName.home: (BuildContext context, {params}) =>
-      HomeBarTabs(params: params),
+      AppHomePage(params: params),
   RouteName.error: (BuildContext context, {params}) =>
       ErrorPage(params: params),
   RouteName.goodsDetailsInfo: (BuildContext context, {params}) =>

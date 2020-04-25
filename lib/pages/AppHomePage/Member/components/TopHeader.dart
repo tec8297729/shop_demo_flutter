@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:simple_animations/simple_animations.dart';
+import 'package:sa_v1_migration/sa_v1_migration.dart';
 
 /// 顶部头像区域组件
 class TopHeader extends StatefulWidget {
@@ -47,11 +48,17 @@ class _TopHeaderState extends State<TopHeader> {
 
   @override
   Widget build(BuildContext context) {
-    return ControlledAnimation(
-      playback: Playback.MIRROR, // 动画模式效果
+    return MirrorAnimation(
       tween: tween, // 动画值
       duration: tween.duration, // 持续时间
-      builder: (context, animation) {
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          _avaWidget(), // 头像
+          _avaTitle(), // 文字区域
+        ],
+      ),
+      builder: (context, child, animation) {
         return Container(
           height: ScreenUtil().setHeight(400),
           padding: EdgeInsets.all(20),
@@ -67,13 +74,7 @@ class _TopHeaderState extends State<TopHeader> {
               transform: GradientRotation(111),
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _avaWidget(), // 头像
-              _avaTitle(), // 文字区域
-            ],
-          ),
+          child: child,
         );
       },
     );

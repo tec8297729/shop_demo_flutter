@@ -1,5 +1,5 @@
 import 'package:baixing/components/FadeInImageNetwork/FadeInImageNetwork.dart';
-import 'package:baixing/pages/HomeBarTabs/provider/homeBarTabsStore.p.dart';
+import 'package:baixing/pages/AppHomePage/provider/appHomePageStore.p.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,12 +12,12 @@ class TopNavigator extends StatelessWidget {
   TopNavigator({Key key, @required this.navigatorList}) : super(key: key);
   final List navigatorList;
   static CategoryStore _categoryStore;
-  static HomeBarTabsStore _barTabsStore;
+  static AppHomePageStore _barTabsStore;
 
   @override
   Widget build(BuildContext context) {
     _categoryStore = Provider.of<CategoryStore>(context);
-    _barTabsStore = Provider.of<HomeBarTabsStore>(context);
+    _barTabsStore = Provider.of<AppHomePageStore>(context);
     // 超出指定数量，只截取部份数据
     if (this.navigatorList.length > 10) {
       this.navigatorList.removeRange(10, this.navigatorList.length);

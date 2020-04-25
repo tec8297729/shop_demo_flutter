@@ -32,9 +32,9 @@ packages:
   ana_page_loop:
     dependency: "direct main"
     description:
-      name: ana_page_loop
-      url: "https://pub.flutter-io.cn"
-    source: hosted
+      path: "..\\ana_page_loop"
+      relative: true
+    source: path
     version: "0.1.1"
   analyzer:
     dependency: transitive
@@ -744,6 +744,34 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.5"
+  sa_anicoto:
+    dependency: transitive
+    description:
+      name: sa_anicoto
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
+  sa_multi_tween:
+    dependency: transitive
+    description:
+      name: sa_multi_tween
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
+  sa_stateless_animation:
+    dependency: transitive
+    description:
+      name: sa_stateless_animation
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
+  sa_v1_migration:
+    dependency: "direct main"
+    description:
+      name: sa_v1_migration
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
   screen:
     dependency: transitive
     description:
@@ -813,7 +841,7 @@ packages:
       name: simple_animations
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.3.6"
+    version: "2.0.1"
   simple_gesture_detector:
     dependency: transitive
     description:
@@ -868,6 +896,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.5"
+  supercharged:
+    dependency: transitive
+    description:
+      name: supercharged
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.5.1"
   synchronized:
     dependency: transitive
     description:

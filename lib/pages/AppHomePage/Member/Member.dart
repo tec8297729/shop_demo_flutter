@@ -17,11 +17,15 @@ class Member extends StatefulWidget {
 
 enum Movies { CaptainMarvel, Shazm }
 
-class _MemberState extends State<Member> {
+class _MemberState extends State<Member> with AutomaticKeepAliveClientMixin {
   String title = '会员中心';
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(title),

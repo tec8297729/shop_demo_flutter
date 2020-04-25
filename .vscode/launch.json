@@ -8,6 +8,12 @@
     "request": "launch",
     "type": "dart",
     // "console": "terminal", // cmd终端输出打印
+  },{
+    "name": "profile",
+    "request": "launch",
+    "type": "dart",
+    // "console": "terminal", // cmd终端输出打印
+    "flutterMode": "profile",
   }, {
     "name": "签名模式release",
     "request": "launch",

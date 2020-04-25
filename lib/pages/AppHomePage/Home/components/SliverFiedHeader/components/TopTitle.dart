@@ -1,5 +1,5 @@
 import 'package:baixing/components/PopupWinMenuButton/PopupWinMenuButton.dart';
-import 'package:baixing/pages/HomeBarTabs/Home/provider/homeStroe.p.dart';
+import 'package:baixing/pages/AppHomePage/Home/provider/homeStroe.p.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

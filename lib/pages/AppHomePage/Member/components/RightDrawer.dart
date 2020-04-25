@@ -1,3 +1,5 @@
+import 'package:baixing/pages/AppHomePage/provider/appHomePageStore.p.dart';
+
 import '../../../../provider/themeStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,6 +22,7 @@ class _RightDrawerState extends State<RightDrawer>
   double minWidth = 75;
   double maxWidth = 240;
   double widgetWidth = 240;
+  AppHomePageStore homeBarStore;
 
   @override
   void initState() {
@@ -41,6 +44,7 @@ class _RightDrawerState extends State<RightDrawer>
   @override
   Widget build(BuildContext context) {
     themeStore = Provider.of<ThemeStore>(context);
+    homeBarStore = Provider.of<AppHomePageStore>(context);
 
     return AnimatedBuilder(
       animation: widgetAnimation,
@@ -64,12 +68,25 @@ class _RightDrawerState extends State<RightDrawer>
                   buttonItem('浅蓝色', themeData: themeBlueGrey),
                   buttonItem('粉色', themeData: themePink),
                   buttonItem('天空蓝', themeData: themeLightBlue),
+                  grayBtn(),
                   iconAnimWidget(),
                 ],
               ),
             ),
           ),
         );
+      },
+    );
+  }
+
+  /// 灰度按钮
+  Widget grayBtn() {
+    return RaisedButton(
+      child: Text(
+        '灰-${homeBarStore.getGrayTheme ? "开" : "关"}',
+      ),
+      onPressed: () {
+        homeBarStore.setGrayTheme(!homeBarStore.getGrayTheme);
       },
     );
   }

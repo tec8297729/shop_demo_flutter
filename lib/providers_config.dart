@@ -6,11 +6,11 @@ import 'provider/themeStore.dart';
 
 // 局部状态
 import 'pages/AccountPage/provider/accountPage.p.dart';
-import 'pages/HomeBarTabs/Cart/provider/cartStore.dart';
-import 'pages/HomeBarTabs/Category/provider/category_goodsList_store.dart';
-import 'pages/HomeBarTabs/Category/provider/category_store.dart';
-import 'pages/HomeBarTabs/Home/provider/homeStroe.p.dart';
-import 'pages/HomeBarTabs/provider/homeBarTabsStore.p.dart';
+import 'pages/AppHomePage/Cart/provider/cartStore.dart';
+import 'pages/AppHomePage/Category/provider/category_goodsList_store.dart';
+import 'pages/AppHomePage/Category/provider/category_store.dart';
+import 'pages/AppHomePage/Home/provider/homeStroe.p.dart';
+import 'pages/AppHomePage/provider/appHomePageStore.p.dart';
 import 'pages/GoodsDetailsInfo/provider/goodsDetailsInfo_stroe.dart';
 import 'pages/LoginPage/provider/loginPage.p.dart';
 
@@ -18,7 +18,7 @@ import 'pages/LoginPage/provider/loginPage.p.dart';
 List<ChangeNotifierProvider> providersConfig = [
   ChangeNotifierProvider<ThemeStore>.value(value: ThemeStore()), // 主题颜色
   // 首页bartabs
-  ChangeNotifierProvider<HomeBarTabsStore>.value(value: HomeBarTabsStore()),
+  ChangeNotifierProvider<AppHomePageStore>.value(value: AppHomePageStore()),
   ChangeNotifierProvider<HomeStore>.value(value: HomeStore()),
   // category页 右顶部数据
   ChangeNotifierProvider<CategoryStore>.value(value: CategoryStore()),

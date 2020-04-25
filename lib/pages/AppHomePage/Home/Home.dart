@@ -1,6 +1,6 @@
 // import 'package:baixing/components/PageLoding/PageLoding.dart';
 import 'package:baixing/components/SkeletonScreen/SkeletonScreen.dart';
-import 'package:baixing/pages/HomeBarTabs/Home/components/FloatAd.dart';
+import 'package:baixing/pages/AppHomePage/Home/components/FloatAd.dart';
 import 'package:provider/provider.dart';
 import 'components/SliverFiedHeader/SliverFiedHeader.dart';
 import 'package:baixing/services/service_method.dart';

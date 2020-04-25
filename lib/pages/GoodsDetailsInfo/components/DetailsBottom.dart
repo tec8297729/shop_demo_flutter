@@ -1,12 +1,12 @@
 import 'package:baixing/routes/routeName.dart';
-import '../../HomeBarTabs/HomeBarTabs.dart';
-import '../../HomeBarTabs/provider/homeBarTabsStore.p.dart';
+import '../../AppHomePage/AppHomePage.dart';
+import '../../AppHomePage/provider/appHomePageStore.p.dart';
 import '../../../components/RoutsAnimation/RoutsAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../provider/goodsDetailsInfo_stroe.dart';
-import '../../HomeBarTabs/Cart/provider/cartStore.dart';
+import '../../AppHomePage/Cart/provider/cartStore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class DetailsBottom extends StatelessWidget {
@@ -29,7 +29,7 @@ class DetailsBottom extends StatelessWidget {
   Widget cartWidget(BuildContext context) {
     // 首页切换tabs控制器
     PageController homeTabsController =
-        Provider.of<HomeBarTabsStore>(context).barTabsController;
+        Provider.of<AppHomePageStore>(context).barTabsController;
     return Stack(
       overflow: Overflow.visible, // 超出范围是否剪裁，visible溢出范围显示，默认不显示
       children: <Widget>[
@@ -122,7 +122,7 @@ class DetailsBottom extends StatelessWidget {
         Navigator.pushAndRemoveUntil(
           context,
           RoutsAnimation(
-            child: HomeBarTabs(params: {'pageId': 2}),
+            child: AppHomePage(params: {'pageId': 2}),
             settings: RouteSettings(name: RouteName.home),
           ),
           (Route<dynamic> route) => false,

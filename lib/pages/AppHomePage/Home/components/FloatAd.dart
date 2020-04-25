@@ -1,4 +1,4 @@
-import 'package:baixing/pages/HomeBarTabs/Home/provider/homeStroe.p.dart';
+import 'package:baixing/pages/AppHomePage/Home/provider/homeStroe.p.dart';
 import 'package:baixing/routes/routeName.dart';
 import 'package:baixing/utils/image_utils.dart';
 import 'package:baixing/utils/util.dart';

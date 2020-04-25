@@ -1,5 +1,5 @@
 import 'package:baixing/components/SkeletonScreen/SkeletonScreen.dart';
-import '../HomeBarTabs/Cart/provider/cartStore.dart';
+import '../AppHomePage/Cart/provider/cartStore.dart';
 import '../GoodsDetailsInfo/components/DetailsBottom.dart';
 import '../GoodsDetailsInfo/components/DetailsWeb.dart';
 import 'package:flutter/cupertino.dart';
