@@ -63,6 +63,18 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+            <!--通过浏览器Url启动app-->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="myhost" android:path="/main" android:port="1024" android:scheme="myscheme" />
+                <!--<a href="[scheme]://[host]/[path]?[query]">启动应用程序</a>-->
+                <!-- <a href="myscheme://myhost:1024/main?key1=value1&key2=value2">open app with Uri Scheme</a> -->
+
+            </intent-filter>
         </activity>
         <!-- 扫码插件 -->
         <activity android:name="com.djgeo.majascan.g_scanner.QrCodeScannerActivity"/>

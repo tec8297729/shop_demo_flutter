@@ -7,7 +7,7 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.3"
+    version: "2.2.0"
   amap_core_fluttify:
     dependency: transitive
     description:
@@ -32,17 +32,17 @@ packages:
   ana_page_loop:
     dependency: "direct main"
     description:
-      path: "..\\ana_page_loop"
-      relative: true
-    source: path
-    version: "0.1.1"
+      name: ana_page_loop
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.4"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.39.4"
+    version: "0.39.7"
   archive:
     dependency: transitive
     description:
@@ -86,7 +86,7 @@ packages:
     source: hosted
     version: "1.2.2"
   build_config:
-    dependency: "direct dev"
+    dependency: transitive
     description:
       name: build_config
       url: "https://pub.flutter-io.cn"
@@ -112,14 +112,14 @@ packages:
       name: build_runner
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.8.0"
+    version: "1.9.0"
   build_runner_core:
     dependency: transitive
     description:
       name: build_runner_core
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.5.2"
+    version: "5.1.0"
   built_collection:
     dependency: transitive
     description:
@@ -854,6 +854,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  source_gen:
+    dependency: "direct dev"
+    description:
+      name: source_gen
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.9.5"
   source_span:
     dependency: transitive
     description:

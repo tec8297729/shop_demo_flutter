@@ -1,5 +1,8 @@
+import 'package:baixing/build/ff_route.dart';
 import 'package:flutter/material.dart';
 
+
+@FFRoute(name: 'errorAA')
 // 错误页面
 class ErrorPage extends StatefulWidget {
   ErrorPage({Key key, this.params}) : super(key: key);

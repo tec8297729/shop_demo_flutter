@@ -1,5 +1,5 @@
-import 'dart:developer';
 import 'package:ana_page_loop/ana_page_loop.dart';
+import 'package:baixing/build/ff_route.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'Home/Home.dart';
@@ -16,6 +16,7 @@ import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
 import '../../services/servcie_url.dart';
 
+@FFRoute(name: 'home')
 class AppHomePage extends StatefulWidget {
   final params;
 
