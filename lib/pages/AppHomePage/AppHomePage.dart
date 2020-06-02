@@ -135,10 +135,10 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
   /// 构建第一帧处理
   _widgetsBinding() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      appHomePageStore.saveController(pageController); // 存页面pageController控制器
       PermUtils.initPermissions(); // 手机权限申请
       getNewAppVer(); // app更新检查
       jhDebug.showDebugBtn(); // 显示jhDebug调试按钮
-      appHomePageStore.saveController(pageController); // 存页面pageController控制器
     });
   }
 

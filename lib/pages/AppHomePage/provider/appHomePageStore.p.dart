@@ -6,7 +6,8 @@ class AppHomePageStore extends ChangeNotifier {
   int _tabPage = 0;
 
   // 保存页面控制器
-  saveController(PageController barTabsCont) => barTabsController = barTabsCont;
+  void saveController(PageController barTabsCont) =>
+      barTabsController = barTabsCont;
 
   // 获取获取器
   PageController get getBarTabsCont => barTabsController;
