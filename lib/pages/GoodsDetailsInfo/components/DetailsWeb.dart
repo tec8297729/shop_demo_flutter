@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-// import 'package:flutter_html/flutter_html.dart';
-// import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Consumer;
 import 'package:webview_flutter/webview_flutter.dart';
 import '../provider/goodsDetailsInfo_stroe.dart';
 

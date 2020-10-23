@@ -5,7 +5,7 @@ import '../../Category/provider/category_goodsList_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider;
 
 // 右侧商品列表
 class RightCatgegoryGoodsList extends StatefulWidget {

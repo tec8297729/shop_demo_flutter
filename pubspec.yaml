@@ -14,7 +14,7 @@ description: A new Flutter project.
 version: 2.2.4+1
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -34,7 +34,7 @@ dependencies:
   flutter_html: ^0.11.1 # 解析html元素
   flutter_widget_from_html: ^0.3.2+1 # 解析html成组件,并且支持视频
   shared_preferences: ^0.5.6
-  characters: ^0.5.0 # 字符串表情处理
+  characters: ^1.0.0 # 字符串表情处理
   webview_flutter: ^0.3.19+7 # 显示web页面
   flutter_webview_plugin: ^0.3.10
   permission_handler: ^4.2.0 # 权限检查及申请
@@ -53,22 +53,22 @@ dependencies:
       ref: master
   share: ^0.6.3+5 # 分享
   flutter_spinkit: any
-  package_info: ^0.4.0+13 # app相关信息获取
-  ota_update: ^2.2.1 # 支持Android应用内下载更新
+  package_info: ^0.4.3 # app相关信息获取
+  ota_update: ^2.4.1 # 支持Android应用内下载更新
   majascan: ^0.3.5 # 扫码插件
   charts_flutter: ^0.8.1 # 图表
   get_it: ^3.1.0
   shimmer: ^1.0.1
   flutter_umplus: ^0.0.1
   photo: ^0.4.8 # 相册选择插件
-  image_picker: ^0.6.3+4 # 相册插件
+  image_picker: ^0.6.7+11 # 相册插件
   table_calendar: ^2.2.2 # 日历组件
   date_format: ^1.0.8 # 时间格式化
-  provider: ^4.0.2 # 状态管理
+  provider: ^4.3.2+2 # 状态管理
   video_player: ^0.10.7 # 视频播放组件
   chewie: ^0.9.8+1
   simple_animations: ^2.0.1
-  sa_v1_migration: ^1.0.0
+  sa_v1_migration: ^1.1.2
   bubble_showcase: ^0.2.0+2
   jh_debug: ^0.3.9
   # jh_debug: 
@@ -78,12 +78,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build: ^1.2.2
-  build_runner: ^1.9.0
-  source_gen: ^0.9.5
-  # build_config: ^0.4.2
+  build: ^1.5.0
+  build_runner: ^1.10.3
+  source_gen: ^0.9.7+1
   glob: ^1.2.0
-  path: ^1.6.4
+  path: ^1.7.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

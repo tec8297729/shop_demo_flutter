@@ -4,7 +4,7 @@ import '../../AppHomePage/provider/appHomePageStore.p.dart';
 import '../../../components/RoutsAnimation/RoutsAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider, Consumer2;
 import '../provider/goodsDetailsInfo_stroe.dart';
 import '../../AppHomePage/Cart/provider/cartStore.dart';
 import 'package:fluttertoast/fluttertoast.dart';

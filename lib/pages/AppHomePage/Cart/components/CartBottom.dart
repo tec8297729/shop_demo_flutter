@@ -1,7 +1,7 @@
 import '../../Cart/provider/cartStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Consumer;
 
 class CartBottom extends StatelessWidget {
   @override

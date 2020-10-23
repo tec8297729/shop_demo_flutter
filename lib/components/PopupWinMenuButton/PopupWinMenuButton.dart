@@ -37,6 +37,16 @@ Future<T> showWinMenu<T>({
     case TargetPlatform.fuchsia:
       label =
           semanticLabel ?? MaterialLocalizations.of(context)?.popupMenuLabel;
+      break;
+    case TargetPlatform.linux:
+      // TODO: Handle this case.
+      break;
+    case TargetPlatform.macOS:
+      // TODO: Handle this case.
+      break;
+    case TargetPlatform.windows:
+      // TODO: Handle this case.
+      break;
   }
 
   // 使用自定义路由组件
@@ -190,6 +200,15 @@ class _PopupMenuButtonState<T> extends State<PopupWinMenuButton<T>> {
         return const Icon(Icons.more_vert);
       case TargetPlatform.iOS:
         return const Icon(Icons.more_horiz);
+      case TargetPlatform.linux:
+        // TODO: Handle this case.
+        break;
+      case TargetPlatform.macOS:
+        // TODO: Handle this case.
+        break;
+      case TargetPlatform.windows:
+        // TODO: Handle this case.
+        break;
     }
     return null;
   }

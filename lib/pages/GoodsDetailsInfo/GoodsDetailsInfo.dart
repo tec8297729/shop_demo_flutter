@@ -4,7 +4,7 @@ import '../GoodsDetailsInfo/components/DetailsBottom.dart';
 import '../GoodsDetailsInfo/components/DetailsWeb.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider;
 import 'provider/goodsDetailsInfo_stroe.dart';
 import 'components/DetailsExplanin.dart';
 import 'components/DetailsTopArea.dart';

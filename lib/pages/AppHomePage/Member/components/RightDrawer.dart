@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../constants/themes/themeBlueGrey.dart';
 import '../../../../constants/themes/themeLightBlue.dart';
 import '../../../../constants/themes/themePink.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider;
 
 class RightDrawer extends StatefulWidget {
   @override

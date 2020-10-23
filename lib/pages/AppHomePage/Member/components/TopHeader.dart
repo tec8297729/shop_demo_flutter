@@ -3,7 +3,7 @@ import 'package:baixing/pages/AccountPage/provider/accountPage.p.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Consumer;
 import 'package:shimmer/shimmer.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:sa_v1_migration/sa_v1_migration.dart';

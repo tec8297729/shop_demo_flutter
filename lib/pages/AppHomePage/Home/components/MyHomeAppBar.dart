@@ -5,7 +5,7 @@ import 'package:baixing/routes/routeName.dart';
 import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider, Consumer;
 
 class MyHomeAppBar extends StatefulWidget implements PreferredSizeWidget {
   MyHomeAppBar({this.appBarAlpha});

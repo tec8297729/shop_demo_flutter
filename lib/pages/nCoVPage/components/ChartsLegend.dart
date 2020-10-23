@@ -3,7 +3,7 @@ import 'package:baixing/pages/nCoVPage/provider/nCoVPage.p.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider, Consumer;
 
 /// 图形报表
 class ChartsLegend extends StatefulWidget {
@@ -155,7 +155,7 @@ class _ChartsLegendState extends State<ChartsLegend> {
                 showMeasures: true,
                 // Optionally provide a measure formatter to format the measure value.
                 // If none is specified the value is formatted as a decimal.
-                measureFormatter: (num value) {
+                measureFormatter: (value) {
                   return value == null ? '-' : '${value.toInt()}人';
                 },
               ),

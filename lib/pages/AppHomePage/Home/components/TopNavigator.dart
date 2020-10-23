@@ -4,7 +4,7 @@ import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider;
 import '../../Category/provider/category_store.dart';
 
 // 轮播图下方nav图标区域

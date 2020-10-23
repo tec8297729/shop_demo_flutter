@@ -2,7 +2,7 @@ import 'package:ana_page_loop/ana_page_loop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:jh_debug/jh_debug.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Consumer, MultiProvider;
 import 'ioc/locator.dart' show setupLocator, locator, CommonService;
 import 'routes/onGenerateRoute.dart';
 import 'routes/routesData.dart'; // 路由配置

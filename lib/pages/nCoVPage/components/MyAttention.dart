@@ -3,11 +3,11 @@ import 'package:baixing/pages/nCoVPage/components/NCTItle.dart';
 import 'package:baixing/pages/nCoVPage/model/myCity_model.dart';
 import 'package:baixing/pages/nCoVPage/provider/nCoVPage.p.dart';
 import 'package:baixing/provider/locatingStore.dart';
-import 'package:baixing/services/service_method.dart';
+
 import 'package:baixing/utils/log_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider, Consumer;
 
 // 个人关注疫情信息
 class MyAttention extends StatefulWidget {

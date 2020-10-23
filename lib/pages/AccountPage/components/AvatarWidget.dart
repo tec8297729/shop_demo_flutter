@@ -4,7 +4,7 @@ import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider, Consumer;
 import 'AccountListItem.dart';
 
 /// 头像

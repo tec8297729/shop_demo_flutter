@@ -1,8 +1,7 @@
-import 'package:baixing/utils/log_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider;
 import '../provider/loginPage.p.dart';
 
 /// 输入框组件

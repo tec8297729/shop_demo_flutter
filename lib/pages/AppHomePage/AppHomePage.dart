@@ -1,5 +1,4 @@
 import 'package:ana_page_loop/ana_page_loop.dart';
-import 'package:baixing/build/ff_route.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'Home/Home.dart';
@@ -9,14 +8,13 @@ import 'Member/Member.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider;
 import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
 import './provider/appHomePageStore.p.dart';
 import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
 import '../../services/servcie_url.dart';
 
-@FFRoute(name: 'home')
 class AppHomePage extends StatefulWidget {
   final params;
 
@@ -200,8 +198,7 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
           alignment: Alignment.bottomCenter,
           children: <Widget>[
             // 内容区域
-            if (itemWidget['body'] != null)
-              itemWidget['body'],
+            if (itemWidget['body'] != null) itemWidget['body'],
 
             // 自定义退出APP的动画组件
             Positioned(
@@ -226,13 +223,7 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
           barData[idx]['icon'], // 图标
           size: 28,
         ),
-        title: Text(
-          barData[idx]['title'],
-          // 自定义样式
-          // style: TextStyle(
-          //   color: (currentIndex == idx ? Colors.blueGrey : Colors.black),
-          // ),
-        ),
+        label: barData[idx]['title'],
       ));
     }
     return list;

@@ -3,7 +3,7 @@ import 'package:baixing/routes/routeName.dart';
 import 'package:baixing/utils/image_utils.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider;
 
 /// 全局浮动ad广告
 class FloatAd extends StatefulWidget {

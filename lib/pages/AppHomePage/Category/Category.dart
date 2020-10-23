@@ -2,7 +2,7 @@ import '../Category/components/LeftCatgegoryNav.dart';
 import '../Category/components/RightCatgegoryGoodsList.dart';
 import '../Category/components/RightCatgegoryNav.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider;
 import 'provider/category_goodsList_store.dart';
 
 class Category extends StatefulWidget {

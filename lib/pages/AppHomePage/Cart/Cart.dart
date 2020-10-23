@@ -2,7 +2,7 @@ import 'package:baixing/components/PageLoding/PageLoding.dart';
 
 import '../Cart/components/CartBottom.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider;
 import 'components/CartBottom.dart';
 import 'provider/cartStore.dart';
 import 'components/CartItem.dart';

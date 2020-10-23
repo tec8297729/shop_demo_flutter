@@ -2,7 +2,7 @@ import 'package:baixing/components/PopupWinMenuButton/PopupWinMenuButton.dart';
 import 'package:baixing/pages/AppHomePage/Home/provider/homeStroe.p.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider;
 import 'TopTitleScreeningMenu.dart';
 
 const _textColor = Color(0xFF58A1BB);

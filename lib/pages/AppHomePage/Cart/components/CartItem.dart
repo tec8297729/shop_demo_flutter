@@ -4,7 +4,7 @@ import 'package:baixing/utils/util.dart';
 import '../../Cart/provider/cartStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Consumer;
 import './GoodsCount.dart'; // 数量控制组件
 
 // 商品卡片

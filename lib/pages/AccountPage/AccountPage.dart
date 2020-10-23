@@ -4,7 +4,7 @@ import 'package:baixing/utils/util.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Consumer;
 import 'components/AccountListItem.dart';
 import 'components/AvatarWidget.dart';
 import 'components/BirthdayWidget.dart';

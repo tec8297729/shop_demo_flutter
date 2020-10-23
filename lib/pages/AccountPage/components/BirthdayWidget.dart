@@ -2,7 +2,7 @@ import 'package:baixing/pages/AccountPage/provider/accountPage.p.dart';
 import 'package:baixing/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider;
 import 'package:table_calendar/table_calendar.dart';
 
 /// 生日选择弹层组件

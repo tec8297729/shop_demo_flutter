@@ -81,7 +81,6 @@ class _AdPageState extends State<AdPage> {
   /// 跳转首页
   _pushHome() {
     Navigator.of(context).pushReplacementNamed(RouteName.home);
-    Function d = window.onLocaleChanged;
   }
 
   _text() {}

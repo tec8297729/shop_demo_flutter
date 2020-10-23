@@ -2,7 +2,7 @@ import 'package:baixing/services/service_method.dart';
 import '../../Category/provider/category_goodsList_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider;
 import '../provider/category_store.dart';
 
 class LeftCatgegoryNav extends StatefulWidget {

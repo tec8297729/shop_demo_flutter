@@ -3,7 +3,7 @@ import 'package:baixing/pages/nCoVPage/provider/nCoVPage.p.dart';
 import 'package:baixing/provider/locatingStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show Provider, Consumer;
 import 'ChartsLegend.dart';
 import 'MyAttention.dart';
 import 'NCTItle.dart';

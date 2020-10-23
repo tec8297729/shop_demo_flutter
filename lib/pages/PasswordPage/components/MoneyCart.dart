@@ -1,6 +1,6 @@
 import 'package:baixing/components/NumAnimation/NumAnimation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart' hide num;
 import 'dart:math' as math;
 
 /// 金额卡片组件
